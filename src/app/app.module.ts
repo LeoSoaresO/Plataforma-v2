@@ -12,7 +12,7 @@ import { reducers, metaReducers } from './reducers';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
     HeaderComponent,
     SideBarComponent
   ],
