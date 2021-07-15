@@ -19,7 +19,6 @@ export class SideBarComponent{
   constructor(private sharedService: SharedService) {
       this.clickEventsubscription = this.sharedService.getClickEvent().subscribe(()=>{
         this.toggleSideBar();
-        return this.isSideBarOpen;
       })
   }
 
