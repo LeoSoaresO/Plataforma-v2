@@ -20,8 +20,8 @@ export class HeaderComponent implements OnInit{
 
   toggleSideBar(){
     this.sharedService.sendClickEvent();
-    
   }
+  
   onToggleEvent(valueEmitted: boolean){
     this.isSideBarOpen = valueEmitted;
   }
