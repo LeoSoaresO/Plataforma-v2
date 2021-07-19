@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import '/src/app/styles/custom-components.scss';
 
 html {
     font-family: 'Open Sans', sans-serif;

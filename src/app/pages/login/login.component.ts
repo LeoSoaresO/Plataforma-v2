@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { faGoogle, faApple, faMicrosoft } from '@fortawesome/free-brands-svg-icons';
+
+
 
 @Component({
   selector: 'app-login',
@@ -6,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+faGoogle = faGoogle
+faApple = faApple
+faMicrosoft = faMicrosoft
 
   constructor() { }
 

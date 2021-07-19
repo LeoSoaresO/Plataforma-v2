@@ -1,2 +1,18 @@
 @import '../../../styles.scss';
 
+.btn-blue {
+    border: solid 1px blue;
+    border-color: lighten(blue, 20%);
+}
+
+.text-w {
+    color: #ffffff;
+}
+
+.border-gray {
+    border-color: lighten(gray, 25%);
+}
+
+fa-icon {
+    font-size: 20px;
+}
