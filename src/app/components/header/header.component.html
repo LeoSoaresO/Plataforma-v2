@@ -1,22 +1,9 @@
-<header class="md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4" style="background-color: #909193;">
+
+<app-side-bar></app-side-bar>
+<header class="md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4" style="background-color: #FFFFFF;">
   
   <!-- Logo text or image -->
   <div class="flex items-center justify-between mb-4 md:mb-0">
-    <div>
-      <button (click)="toggleSideBar()" >
-        <div *ngIf='!isSideBarOpen'> 
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </div>
-        <div *ngIf='isSideBarOpen'> 
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </div>
-      </button>
-    </div>
-
     <a class="text-black hover:text-orange md:hidden" href="#">
       <i class="fa fa-2x fa-bars"></i>
     </a>
@@ -59,4 +46,3 @@
   <!-- END Global navigation -->
 </header>
 
-<app-side-bar (isSideBarOpened)="onToggleEvent($event)"></app-side-bar>

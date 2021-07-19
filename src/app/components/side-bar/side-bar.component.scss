@@ -2,18 +2,18 @@
    color: black;
  }
  .sidebar {
-    background: #b0b2c7;
+    background: #D9E0E6;
     color: white;
     height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
+    width: 6em; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    padding-top: 1em; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
   }
   .showsidebar {
-    width: 25em;
+    display: block; 
   }
   .hidesidebar {
-    width: 0px;
+    display: none; 
   }
