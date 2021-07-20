@@ -1,5 +1,4 @@
 import { Component,  OnInit } from '@angular/core';
-import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-header',
@@ -15,14 +14,5 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
   }
-
-  // toggleSideBar(){
-  //   this.sharedService.sendClickEvent();
-  // }
-  
-  // onToggleEvent(valueEmitted: boolean){
-  //   this.isSideBarOpen = valueEmitted;
-  // }
-
 
 }
