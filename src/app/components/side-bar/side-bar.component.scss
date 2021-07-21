@@ -7,7 +7,7 @@ button {
   min-height: 0rem;
   position: fixed;
   left: 5rem;
-  margin-top: -0.7rem;
+  margin-top: -0.39rem;
   border-radius: 0.5rem;
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
@@ -21,13 +21,24 @@ button {
     padding-top: 1em; /* Place content 60px from the top */
 }
 .showsidebar {
-  min-width: 10rem;
-  min-height: 3rem;
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */ 
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 .hidesidebar {
-  min-width: 0;
-  min-height: 0; 
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.side-overlay{
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  transition: background-color 0.5s,opacity 0.5s linear;
 }
 
