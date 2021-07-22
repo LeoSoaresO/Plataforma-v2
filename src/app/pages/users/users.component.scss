@@ -1,0 +1,13 @@
+@import '../../../styles.scss';
+
+.borderCustom {
+    border-color: $gray-light;
+}
+
+.hover {
+    transition: 0.7s;
+    &:hover {
+        transition: 0.7s;
+        background-color: $blue-light;
+    }
+}
