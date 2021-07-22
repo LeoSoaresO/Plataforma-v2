@@ -11,6 +11,10 @@ import { reducers, metaReducers } from './reducers';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UsersComponent } from './pages/users/users.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { PermissionsComponent } from './pages/permissions/permissions.component';
+import { ImportComponent } from './pages/import/import.component';
+import { ConfigComponent } from './pages/config/config.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { UsersComponent } from './pages/users/users.component';
     HeaderComponent,
     SideBarComponent,
     DashboardComponent,
-    UsersComponent
+    UsersComponent,
+    ProfileComponent,
+    PermissionsComponent,
+    ImportComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
