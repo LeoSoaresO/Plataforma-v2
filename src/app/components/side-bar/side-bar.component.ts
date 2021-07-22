@@ -1,6 +1,4 @@
-import { Component, Output, EventEmitter} from '@angular/core';
-import { SharedService } from '../../shared.service';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-side-bar',
@@ -10,22 +8,19 @@ import { Subscription } from 'rxjs';
 
 export class SideBarComponent{
 
-
-  clickEventsubscription:Subscription;
-
   isSideBarOpen : boolean = false;
-  @Output() isSideBarOpened = new EventEmitter<boolean>();
-
-  constructor(private sharedService: SharedService) {
-      this.clickEventsubscription = this.sharedService.getClickEvent().subscribe(()=>{
-        this.toggleSideBar();
-      })
-  }
 
   toggleSideBar() {
     this.isSideBarOpen = !this.isSideBarOpen;
-    this.isSideBarOpened.emit(this.isSideBarOpen);
   }
+
+    mouseHover(div : boolean){
+      this.isSideBarOpen = div;
+   }
+
+   mouseLeave(div : boolean){
+     this.isSideBarOpen = div;
+   }
     
 }
 
