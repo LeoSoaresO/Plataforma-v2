@@ -16,7 +16,12 @@ module.exports = {
         light: '#EFF4FA'
       },
       customWhite: {
-        default: '#ffffff'
+        default: '#ffffff',
+        lightDark: '#F8F8F8'
+      },
+      inicieColors: {
+        orange: '#F36C48',
+        blue: '#233674'
       }
     }
   },
