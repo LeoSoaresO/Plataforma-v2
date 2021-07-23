@@ -4,7 +4,7 @@
     <h1 class="text-customBlue-default font-bold text-2xl">Meu Perfil</h1>
         <div class="my-8 py-12 container px-48 bg-customWhite-default shadow-lg rounded-lg mx-auto">
             <div class="flex justify-center">
-                <div id="name" class="rounded-full bg-inicieColors-orange mr-12">
+                <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
                     {{nome}}
                 </div>
                 <div class="text-center tracking-wide">
@@ -20,7 +20,22 @@
                 <h4 class="font-semibold text-inicieColors-blue text-md">Minhas Configurações</h4>
             </div>
             <div class="bg-customWhite-default rounded-b-lg p-6">
-                kmkmkm
+                <div class="flex justify-evenly">
+                    <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray">Emitir Token</button>
+                    <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray">Alterar senha</button>
+                </div>
+                <div class="flex justify-between my-6 px-6">
+                    <span>Idioma</span>
+                    <select class="border rounded-md py-0.5 px-8 flex font-bold text-sm border-customGray-textGray">
+                        <option value="">Português</option>
+                    </select>
+                </div>
+                <div class="flex justify-between my-6 px-6">
+                    <span>Acessibilidade</span>
+                    <label class="flex items-center">
+                        <input id="toogle" class="relative right-28 w-12 h-5 transition-all duration-200 ease-in-out bg-gray-400 rounded-full shadow-inner outline-none appearance-none " type="checkbox" checked />
+                    </label>
+                </div>
             </div>
 
         </div>

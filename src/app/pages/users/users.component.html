@@ -1,25 +1,28 @@
 <app-header></app-header>
 
-<div class="container-xl mx-auto pl-40 px-12">
-    <div class="py-8">
-        <div class="flex flex-row mb-1 sm:mb-0 justify-between w-full">
+<div class="container-xl mx-auto pl-40 px-20">
+    <div class="py-12">
+        <div class="flex flex-row mb-1 sm:mb-0 justify-between w-12/12">
             <h2 class="text-lg font-bold text-customBlue-default leading-tight">Lista de usuários</h2>
-            <div class="text-end">
-                <form class="flex flex-col md:flex-row w-3/4 md:w-full max-w-sm md:space-x-3 space-y-3 md:space-y-0 justify-center">
-                    <div class=" relative ">
-                        <input type="text" id="&quot;form-subscribe-Filter" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-customBlue-default-600 focus:border-transparent" placeholder="Buscar..."/>
-                    </div>
-                    <button class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit">
-                        Filter
-                    </button>
-                </form>
+            <div class="text-end flex">
+                <form class="flex items-center mb-4 w-full rounded-lg border md:mb-0 md:w-full bg-customWhite-default border-customWhite-bWhite">
+                    <label class="hidden" for="search-form">Search</label>
+                    <input class="p-2 pl-2 rounded-lg w-full outline-none" placeholder="Buscar..." type="text">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="#8F9BB3">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>    
+                    <button class="hidden cursor-pointer">Submit</button>
+                  </form>
+                  <span class="my-auto ml-6">Mostrar</span>
+                  <input type="number" class="ml-3 w-16 pl-2 rounded-lg border border-customWhite-bWhite font-semibold text-customGray-textGray h-8 my-auto" value="10" min="10" max="100">
+                  <span class="my-auto ml-3">resultados</span>
             </div>
         </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                <div class="inline-block min-w-full rounded-md overflow-hidden bg-customBlue-light">
+                <div class="inline-block min-w-full rounded-t-lg overflow-hidden bg-customBlue-light">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12 flex" >
-                            <input type="radio" name="" id="">
+                            <input type="checkbox" name="" id="" class="h-6 w-4 cursor-pointer">
                             <div class="relative inline-block text-left">
                                 <div>
                                   <button type="button" (click)="isOpen = !isOpen" class="inline-flex justify-center w-full rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 " id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -40,22 +43,41 @@
                 <div class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12" >
-                            <input type="radio" name="" id="">
+                            <input type="checkbox" name="" id="" class="h-6 w-4 cursor-pointer">
                         </li>
-                        <li class="w-4/12 text-center">Nome</li>
-                        <li class="w-3/12 text-center">Cargo</li>
-                        <li class="w-3/12 text-center">Status</li>
-                        <li class="w-4/12 text-center">Última atividade</li>
-                        <li class="w-1/12 text-center">Edição</li>
+                        <li class="w-4/12 text-center flex">
+                            <div id="name" class="bg-inicieColors-orange mr-12 font-bold flex items-center justify-center">
+                                {{nome}}
+                            </div>
+                            <div class="text-left text-sm">
+                                <h2 class="font-semibold">Diego Soek</h2>
+                                <span class="text-customGray-textGray">diego@inicie.digital</span>
+                            </div>
+                        </li>
+                        <li class="w-3/12 text-center text-sm">Cargo</li>
+                        <li class="w-3/12 text-center text-sm">Status</li>
+                        <li class="w-4/12 text-center text-sm">24/05/2021 (5 dias sem atividade)</li>
+                        <li class="w-1/12 text-center">
+                            <button (click)="open = !open" class="relative z-10 block p-2 transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
+                                <fa-icon [icon]="faEllipisisV" class="text-customBlue-default icon pl-6"></fa-icon>
+                            </button>
+                        </li>
                     </ul>
                 </div>  
             </div>
         </div>
     </div>
-    <div *ngIf="isOpen" class="z-10 absolute left-48 top-48 mt-2 w-56 rounded-md shadow-lg bg-customWhite-default" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+
+    <div *ngIf="isOpen" class="z-10 absolute left-48 top-52 mt-2 w-56 rounded-md shadow-lg bg-customWhite-default" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
         <div class="py-1" role="none">
-          <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
-          <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
-          <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-0">Editar</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-1">Excluir</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-2">Excluir todos</a>
         </div>
-      </div>
+    </div>
+
+    <div *ngIf="open" class="relative left-3/4 z-20 w-48 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-700">
+        <a href="#" class="block px-4 py-2 text-sm text-gray-800 border-b dark:text-gray-200 dark:border-gray-500 hover:bg-gray-200 dark:hover:bg-gray-600">small <span class="text-gray-600 dark:text-gray-400">(640x426)</span></a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-800 border-b dark:text-gray-200 dark:border-gray-500 hover:bg-gray-200 dark:hover:bg-gray-600">medium <span class="text-gray-600 dark:text-gray-400">(1920x1280)</span></a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600">large <span class="text-gray-600 dark:text-gray-400">(2400x1600)</span></a>
+    </div>
