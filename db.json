@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Sebastian",
+      "last_name": "Eschweiler",
+      "email": "leonaardo.soaares@gmail.com",
+      "role": ["Aluno"],
+      "status": "1"
+    },
+    {
+      "id": 2,
+      "first_name": "Steve",
+      "last_name": "Palmer",
+      "email": "steve@hotmail.com",
+      "role": [
+        "Aluno",
+        "Super-Admin"
+      ],
+      "status": "2"
+    },
+    {
+      "id": 3,
+      "first_name": "Ann",
+      "last_name": "Smith",
+      "email": "ann@outlook.com",
+      "role": ["Super-Admin"],
+      "status": "1"
+    },
+    {
+      "id": 4,
+      "first_name": "Sr.",
+      "last_name": "Smith",
+      "email": "smith@matrix.net",
+      "role": [
+        "Aluno",
+        "Super-Admin"
+      ],
+      "status": "1"
+    }
+  ]
+}

@@ -33,42 +33,42 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="w-4/12 text-center font-semibold text-md text-customGray-textGray">Nome</li>
-                        <li class="w-3/12 text-center font-semibold text-md text-customGray-textGray">Cargo</li>
-                        <li class="w-3/12 text-center font-semibold text-md text-customGray-textGray">Status</li>
-                        <li class="w-4/12 text-center font-semibold text-md text-customGray-textGray">Última atividade</li>
+                        <li class="w-5/12 text-center font-semibold text-md text-customGray-textGray">Nome</li>
+                        <li class="w-5/12 text-center font-semibold text-md text-customGray-textGray">Cargo</li>
+                        <li class="w-2/12 text-center font-semibold text-md text-customGray-textGray">Status</li>
+                        <li class="w-5/12 text-center font-semibold text-md text-customGray-textGray">Última atividade</li>
                         <li class="w-1/12 text-center font-semibold text-md text-customGray-textGray">Edição</li>
                     </ul>
                 </div>
-                <div class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
+                <div *ngFor="let user of users" class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12" >
                             <input type="checkbox" name="" id="" class="h-6 w-4 cursor-pointer">
                         </li>
-                        <li class="w-4/12 text-center flex">
+                        <li class="w-6/12 text-center flex">
                             <div id="name" class="bg-inicieColors-orange mr-12 font-bold flex items-center justify-center">
-                                {{nome}}
+                                {{user.ini}}
                             </div>
                             <div class="text-left text-sm">
-                                <h2 class="font-semibold">Diego Soek</h2>
-                                <span class="text-customGray-textGray">diego@inicie.digital</span>
+                                <h2 class="font-semibold">{{user.first_name}} {{user.last_name}}</h2>
+                                <span class="text-customGray-textGray">{{user.email}}</span>
                             </div>
                         </li>
-                        <li class="w-3/12 text-center text-sm flex justify-between">
-                            <span class="py-1 px-4 bg-customBlue-default text-customWhite-default rounded-lg">Aluno</span>
-                            <span class="py-1 px-4 bg-customRed-default text-customWhite-default rounded-lg">Super Admin</span>
+                        <li class="w-4/12 text-center text-sm flex justify-evenly">
+                            <span class="py-1 px-4 bg-customBlue-default text-customWhite-default rounded-lg" *ngIf="user.role.includes('Aluno')">Aluno</span>
+                            <span class="py-1 px-4 bg-customRed-default text-customWhite-default rounded-lg" *ngIf="user.role.includes('Super-Admin')">Super Admin</span>
                         </li>
-                        <li class="w-3/12 text-center text-sm">
-                            <div>
+                        <li class="w-2/12 text-center text-sm">
+                            <div *ngIf="user.status == 1">
                                 <span class="active mr-4"></span>
                                 <span>Ativo</span>
                             </div>
-                            <div>
+                            <div *ngIf="user.status == 2">
                                 <span class="inactive mr-4"></span>
                                 <span>Inativo</span>
                             </div>
                         </li>
-                        <li class="w-4/12 text-center text-sm">24/05/2021 (5 dias sem atividade)</li>
+                        <li class="w-5/12 text-center text-sm">24/05/2021 (5 dias sem atividade)</li>
                         <li class="w-1/12 text-center">
                             <button (click)="open = !open" class="relative z-10 block p-2 transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
                                 <fa-icon [icon]="faEllipisisV" class="text-customBlue-default icon pl-6"></fa-icon>
@@ -82,7 +82,7 @@
 </div>  
 
     <!-- Modal add User -->
-  <div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
+  <div *ngIf="showModal" class="animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
     <div class="relative w-full my-6 ml-36 mx-auto max-w-6xl absolute bg-customWhite-default rounded-lg">
       <!--content-->
       <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
