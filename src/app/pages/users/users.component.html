@@ -54,8 +54,20 @@
                                 <span class="text-customGray-textGray">diego@inicie.digital</span>
                             </div>
                         </li>
-                        <li class="w-3/12 text-center text-sm">Cargo</li>
-                        <li class="w-3/12 text-center text-sm">Status</li>
+                        <li class="w-3/12 text-center text-sm flex justify-between">
+                            <span class="py-1 px-4 bg-customBlue-default text-customWhite-default rounded-lg">Aluno</span>
+                            <span class="py-1 px-4 bg-customRed-default text-customWhite-default rounded-lg">Super Admin</span>
+                        </li>
+                        <li class="w-3/12 text-center text-sm">
+                            <div>
+                                <span class="active mr-4"></span>
+                                <span>Ativo</span>
+                            </div>
+                            <div>
+                                <span class="inactive mr-4"></span>
+                                <span>Inativo</span>
+                            </div>
+                        </li>
                         <li class="w-4/12 text-center text-sm">24/05/2021 (5 dias sem atividade)</li>
                         <li class="w-1/12 text-center">
                             <button (click)="open = !open" class="relative z-10 block p-2 transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
@@ -66,8 +78,63 @@
                 </div>  
             </div>
         </div>
-    </div>
+    <button class="absolute py-2 px-3.5 right-16 rounded-full add shadow-lg text-customWhite-default" (click)="showModal = !showModal"><fa-icon [icon]="faPlus"></fa-icon></button>
+</div>  
 
+    <!-- Modal add User -->
+  <div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
+    <div class="relative w-full my-6 ml-36 mx-auto max-w-6xl absolute bg-customWhite-default rounded-lg">
+      <!--content-->
+      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class="flex items-start justify-between p-5 border-b border-solid border-customBlue-light rounded-t">
+          <h3 class="text-xl font-bold text-customBlue-default">
+            Adicionar novo usuário
+          </h3>
+          <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="showModal = !showModal">
+            <span class="bg-transparent h-6 w-6 text-2xl block outline-none focus:outline-none">
+              <fa-icon [icon]="faTimes"></fa-icon>
+            </span>
+          </button>
+        </div>
+        <!--body-->
+        <div class="relative p-6 flex-auto">
+            <div class="flex justify-between mt-2">
+                <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Nome">
+                <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md" placeholder="Código de usuário">
+            </div>
+            <div class="flex justify-between mt-5">
+                <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Email">
+                <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md" placeholder="Telefone">
+            </div>
+            <div>
+                <div class="flex w-full h-20 mt-5">
+                    <label class="w-36 h-36 flex flex-col items-center px-4 py-6 bg-customBlue-light text-blue rounded-full shadow-lg border border-customGray-superLight cursor-pointer">
+                        <svg class="w-8 h-8 mt-2 animate-bounce" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                        </svg>
+                        <span class="mt-4 text-sm">Escolher arquivo</span>
+                        <input type='file' class="hidden" />
+                    </label>
+                    <span class="mt-20 ml-6">Tamanho máximo de 1 MB. JPG, GIF ou PNG.</span>
+                </div>
+            </div>
+        </div>
+        <!--footer-->
+        <div class="flex items-center justify-end p-6 rounded-b">
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="showModal = !showModal">
+            Salvar Usuário
+          </button>
+          <button class="text-customGray-textGray background-transparent font-semibold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="showModal = !showModal">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>
+
+    <!-- Menu all options -->
     <div *ngIf="isOpen" class="z-10 absolute left-48 top-52 mt-2 w-56 rounded-md shadow-lg bg-customWhite-default" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
         <div class="py-1" role="none">
             <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-0">Editar</a>
@@ -76,6 +143,7 @@
         </div>
     </div>
 
+    <!-- Menu edit user -->
     <div *ngIf="open" class="relative left-3/4 z-20 w-48 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-700">
         <a href="#" class="block px-4 py-2 text-sm text-gray-800 border-b dark:text-gray-200 dark:border-gray-500 hover:bg-gray-200 dark:hover:bg-gray-600">small <span class="text-gray-600 dark:text-gray-400">(640x426)</span></a>
         <a href="#" class="block px-4 py-2 text-sm text-gray-800 border-b dark:text-gray-200 dark:border-gray-500 hover:bg-gray-200 dark:hover:bg-gray-600">medium <span class="text-gray-600 dark:text-gray-400">(1920x1280)</span></a>

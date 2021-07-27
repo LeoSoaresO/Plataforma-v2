@@ -11,10 +11,10 @@ export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.teste();
+    this.letter();
   }
 
-  teste() {
+  letter() {
     let name = "Diego";
     let lastname = "Soek";
     let initials = name.charAt(0)+""+lastname.charAt(0);

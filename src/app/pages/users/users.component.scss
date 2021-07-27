@@ -25,3 +25,34 @@
 .icon {
     font-size: 35px;
 }
+
+.active {
+    &::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 1px solid $green;
+        background-color: $green;
+        border-radius: 50%;
+        margin-top: 5px;
+    }
+}
+
+.inactive {
+    &::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 1px solid $gray-darkness;
+        background-color: $gray-darkness;
+        border-radius: 50%;
+        margin-top: 5px;
+    }
+}
+
+.add {
+    top: 85%;
+    background-color: $orange;
+}

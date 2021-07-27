@@ -1,14 +1,14 @@
 <app-header></app-header>
 
 <section class="container pl-40 px-12 py-8">
-    <h1 class="text-customBlue-default font-bold text-2xl">Meu Perfil</h1>
+    <h1 class="text-customBlue-default font-bold text-3xl">Meu Perfil</h1>
         <div class="my-8 py-12 container px-48 bg-customWhite-default shadow-lg rounded-lg mx-auto">
             <div class="flex justify-center">
                 <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
                     {{nome}}
                 </div>
                 <div class="text-center tracking-wide">
-                    <h2 class="font-semibold my-2">Diego Soek</h2>
+                    <h2 class="font-bold my-2">Diego Soek</h2>
                     <h3 class="font-semibold my-2">Super Administrador</h3>
                     <span class="font-light">diego@inicie.digital</span>
                 </div>
@@ -17,7 +17,7 @@
 
         <div class="container w-2/5 rounded-lg bg-customWhite-default">
             <div class="bg-customBlue-light h-12 items-center flex justify-center rounded-t-lg">
-                <h4 class="font-semibold text-inicieColors-blue text-md">Minhas Configurações</h4>
+                <h4 class="font-bold text-inicieColors-blue text-md">Minhas Configurações</h4>
             </div>
             <div class="bg-customWhite-default rounded-b-lg p-6">
                 <div class="flex justify-evenly">
@@ -26,17 +26,18 @@
                 </div>
                 <div class="flex justify-between my-6 px-6">
                     <span>Idioma</span>
-                    <select class="border rounded-md py-0.5 px-8 flex font-bold text-sm border-customGray-textGray">
+                    <select class="border rounded-md py-0.5 px-8 flex font-bold text-sm border-customGray-textGray cursor-pointer">
                         <option value="">Português</option>
+                        <option value="">English</option>
+                        <option value="">Español</option>
                     </select>
                 </div>
                 <div class="flex justify-between my-6 px-6">
                     <span>Acessibilidade</span>
                     <label class="flex items-center">
-                        <input id="toogle" class="relative right-28 w-12 h-5 transition-all duration-200 ease-in-out bg-gray-400 rounded-full shadow-inner outline-none appearance-none " type="checkbox" checked />
+                        <input id="toogle" class="relative right-28 w-12 h-5 transition-all duration-200 ease-in-out bg-gray-400 rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
                     </label>
                 </div>
             </div>
-
         </div>
 </section>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faEllipsisV } from '@fortawesome/pro-light-svg-icons';
+import { faEllipsisV, faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
 
 @Component({
   selector: 'app-users',
@@ -12,23 +12,27 @@ export class UsersComponent implements OnInit {
   isOpen: boolean;
   nome: string;
   open: boolean;
+  showModal: boolean;
 
   // Icons
   faEllipisisV = faEllipsisV
+  faPlus = faPlus
+  faTimes = faTimes
 
   constructor() { }
 
   ngOnInit(): void {
-    this.teste();
+    this.letter();
   }
 
   toogle () {
     this.isOpen = false
     this.open = false
+    this.showModal = false;
   }
   
 
-  teste() {
+  letter() {
     let name = "Diego";
     let lastname = "Soek";
     let initials = name.charAt(0)+""+lastname.charAt(0);
