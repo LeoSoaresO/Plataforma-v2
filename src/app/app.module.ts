@@ -42,12 +42,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     FontAwesomeModule,
     AppRoutingModule,
-<<<<<<< HEAD
     HttpClientModule,
-=======
     BrowserAnimationsModule,
     NgxChartsModule,
->>>>>>> 6b63fd3fdf84dc0730a4ca59a15e8ae228530015
     StoreModule.forRoot(reducers, {
       metaReducers
     })
