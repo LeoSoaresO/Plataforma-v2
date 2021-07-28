@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -45,6 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     NgxChartsModule,
+    ReactiveFormsModule,
+    FormsModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEllipsisV, faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -16,6 +17,7 @@ export class UsersComponent implements OnInit {
   showModal: boolean;
   users: any
   initials: any
+  userForm: FormGroup
 
   // Icons
   faEllipisisV = faEllipsisV
@@ -23,12 +25,23 @@ export class UsersComponent implements OnInit {
   faTimes = faTimes
 
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private FormBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    // this.letter();
     this.getUsers();
+    this.createUserForm();
+  }
+
+  createUserForm(){
+    this.userForm = this.FormBuilder.group({
+      email: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      userCode: ['', [Validators.required]],
+      phone: ['', [Validators.required]]
+    })
   }
 
   toogle () {
@@ -38,8 +51,7 @@ export class UsersComponent implements OnInit {
   }
 
   async getUsers(){ 
-    const response = await this.usersService.getUsers()
-    console.log(response)   
+    const response = await this.usersService.getUsers()  
     this.users = response
     this.letter()
   }  
@@ -53,7 +65,25 @@ export class UsersComponent implements OnInit {
         i.ini = ini;
       })
       console.log(this.users)
-
   }
 
+  async postUsers(){
+    let name = this.userForm.controls.name.value
+    let last = this.userForm.controls.lastName.value
+    let email = this.userForm.controls.email.value
+    let role = this.userForm.controls.userCode.value
+    const params = {
+      "first_name": name,
+      "last_name": last,
+      "email": email,
+      "role": [
+        role
+      ],
+      "status": "1"
+    }
+      console.log(params);
+      console.log(JSON.stringify(params));            
+      const response = await this.usersService.postUser(JSON.stringify(params))
+      console.log(response)   
+  }
 }

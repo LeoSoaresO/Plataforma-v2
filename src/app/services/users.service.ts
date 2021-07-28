@@ -19,11 +19,11 @@ export class UsersService {
     })
   }
 
-  // postUser() {
-  //   return this.http.post(`${API_Routes.URL}/users/`)
-  //   .toPromise()
-  //   .then((response: any) =>{
-  //     return response
-  //   })
-  // }
+  postUser(raw: any) {
+    return this.http.post(`${API_Routes.URL}/users/`, raw)
+    .toPromise()
+    .then((response: any) =>{
+      return response
+    })
+  }
 }

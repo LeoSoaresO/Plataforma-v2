@@ -5,7 +5,9 @@
       "first_name": "Sebastian",
       "last_name": "Eschweiler",
       "email": "leonaardo.soaares@gmail.com",
-      "role": ["Aluno"],
+      "role": [
+        "Aluno"
+      ],
       "status": "2"
     },
     {
@@ -24,7 +26,9 @@
       "first_name": "Ann",
       "last_name": "Smith",
       "email": "ann@outlook.com",
-      "role": ["Super-Admin"],
+      "role": [
+        "Super-Admin"
+      ],
       "status": "1"
     },
     {
@@ -37,6 +41,20 @@
         "Super-Admin"
       ],
       "status": "1"
+    },
+    {
+      "id": 5,
+      "first_name": "MR",
+      "last_name": "Hoe",
+      "email": "smsdxsith@matrix.net",
+      "role": [
+        "Aluno",
+        "Super-Admin"
+      ],
+      "status": "1"
+    },
+    {
+      "id": 6
     }
   ]
 }
