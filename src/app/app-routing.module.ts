@@ -7,6 +7,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PermissionsComponent } from './pages/permissions/permissions.component';
 import { ImportComponent } from './pages/import/import.component';
 import { ConfigComponent } from './pages/config/config.component';
+import { ConfigGeraisComponent } from './components/page.config.components/config-gerais/config-gerais.component';
+import { ConfigAvancadasComponent } from './components/page.config.components/config-avancadas/config-avancadas.component';
+import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
+import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
+import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -15,7 +20,15 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'permissions', component: PermissionsComponent },
   { path: 'import', component: ImportComponent },
-  { path: 'config', component: ConfigComponent }
+  { path: 'config', component: ConfigComponent ,
+    children: [
+      {path:'gerais', component: ConfigGeraisComponent },
+      {path:'avancadas', component: ConfigAvancadasComponent },
+      {path:'campos-customizados', component: ConfigCamposCustomizadosComponent },
+      {path:'integracoes', component: ConfigIntegracoesComponent },
+      {path:'login', component: ConfigLoginComponent },
+      ]
+  }
 ];
 
 @NgModule({
