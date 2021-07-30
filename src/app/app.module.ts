@@ -18,13 +18,18 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PermissionsComponent } from './pages/permissions/permissions.component';
 import { ImportComponent } from './pages/import/import.component';
 import { ConfigComponent } from './pages/config/config.component';
+import { ConfigGeraisComponent } from './components/page.config.components/config-gerais/config-gerais.component';
+import { ConfigAvancadasComponent } from './components/page.config.components/config-avancadas/config-avancadas.component';
+import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
+import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
+import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
 
 // Components
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfileComponent,
     PermissionsComponent,
     ImportComponent,
-    ConfigComponent
+    ConfigComponent,
+    ConfigGeraisComponent,
+    ConfigAvancadasComponent,
+    ConfigCamposCustomizadosComponent,
+    ConfigIntegracoesComponent,
+    ConfigLoginComponent,
   ],
   imports: [
     BrowserModule,
