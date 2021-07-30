@@ -9,7 +9,14 @@ export class ConfigComponent implements OnInit {
 
   constructor() { }
 
+  selected:string = 'item1';
+
   ngOnInit(): void {
+  }
+
+  selectedIn(){
+    console.log('as');
+    
   }
 
 }
