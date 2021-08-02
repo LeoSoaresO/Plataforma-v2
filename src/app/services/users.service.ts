@@ -19,10 +19,13 @@ export class UsersService {
     })
   }
 
-  postUser(raw: any) {
-    return this.http.post(`${API_Routes.URL}/users/`, raw)
+  postUser(params: any) {
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    return this.http.post(`${API_Routes.URL}/users/`, params, { headers: headers })
     .toPromise()
-    .then((response: any) =>{
+    .then((response: any) =>{  
       return response
     })
   }

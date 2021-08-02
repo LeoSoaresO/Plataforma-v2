@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { faEllipsisV, faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -18,11 +18,14 @@ export class UsersComponent implements OnInit {
   users: any
   initials: any
   userForm: FormGroup
+  success = false
+  checkboxes: { new(): HTMLInputElement; prototype: HTMLInputElement; };
 
   // Icons
   faEllipisisV = faEllipsisV
   faPlus = faPlus
   faTimes = faTimes
+  
 
   constructor(
     private usersService: UsersService,
@@ -34,6 +37,7 @@ export class UsersComponent implements OnInit {
     this.createUserForm();
   }
 
+  //Forms
   createUserForm(){
     this.userForm = this.FormBuilder.group({
       email: ['', [Validators.required]],
@@ -44,28 +48,43 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  //Functions
   toogle () {
     this.isOpen = false
     this.open = false
     this.showModal = false;
   }
 
+  reload() {
+    setTimeout(function(){
+      window.location.reload();
+   },500);
+  }
+
+  letter() {
+    let users = this.users;
+    users = users.map((i: any) => {
+      let name = i.first_name;      
+      let lastname = i.last_name;
+      let ini = name.charAt(0)+""+lastname.charAt(0);
+      i.ini = ini;
+    })
+    console.log(this.users)
+  }
+  
+  // check(source: { checked: any; }) {
+  //   this.checkboxes <HTMLInputElement> = document.getElementsByName('all');
+  //   for(var i=0, n=this.checkboxes.length;i<n;i++) {
+  //     this.checkboxes[i].checked = source.checked;
+  //   }
+  // }
+
+  //Requests
   async getUsers(){ 
     const response = await this.usersService.getUsers()  
     this.users = response
     this.letter()
   }  
-
-  letter() {
-      let users = this.users;
-      users = users.map((i: any) => {
-        let name = i.first_name;      
-        let lastname = i.last_name;
-        let ini = name.charAt(0)+""+lastname.charAt(0);
-        i.ini = ini;
-      })
-      console.log(this.users)
-  }
 
   async postUsers(){
     let name = this.userForm.controls.name.value
@@ -84,6 +103,12 @@ export class UsersComponent implements OnInit {
       console.log(params);
       console.log(JSON.stringify(params));            
       const response = await this.usersService.postUser(JSON.stringify(params))
-      console.log(response)   
+      console.log(response)
+         if(response){
+          this.success = true
+         if (this.success == true) {
+          this.showModal = false
+         }
+         }
   }
 }
