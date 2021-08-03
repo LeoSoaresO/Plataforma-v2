@@ -13,21 +13,27 @@ export class ConfigComponent implements OnInit {
   selected:string = 'item1';
 
   ngOnInit(): void {
+    this.configGerais();
   }
 
   configGerais(){
     this.router.navigate(['gerais'], {relativeTo:this.route});
+    this.selected =  'item1';
   }
   configAvancadas(){
     this.router.navigate(['avancadas'], {relativeTo:this.route});
+    this.selected =  'item2';
   }
   configCamposCustom(){
     this.router.navigate(['campos-customizados'], {relativeTo:this.route});
+    this.selected =  'item3';
   }
   configIntegracoes(){
     this.router.navigate(['integracoes'], {relativeTo:this.route});
+    this.selected =  'item4';
   }
   configLogin(){
     this.router.navigate(['login'], {relativeTo:this.route});
+    this.selected =  'item5';
   }
 }
