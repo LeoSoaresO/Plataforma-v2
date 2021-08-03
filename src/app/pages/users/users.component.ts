@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
   initials: any
   userForm: FormGroup
   success = false
-  checkboxes: { new(): HTMLInputElement; prototype: HTMLInputElement; };
+  filterTerm: string
 
   // Icons
   faEllipisisV = faEllipsisV
