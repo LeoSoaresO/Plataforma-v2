@@ -7,7 +7,7 @@
             <div class="text-end flex">
                 <form class="flex items-center mb-4 w-full rounded-lg border md:mb-0 md:w-full bg-customWhite-default border-customWhite-bWhite">
                     <label class="hidden" for="search-form">Search</label>
-                    <input class="p-2 pl-2 rounded-lg w-full outline-none" placeholder="Buscar..." type="text">
+                    <input class="p-2 pl-2 rounded-lg w-full outline-none" placeholder="Buscar..." type="text" [(ngModel)]="filterTerm" name="filter">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="#8F9BB3">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>    
@@ -22,7 +22,7 @@
                 <div class="inline-block min-w-full rounded-t-lg overflow-hidden bg-customBlue-light">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12 flex" >
-                            <input type="checkbox" name="" id="" class="h-6 w-4 cursor-pointer">
+                            <input type="checkbox" name="check" id="" class="h-6 w-4 cursor-pointer">
                             <div class="relative inline-block text-left">
                                 <div>
                                   <button type="button" (click)="isOpen = !isOpen" class="inline-flex justify-center w-full rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 " id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -40,23 +40,24 @@
                         <li class="w-1/12 text-center font-semibold text-md text-customGray-textGray">Edição</li>
                     </ul>
                 </div>
-                <div *ngFor="let user of users" class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
+                <div *ngFor="let user of users | filter:filterTerm" class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12" >
-                            <input type="checkbox" name="" id="" class="h-6 w-4 cursor-pointer">
+                            <input type="checkbox" name="all" id="" class="h-6 w-4 cursor-pointer" >
                         </li>
                         <li class="w-6/12 text-center flex">
-                            <div id="name" class="bg-inicieColors-orange mr-12 font-bold flex items-center justify-center">
+                            <div id="name" class="bg-inicieColors-orange mr-12 font-bold flex items-center justify-center uppercase">
                                 {{user.ini}}
                             </div>
                             <div class="text-left text-sm">
-                                <h2 class="font-semibold">{{user.first_name}} {{user.last_name}}</h2>
+                                <h2 class="font-semibold capitalize">{{user.first_name}} {{user.last_name}}</h2>
                                 <span class="text-customGray-textGray">{{user.email}}</span>
                             </div>
                         </li>
                         <li class="w-4/12 text-center text-sm flex justify-evenly">
-                            <span class="py-1 px-4 bg-customBlue-default text-customWhite-default rounded-lg" *ngIf="user.role.includes('Aluno')">Aluno</span>
+                            <span class="py-1 px-4 bg-customBlue-normal text-customWhite-default rounded-lg" *ngIf="user.role.includes('Aluno')">Aluno</span>
                             <span class="py-1 px-4 bg-customRed-default text-customWhite-default rounded-lg" *ngIf="user.role.includes('Super-Admin')">Super Admin</span>
+                            <span class="py-1 px-4 bg-customGray-light rounded-lg" *ngIf="!user.role.includes('Aluno') && !user.role.includes('Super-Admin')">Nenhum</span>
                         </li>
                         <li class="w-2/12 text-center text-sm">
                             <div *ngIf="user.status == 1">
@@ -78,11 +79,11 @@
                 </div>  
             </div>
         </div>
-    <button class="absolute py-2 px-3.5 right-16 rounded-full add shadow-lg text-customWhite-default" (click)="showModal = !showModal"><fa-icon [icon]="faPlus"></fa-icon></button>
+    <button class="fixed py-2 px-3.5 right-16 rounded-full add shadow-lg text-customWhite-default" (click)="showModal = !showModal"><fa-icon [icon]="faPlus"></fa-icon></button>
 </div>  
 
     <!-- Modal add User -->
-  <div *ngIf="showModal" class="animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
+  <div *ngIf="showModal" class="transition ease-out duration-700 animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
     <div class="relative w-full my-6 ml-36 mx-auto max-w-6xl absolute bg-customWhite-default rounded-lg">
       <!--content-->
       <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -99,30 +100,33 @@
         </div>
         <!--body-->
         <div class="relative p-6 flex-auto">
-            <div class="flex justify-between mt-2">
-                <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Nome">
-                <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md" placeholder="Código de usuário">
-            </div>
-            <div class="flex justify-between mt-5">
-                <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Email">
-                <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md" placeholder="Telefone">
-            </div>
-            <div>
-                <div class="flex w-full h-20 mt-5">
-                    <label class="w-36 h-36 flex flex-col items-center px-4 py-6 bg-customBlue-light text-blue rounded-full shadow-lg border border-customGray-superLight cursor-pointer">
-                        <svg class="w-8 h-8 mt-2 animate-bounce" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                        </svg>
-                        <span class="mt-4 text-sm">Escolher arquivo</span>
-                        <input type='file' class="hidden" />
-                    </label>
-                    <span class="mt-20 ml-6">Tamanho máximo de 1 MB. JPG, GIF ou PNG.</span>
+            <form [formGroup]="userForm">
+                <div class="flex justify-between mt-2">
+                    <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Nome" required formControlName="name">
+                    <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Sobrenome" required formControlName="lastName">
+                    <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md" placeholder="Código de usuário" required formControlName="userCode">
                 </div>
-            </div>
+                <div class="flex justify-between mt-5">
+                    <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Email" required formControlName="email">
+                    <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md" placeholder="Telefone" required formControlName="phone">
+                </div>
+                <div>
+                    <div class="flex w-full h-20 mt-5">
+                        <label class="w-36 h-36 flex flex-col items-center px-4 py-6 bg-customBlue-light text-blue rounded-full shadow-lg border border-customGray-superLight cursor-pointer">
+                            <svg class="w-8 h-8 mt-2 animate-bounce" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                            </svg>
+                            <span class="mt-4 text-sm">Escolher arquivo</span>
+                            <input type='file' class="hidden" />
+                        </label>
+                        <span class="mt-20 ml-6">Tamanho máximo de 1 MB. JPG, GIF ou PNG.</span>
+                    </div>
+                </div>
+            </form>
         </div>
         <!--footer-->
         <div class="flex items-center justify-end p-6 rounded-b">
-          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="showModal = !showModal">
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postUsers()" (click)="showModal = !showModal">
             Salvar Usuário
           </button>
           <button class="text-customGray-textGray background-transparent font-semibold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="showModal = !showModal">
@@ -133,6 +137,25 @@
     </div>
   </div>
   <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>
+
+  <div *ngIf="success == true" class="animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
+    <div class="relative w-3/12 my-6 mx-auto max-w-6xl absolute bg-customWhite-default rounded-lg">
+      <!--content-->
+      <div class="h-48 border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--body-->
+        <div class="relative p-6 flex-auto flex justify-center items-center text-customBlue-default font-semibold">
+            Concluído!
+        </div>
+        <!--footer-->
+        <div class="flex items-center justify-center p-6 rounded-b">
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="reload()">
+            Voltar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="success == true" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>
 
     <!-- Menu all options -->
     <div *ngIf="isOpen" class="z-10 absolute left-48 top-52 mt-2 w-56 rounded-md shadow-lg bg-customWhite-default" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">

@@ -2,6 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import '/src/app/styles/colors.scss';
+@import '/src/app/styles/mixins.scss';
 
 html {
     font-family: 'Open Sans', sans-serif;

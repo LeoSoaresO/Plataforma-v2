@@ -1,0 +1,6 @@
+@import './colors.scss';
+
+@mixin hBlue {
+    background-color: darken($blue , 8%);
+    transition: ease-in-out 0.7s;
+}

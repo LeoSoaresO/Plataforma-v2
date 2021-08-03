@@ -16,7 +16,7 @@ module.exports = {
         },
       },
       animation: {
-        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        'fade-in-down': 'fade-in-down 0.7s ease-out',
       },
     },
     colors: {
@@ -31,7 +31,8 @@ module.exports = {
       customBlue: {
         default: '#233674',
         light: '#EFF4FA',
-        superLight: '#D7E1EC'
+        superLight: '#D7E1EC',
+        normal: '#004899'
       },
       customWhite: {
         default: '#ffffff',

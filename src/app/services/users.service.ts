@@ -19,11 +19,14 @@ export class UsersService {
     })
   }
 
-  // postUser() {
-  //   return this.http.post(`${API_Routes.URL}/users/`)
-  //   .toPromise()
-  //   .then((response: any) =>{
-  //     return response
-  //   })
-  // }
+  postUser(params: any) {
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    return this.http.post(`${API_Routes.URL}/users/`, params, { headers: headers })
+    .toPromise()
+    .then((response: any) =>{  
+      return response
+    })
+  }
 }
