@@ -19,7 +19,9 @@ export class UsersComponent implements OnInit {
   initials: any
   userForm: FormGroup
   success = false
+  number: any
   filterTerm: string
+  p: number = 1
 
   // Icons
   faEllipisisV = faEllipsisV
@@ -35,6 +37,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
     this.createUserForm();
+    this.getNumber();
   }
 
   //Forms
@@ -72,12 +75,10 @@ export class UsersComponent implements OnInit {
     console.log(this.users)
   }
   
-  // check(source: { checked: any; }) {
-  //   this.checkboxes <HTMLInputElement> = document.getElementsByName('all');
-  //   for(var i=0, n=this.checkboxes.length;i<n;i++) {
-  //     this.checkboxes[i].checked = source.checked;
-  //   }
-  // }
+   getNumber(){
+     this.number = (<HTMLInputElement>document.getElementById('number')).value;
+     console.log(this.number);     
+   }
 
   //Requests
   async getUsers(){ 

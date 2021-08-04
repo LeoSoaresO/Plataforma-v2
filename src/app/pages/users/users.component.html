@@ -14,7 +14,7 @@
                     <button class="hidden cursor-pointer">Submit</button>
                   </form>
                   <span class="my-auto ml-6">Mostrar</span>
-                  <input type="number" class="ml-3 w-16 pl-2 rounded-lg border border-customWhite-bWhite font-semibold text-customGray-textGray h-8 my-auto" value="10" min="10" max="100">
+                  <input type="number" id="number" class="ml-3 w-16 pl-2 rounded-lg border border-customWhite-bWhite font-semibold text-customGray-textGray h-8 my-auto" value="10" min="0" max="100" (change)="getNumber()">
                   <span class="my-auto ml-3">resultados</span>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <div class="inline-block min-w-full rounded-t-lg overflow-hidden bg-customBlue-light">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12 flex" >
-                            <input type="checkbox" name="check" id="" class="h-6 w-4 cursor-pointer">
+                            <input type="checkbox" name="check" id="" class="h-6 w-4 cursor-pointer" >
                             <div class="relative inline-block text-left">
                                 <div>
                                   <button type="button" (click)="isOpen = !isOpen" class="inline-flex justify-center w-full rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 " id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -40,10 +40,10 @@
                         <li class="w-1/12 text-center font-semibold text-md text-customGray-textGray">Edição</li>
                     </ul>
                 </div>
-                <div *ngFor="let user of users | filter:filterTerm" class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
+                <div *ngFor="let user of users | filter:filterTerm | paginate: { itemsPerPage: number, currentPage: p }" class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12" >
-                            <input type="checkbox" name="all" id="" class="h-6 w-4 cursor-pointer" >
+                            <input type="checkbox" name="all" id="t" class="h-6 w-4 cursor-pointer">
                         </li>
                         <li class="w-6/12 text-center flex">
                             <div id="name" class="bg-inicieColors-orange mr-12 font-bold flex items-center justify-center uppercase">
@@ -76,7 +76,10 @@
                             </button>
                         </li>
                     </ul>
-                </div>  
+                </div>
+                <div class="mt-8 flex justify-center">
+                	<pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Proximo"></pagination-controls>
+                </div>
             </div>
         </div>
     <button class="fixed py-2 px-3.5 right-16 rounded-full add shadow-lg text-customWhite-default" (click)="showModal = !showModal"><fa-icon [icon]="faPlus"></fa-icon></button>
