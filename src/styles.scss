@@ -8,6 +8,10 @@ html {
     font-family: 'Open Sans', sans-serif;
     background-color: $bg-white;
 }
+a{
+    cursor: pointer;
+}
+
 input:focus, textarea:focus, select:focus{
     outline: none;
 }
