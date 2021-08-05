@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,6 +63,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     FormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    ColorPickerModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })
