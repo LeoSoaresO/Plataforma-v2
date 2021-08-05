@@ -224,6 +224,23 @@
       ],
       "status": "1",
       "id": 22
+    },
+    {
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "role": [
+        ""
+      ],
+      "status": "1",
+      "id": 23
     }
-  ]
+  ],
+  "settings":
+    {
+      "site_title": "Plataforma da Tia Zuleide",
+      "institution_name": "Escolinha Tia Zuleide",
+      "navbar_background_color": "#000000",
+      "navbar_text_color": "#FAFAFA"
+    }
 }
