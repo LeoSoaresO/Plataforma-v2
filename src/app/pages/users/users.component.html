@@ -22,7 +22,7 @@
                 <div class="inline-block min-w-full rounded-t-lg overflow-hidden bg-customBlue-light">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12 flex" >
-                            <input type="checkbox" name="check" id="" class="h-6 w-4 cursor-pointer" >
+                            <input type="checkbox" name="check" id="" [(ngModel)]="masterSelected" (change)="checkUncheckAll()" class="h-6 w-4 cursor-pointer" >
                             <div class="relative inline-block text-left">
                                 <div>
                                   <button type="button" (click)="isOpen = !isOpen" class="inline-flex justify-center w-full rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 " id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -43,7 +43,7 @@
                 <div *ngFor="let user of users | filter:filterTerm | paginate: { itemsPerPage: number, currentPage: p }" class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
                     <ul class="px-8 w-full h-14 flex items-center">
                         <li class="w-1/12" >
-                            <input type="checkbox" name="all" id="t" class="h-6 w-4 cursor-pointer">
+                            <input type="checkbox" name="all" id="t" [(ngModel)]="user.isSelected" (change)="isAllSelected()" class="h-6 w-4 cursor-pointer">
                         </li>
                         <li class="w-6/12 text-center flex">
                             <div id="name" class="bg-inicieColors-orange mr-12 font-bold flex items-center justify-center uppercase">

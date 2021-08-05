@@ -20,8 +20,11 @@ export class UsersComponent implements OnInit {
   userForm: FormGroup
   success = false
   number: any
-  filterTerm: string
+  filterTerm: string 
   p: number = 1
+  isSelected: boolean = false
+  masterSelected = false;
+  checkedList: any
 
   // Icons
   faEllipisisV = faEllipsisV
@@ -74,6 +77,36 @@ export class UsersComponent implements OnInit {
     })
     console.log(this.users)
   }
+
+  teste(){
+    let test = this.users;
+    test = test.map((i: any)=>{
+      i.isSelected = this.isSelected;
+    })
+  }
+
+  checkUncheckAll() {
+    for (var i = 0; i < this.users.length; i++) {
+      this.users[i].isSelected = this.masterSelected;
+    }
+    this.getCheckedItemList();
+  }
+
+  isAllSelected() {
+    this.masterSelected = this.users.every(function(i :any) {
+        return i.isSelected == true;
+      })
+    this.getCheckedItemList();
+  }
+
+  getCheckedItemList(){
+    this.checkedList = [];
+    for (var i = 0; i < this.users.length; i++) {
+      if(this.users[i].isSelected)
+      this.checkedList.push(this.users[i]);
+    }
+    this.checkedList = JSON.stringify(this.checkedList);
+  }
   
    getNumber(){
      this.number = (<HTMLInputElement>document.getElementById('number')).value;
@@ -84,7 +117,8 @@ export class UsersComponent implements OnInit {
   async getUsers(){ 
     const response = await this.usersService.getUsers()  
     this.users = response
-    this.letter()
+    this.letter();
+    this.teste();
   }  
 
   async postUsers(){
