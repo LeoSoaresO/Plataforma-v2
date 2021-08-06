@@ -8,10 +8,12 @@ import { SettingsGeneralService } from 'src/app/services/settings-general.servic
   styleUrls: ['./config-gerais.component.scss']
 })
 export class ConfigGeraisComponent implements OnInit{
+
   settingsGeneral: any = [];
+  success = false;
 
   constructor(
-    private settingsGeneralService: SettingsGeneralService,
+    private settingsGeneralService: SettingsGeneralService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,9 @@ export class ConfigGeraisComponent implements OnInit{
   }
 
   postGeneralSettings(){
-    
+
+    this.settingsGeneralService.postGeneralSettings(this.settingsGeneral)
+    .subscribe(() => console.log(this.settingsGeneral));
   }
 
 
