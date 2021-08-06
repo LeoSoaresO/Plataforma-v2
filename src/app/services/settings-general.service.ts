@@ -13,14 +13,14 @@ export class SettingsGeneralService {
   ) { }
 
   getGeneralSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settings/`);
+    return this.http.get<any>(`${API_Routes.URL}/settingsGeneral/`);
   }
 
   postGeneralSettings(params: any) {
     const headers = {
       'Content-Type': 'application/json'
     }
-    return this.http.post(`${API_Routes.URL}/settings/`, params, { headers: headers })
+    return this.http.post(`${API_Routes.URL}/settingsGeneral/`, params, { headers: headers })
     .toPromise()
     .then((response: any) =>{  
       return response
