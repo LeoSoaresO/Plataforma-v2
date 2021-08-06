@@ -13,6 +13,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -61,6 +62,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     ReactiveFormsModule,
     FormsModule,
     Ng2SearchPipeModule,
+    NgxPaginationModule,
     ColorPickerModule,
     StoreModule.forRoot(reducers, {
       metaReducers
