@@ -70,9 +70,8 @@ export class UsersComponent implements OnInit {
   letter() {
     let users = this.users;
     users = users.map((i: any) => {
-      let name = i.first_name;      
-      let lastname = i.last_name;
-      let ini = name.charAt(0)+""+lastname.charAt(0);
+      let name = i.first_name;
+      let ini = name.charAt(0);
       i.ini = ini;
     })
     console.log(this.users)
@@ -123,12 +122,10 @@ export class UsersComponent implements OnInit {
 
   async postUsers(){
     let name = this.userForm.controls.name.value
-    let last = this.userForm.controls.lastName.value
     let email = this.userForm.controls.email.value
     let role = this.userForm.controls.userCode.value
     const params = {
       "first_name": name,
-      "last_name": last,
       "email": email,
       "role": [
         role

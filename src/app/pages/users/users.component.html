@@ -55,9 +55,9 @@
                             </div>
                         </li>
                         <li class="w-4/12 text-center text-sm flex justify-evenly">
-                            <span class="py-1 px-4 bg-customBlue-normal text-customWhite-default rounded-lg" *ngIf="user.role.includes('Aluno')">Aluno</span>
-                            <span class="py-1 px-4 bg-customRed-default text-customWhite-default rounded-lg" *ngIf="user.role.includes('Super-Admin')">Super Admin</span>
-                            <span class="py-1 px-4 bg-customGray-light rounded-lg" *ngIf="!user.role.includes('Aluno') && !user.role.includes('Super-Admin')">Nenhum</span>
+                            <span class="py-2 px-4 bg-customBlue-normal text-customWhite-default rounded-md" *ngIf="user.role.includes('Aluno')">Aluno</span>
+                            <span class="py-2 px-4 bg-customRed-default text-customWhite-default rounded-md" *ngIf="user.role.includes('Super-Admin')">Super Admin</span>
+                            <span class="py-2 px-4 bg-customGray-light rounded-md" *ngIf="!user.role.includes('Aluno') && !user.role.includes('Super-Admin')">Nenhum</span>
                         </li>
                         <li class="w-2/12 text-center text-sm">
                             <div *ngIf="user.status == 1">
@@ -87,7 +87,7 @@
 
     <!-- Modal add User -->
   <div *ngIf="showModal" class="transition ease-out duration-700 animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
-    <div class="relative w-full my-6 ml-36 mx-auto max-w-6xl absolute bg-customWhite-default rounded-lg">
+    <div class="relative w-10/12 my-6 ml-36 mx-auto absolute bg-customWhite-default rounded-lg">
       <!--content-->
       <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
         <!--header-->
@@ -106,7 +106,6 @@
             <form [formGroup]="userForm">
                 <div class="flex justify-between mt-2">
                     <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Nome" required formControlName="name">
-                    <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md mr-4" placeholder="Sobrenome" required formControlName="lastName">
                     <input type="text" class="w-full border border-customBlue-light rounded-md p-1 text-md" placeholder="Código de usuário" required formControlName="userCode">
                 </div>
                 <div class="flex justify-between mt-5">
