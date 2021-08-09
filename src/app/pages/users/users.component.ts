@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { faEllipsisV, faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
 import { UsersService } from 'src/app/services/users.service';
@@ -34,7 +34,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private FormBuilder: FormBuilder
+    private FormBuilder: FormBuilder,
+    private el: ElementRef
   ) { }
 
   ngOnInit(): void {
@@ -77,7 +78,7 @@ export class UsersComponent implements OnInit {
     console.log(this.users)
   }
 
-  teste(){
+  select(){
     let test = this.users;
     test = test.map((i: any)=>{
       i.isSelected = this.isSelected;
@@ -112,12 +113,24 @@ export class UsersComponent implements OnInit {
      console.log(this.number);     
    }
 
+   show(id: any) {
+			let show = document.getElementsByClassName('ss')[id].lastElementChild?.classList
+      if(show?.contains('hidden')){
+        show?.remove('hidden')
+        show?.add('show')
+      } else {
+        show?.add('hidden')
+        show?.remove('show')
+      }
+			console.log(show, id);			
+  }
+
   //Requests
   async getUsers(){ 
     const response = await this.usersService.getUsers()  
     this.users = response
     this.letter();
-    this.teste();
+    this.select();
   }  
 
   async postUsers(){
