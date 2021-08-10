@@ -109,8 +109,7 @@ export class UsersComponent implements OnInit {
   }
   
    getNumber(){
-     this.number = (<HTMLInputElement>document.getElementById('number')).value;
-     console.log(this.number);     
+     this.number = (<HTMLInputElement>document.getElementById('number')).value;    
    }
 
    show(id: any) {
@@ -155,5 +154,13 @@ export class UsersComponent implements OnInit {
           this.showModal = false
          }
          }
+  }
+
+  async delUser(id: any){
+    const response = await this.usersService.delUser(id)
+    console.log(response)
+    if(response){
+      this.reload();
+    }
   }
 }

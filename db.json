@@ -1,27 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "first_name": "Sebastian",
-      "last_name": "Eschweiler",
-      "email": "leonaardo.soaares@gmail.com",
-      "role": [
-        "Aluno"
-      ],
-      "status": "2"
-    },
-    {
-      "id": 2,
-      "first_name": "Steve",
-      "last_name": "Palmer",
-      "email": "steve@hotmail.com",
-      "role": [
-        "Aluno",
-        "Super-Admin"
-      ],
-      "status": "2"
-    },
-    {
       "id": 3,
       "first_name": "Ann",
       "last_name": "Smith",
@@ -52,47 +31,6 @@
         "Super-Admin"
       ],
       "status": "1"
-    },
-    {
-      "id": 6,
-      "first_name": "wasw",
-      "last_name": "Howse",
-      "email": "smssdxsith@matrix.net",
-      "role": [
-        "Aluno",
-        "Super-Admin"
-      ],
-      "status": "1"
-    },
-    {
-      "first_name": "az",
-      "last_name": "azq",
-      "email": "ZAS",
-      "role": [
-        ""
-      ],
-      "status": "1",
-      "id": 7
-    },
-    {
-      "first_name": "az",
-      "last_name": "azq",
-      "email": "ZAS",
-      "role": [
-        ""
-      ],
-      "status": "1",
-      "id": 8
-    },
-    {
-      "first_name": "Nome",
-      "last_name": "Sobrenome",
-      "email": "teste@teste",
-      "role": [
-        "Aluno"
-      ],
-      "status": "1",
-      "id": 9
     },
     {
       "first_name": "One",

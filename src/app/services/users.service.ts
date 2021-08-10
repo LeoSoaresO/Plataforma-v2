@@ -29,4 +29,12 @@ export class UsersService {
       return response
     })
   }
+
+  delUser(id: any){
+    return this.http.delete(`${API_Routes.URL}/users/${id}`)
+    .toPromise()
+    .then((response:any)=>{
+      return response
+    })
+  }
 }

@@ -41,7 +41,7 @@
                     </ul>
                 </div>
                 <div *ngFor="let user of users | filter:filterTerm | paginate: { itemsPerPage: number, currentPage: p }" class="inline-block min-w-full overflow-hidden border-b-2 borderCustom">
-                    <ul class="px-8 w-full h-14 flex items-center ss">
+                    <ul class="px-8 w-full h-14 flex items-center ss" id="{{user.id}}">
                         <li class="w-1/12" >
                             <input type="checkbox" name="all" id="t" [(ngModel)]="user.isSelected" (change)="isAllSelected()" class="h-6 w-4 cursor-pointer">
                         </li>
@@ -71,15 +71,15 @@
                         </li>
                         <li class="w-5/12 text-center text-sm">24/05/2021 (5 dias sem atividade)</li>
                         <li class="w-1/12 text-center">
-                            <button (click)="show(user.id)" id="test"  class="relative z-10 block p-2 transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
+                            <button (click)="show(user.id)" class="relative z-10 block p-2 transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
                                 <fa-icon [icon]="faEllipisisV" class="text-customBlue-default icon pl-6"></fa-icon>
                             </button>
                         </li>
                         <li class="absolute hidden z-20 w-48 right-36 rounded-md shadow-xl bg-customWhite-default">
 							<div class="py-1" role="none">
-								<a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-0">Editar</a>
-								<a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-1">Excluir</a>
-								<a href="#" class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-2">Excluir todos</a>
+								<a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-0">Editar</a>
+								<a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-1" (click)="delUser(user.id)">Excluir</a>
+								<a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-2">Excluir todos</a>
 							</div>
 						</li>
                     </ul>
