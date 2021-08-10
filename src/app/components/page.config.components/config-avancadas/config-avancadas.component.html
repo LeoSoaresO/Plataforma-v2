@@ -2,47 +2,59 @@
     <h1 class="text-customBlue-default font-bold text-xl">Configurações Avançadas</h1>
         <div class="flex md:flex-row sm:flex-col gap-2">
             <div class="w-1/2 my-8 ">
-                <div class="text-left px-10 py-2 " >
+                <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Google Search Console</h2>
-                    <input type="text" class="w-full border-b-2" placeholder="Nuvem Mestra" style="border-color: #A9AEB3;">
+                    <input type="text" class="w-full border-b-2" [(ngModel)]="settingsAdvanced.google_search_console" placeholder="google_search_console" style="border-color: #A9AEB3;">
                 </div>
-                <div class="text-left px-10 py-2 " >
+                <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Email transacional</h2>
-                    <input type="text" class="w-full border-b-2" placeholder="Nuvem Mestra" style="border-color: #A9AEB3;">
+                    <input type="text" class="w-full border-b-2" [(ngModel)]="settingsAdvanced.customer_support_email" placeholder="customer_support_email" style="border-color: #A9AEB3;">
                 </div>
             </div>
             <div class="w-1/2 my-8 ">
-                <div class="text-left px-10 py-2 " >
+                <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Google Analytics ID</h2>
-                    <input type="text" class="w-full border-b-2" placeholder="Nuvem Mestra" style="border-color: #A9AEB3;">
+                    <input type="text" class="w-full border-b-2" [(ngModel)]="settingsAdvanced.google_analytics_id" placeholder="google_analytics_id" style="border-color: #A9AEB3;">
                 </div>
-                <div class="text-left px-10 py-2 " >
+                <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Configurar obrigatoriedade do conteúdo no diário de classe</h2>
                     <input type="text" class="w-full border-b-2" placeholder="Nuvem Mestra" style="border-color: #A9AEB3;">
                 </div>
             </div>
         </div>
-        <div class="row mt-4 my-8 ">
-            <div class="flex justify-between mt-1">
-                <label>Redirecionar automaticamente listagem de disciplinas</label>
-                <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+        <div class="flex md:flex-row sm:flex-col gap-2">
+            <div class="w-1/2 my-8 ">
+                <div class=" mt-1">
+                    <label>Script customizado - tela de login</label>
+                </div>
+                <div class=" mt-1">
+                    <label>Script customizado - mobile</label>
+                </div>
+                <div class=" mt-1">
+                    <label>Script customizado - global</label>
+                </div>
+                <div class=" mt-1">
+                    <label>Email para widget de suporte</label>
+                </div>
             </div>
-            <div class="flex justify-between mt-1">
-                <label>Habilitar seletor de usuários</label>
-                <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+            <div class="w-1/2 my-8 ">
+                <div class=" mt-1">
+                    <input [checked]="settingsAdvanced.login_screen_script" (change)="settingsAdvanced.login_screen_script = !settingsAdvanced.login_screen_script" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+                <div class=" mt-1">
+                    <input [checked]="settingsAdvanced.content_screen_script" (change)="settingsAdvanced.content_screen_script = !settingsAdvanced.content_screen_script" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+                <div class=" mt-1">
+                    <input [checked]="settingsAdvanced.global_screen_script" (change)="settingsAdvanced.global_screen_script = !settingsAdvanced.global_screen_script" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+                <div class=" mt-1">
+                    <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>                
             </div>
-            <div class="flex justify-between mt-1">
-                <label>Habilitar validação de login</label>
-                <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-            </div>
-            <div class="flex justify-between mt-1">
-                <label>Habilitar validação de login com campo customizado</label>
-                <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-            </div>
-        </div>
+        </div>        
         <div class="flex row justify-end">
             <div class="">
-                <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" style="color: #FFFFFF;background-color: #233674">Editar</button>
+                <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" style="color: #FFFFFF;background-color: #233674" (click)="postAdvancedSettings()">Salvar</button>
             </div>
         </div>  
 </section>
