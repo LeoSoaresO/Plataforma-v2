@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {OrganizationChartModule} from 'primeng/organizationchart';
+import {ToastModule} from 'primeng/toast';
+import {PanelModule} from 'primeng/panel';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -27,6 +30,7 @@ import { ConfigAvancadasComponent } from './components/page.config.components/co
 import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
+import { OrgUnitsComponent } from './pages/org-units/org-units.component';
 
 // Components
 import { LoginComponent } from './pages/login/login.component';
@@ -51,6 +55,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     ConfigCamposCustomizadosComponent,
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
+    OrgUnitsComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +69,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ColorPickerModule,
+    OrganizationChartModule,
+    ToastModule,
+    PanelModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })
