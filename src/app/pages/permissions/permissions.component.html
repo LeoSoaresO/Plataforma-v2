@@ -1,1 +1,19 @@
 <app-header></app-header>
+
+<section class="pl-48 px-12 py-8">
+    <h1 class="text-customBlue-default font-bold text-3xl">Perfis e permissões</h1>
+        <div class="flex md:flex-row sm:flex-col gap-12">
+            <div class="w-1/3 max:w-1/3 my-8 py-8 px-6 shadow-card round-card custom">
+                <a *ngFor="let menu of menus">
+                    <div class="text-left px-10 py-2 rounded-lg">
+                        <h2 class="font-bold my-2 capitalize">{{menu.menuName}}</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="w-3/5 my-8 py-8 shadow-card round-card h-96">
+                <router-outlet></router-outlet>
+            </div>
+        </div>  
+</section>
+
+

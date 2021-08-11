@@ -183,6 +183,60 @@
       "id": 24
     }
   ],
+  "permissionsMenu": [
+    {
+      "id": 1,
+      "menuName": "Perfis e permissões"
+    },
+    {
+      "id": 2,
+      "menuName": "Teste"
+    },
+    {
+      "id": 3,
+      "menuName": "menu"
+    },
+    {
+      "id": 4,
+      "menuName": "postMenu"
+    },
+    {
+      "id": 5,
+      "menuName": "json"
+    },
+    {
+      "id": 6,
+      "menuName": "gerando menus"
+    },
+    {
+      "id": 7,
+      "menuName": "menu avançado"
+    },
+    {
+      "id": 8,
+      "menuName": "teste apenas"
+    },
+    {
+      "id": 9,
+      "menuName": "usar como lembrete"
+    },
+    {
+      "id": 10,
+      "menuName": "olhar docs para"
+    },
+    {
+      "id": 11,
+      "menuName": "ver como esta "
+    },
+    {
+      "id": 12,
+      "menuName": "estruturado  "
+    },
+    {
+      "id": 13,
+      "menuName": "e se precissa de algo "
+    }
+  ],
   "settingsGeneral": {
     "site_title": "Plataforma da Tia Zuleide teste",
     "institution_name": "Escolinha Tia Zuleide",

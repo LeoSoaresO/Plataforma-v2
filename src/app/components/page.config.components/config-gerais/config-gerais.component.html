@@ -4,17 +4,17 @@
             <div class="w-1/2 my-8 ">
                 <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Título do site</h2>
-                    <input type="text" class="w-full border-b-2" [(ngModel)]="settingsGeneral.site_title" placeholder="site_title" style="border-color: #A9AEB3;">
+                    <input type="text" class="w-full border-b-2 bg-transparent" [(ngModel)]="settingsGeneral.site_title" placeholder="site_title" style="border-color: #A9AEB3;">
                 </div>
                 <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Imagem do menu</h2>
-                    <input type="text" class="w-full border-b-2" placeholder="Sem Imagem" style="border-color: #A9AEB3;">
+                    <input type="text" class="w-full border-b-2 bg-transparent" placeholder="Sem Imagem" style="border-color: #A9AEB3;">
                 </div>
                 <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Fundo da navbar</h2>
                     <div class="flex border-b-2" style="border-color: #A9AEB3;">
-                        <input class="mr-2" style="cursor: pointer;width:1.3rem; border-radius: 50%; height: 1.3em;color: transparent" [style.background]="settingsGeneral.navbar_background_color" [(colorPicker)]="settingsGeneral.navbar_background_color" (colorPickerOpen)="onEventLog('colorPickerOpen', $event)" (colorPickerClose)="onEventLog('colorPickerClose', $event)" (cpInputChange)="onEventLog('cpInputChange', $event)" (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)" (cpSliderDragEnd)="onEventLog('cpSliderDragEnd', $event)"/>
-                        <input type="text" class="w-full" [(ngModel)]="settingsGeneral.navbar_background_color" placeholder="navbar_background_color" disabled style="border-color: #A9AEB3;">
+                        <input class="mr-2 bg-transparent" style="cursor: pointer;width:1.3rem; border-radius: 50%; height: 1.3em;color: transparent" [style.background]="settingsGeneral.navbar_background_color" [(colorPicker)]="settingsGeneral.navbar_background_color" (colorPickerOpen)="onEventLog('colorPickerOpen', $event)" (colorPickerClose)="onEventLog('colorPickerClose', $event)" (cpInputChange)="onEventLog('cpInputChange', $event)" (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)" (cpSliderDragEnd)="onEventLog('cpSliderDragEnd', $event)"/>
+                        <input type="text" class="w-full bg-transparent" [(ngModel)]="settingsGeneral.navbar_background_color" placeholder="navbar_background_color" disabled style="border-color: #A9AEB3;">
                     </div>
                 </div>   
                 <div class="text-left pr-10 py-2 " >
@@ -29,17 +29,17 @@
             <div class="w-1/2 my-8 ">
                 <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Nome da instituição</h2>
-                    <input type="text" class="w-full border-b-2" [(ngModel)]="settingsGeneral.institution_name" placeholder="institution_name" style="border-color: #A9AEB3;">
+                    <input type="text" class="w-full border-b-2 bg-transparent" [(ngModel)]="settingsGeneral.institution_name" placeholder="institution_name" style="border-color: #A9AEB3;">
                 </div>
                 <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Logo da instituição</h2>
-                    <input type="text" class="w-full border-b-2" placeholder="Sem Imagem" style="border-color: #A9AEB3;">
+                    <input type="text" class="w-full border-b-2 bg-transparent" placeholder="Sem Imagem" style="border-color: #A9AEB3;">
                 </div>
                 <div class="text-left pr-10 py-2 " >
                     <h2 class="font-bold my-2">Texto do navbar</h2>
                     <div class="flex border-b-2" style="border-color: #A9AEB3;">
-                        <input class="mr-2" style="cursor: pointer;width:1.3rem; border-radius: 50%; height: 1.3em;color: transparent" [style.background]="settingsGeneral.navbar_text_color" [(colorPicker)]="settingsGeneral.navbar_text_color" (colorPickerOpen)="onEventLog('colorPickerOpen', $event)" (colorPickerClose)="onEventLog('colorPickerClose', $event)" (cpInputChange)="onEventLog('cpInputChange', $event)" (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)" (cpSliderDragEnd)="onEventLog('cpSliderDragEnd', $event)"/>
-                        <input type="text" class="w-full " [(ngModel)]="settingsGeneral.navbar_text_color" placeholder="navbar_text_color" disabled style="border-color: #A9AEB3;">
+                        <input class="mr-2 bg-transparent" style="cursor: pointer;width:1.3rem; border-radius: 50%; height: 1.3em;color: transparent" [style.background]="settingsGeneral.navbar_text_color" [(colorPicker)]="settingsGeneral.navbar_text_color" (colorPickerOpen)="onEventLog('colorPickerOpen', $event)" (colorPickerClose)="onEventLog('colorPickerClose', $event)" (cpInputChange)="onEventLog('cpInputChange', $event)" (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)" (cpSliderDragEnd)="onEventLog('cpSliderDragEnd', $event)"/>
+                        <input type="text bg-transparent" class="w-full " [(ngModel)]="settingsGeneral.navbar_text_color" placeholder="navbar_text_color" disabled style="border-color: #A9AEB3;">
                     </div>
                 </div>   
             </div>
