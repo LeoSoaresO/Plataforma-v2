@@ -156,11 +156,11 @@ export class UsersComponent implements OnInit {
          }
   }
 
-  async delUser(id: any){
-    const response = await this.usersService.delUser(id)
-    console.log(response)
-    if(response){
-      this.reload();
-    }
-  }
+  // async delUser(id: any){
+  //   const response = await this.usersService.delUser(id)
+  //   console.log(response)
+  //   if(response){
+  //     this.reload();
+  //   }
+  // }
 }
