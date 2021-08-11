@@ -9,7 +9,6 @@ import { PermissionsService } from 'src/app/services/permissions.service';
 export class PermissionsComponent implements OnInit {
 
 //Variables
-
 menus: any
 
   constructor(
