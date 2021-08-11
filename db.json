@@ -188,5 +188,13 @@
     "institution_name": "Escolinha Tia Zuleide",
     "navbar_background_color": "#a22828",
     "navbar_text_color": "#006dbd"
+  },
+  "settingsAdvanced": {
+    "google_search_console": "abcdefghi",
+    "google_analytics_id": "UA-123456-7",
+    "login_screen_script": true,
+    "content_screen_script": true,
+    "global_screen_script": false,
+    "customer_support_email": "ds@inicie.digital"
   }
 }
