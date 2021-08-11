@@ -1,0 +1,21 @@
+.google: &google
+  - echo $CI_SERVICE_KEY_B64 > /tmp/$CI_PIPELINE_ID.txt
+  - base64 -d /tmp/$CI_PIPELINE_ID.txt > /tmp/$CI_PIPELINE_ID.json
+  - gcloud auth activate-service-account --key-file /tmp/$CI_PIPELINE_ID.json
+
+stages:
+  - build-telescope
+
+build-telescope:
+  stage: build-telescope
+  image: google/cloud-sdk:latest
+  allow_failure: false
+  only:
+    refs:
+      - tissot/cicd
+  before_script:
+    - *google
+  script:
+    - gcloud config set project inicie-plataforma-prod
+    - gcloud auth configure-docker southamerica-east1-docker.pkg.dev -q
+    - gcloud builds submit --tag=southamerica-east1-docker.pkg.dev/inicie-plataforma-prod/plataforma/plat-front:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHORT_SHA}
