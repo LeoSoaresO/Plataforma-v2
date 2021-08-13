@@ -1,19 +1,20 @@
 <section class="ml-10">
     <h1 class="font-bold text-customBlue-default text-2xl capitalize">nome do menu</h1>
     <div class="mt-16">
-        <div>
-            <ul class="ml-36 flex">
-                <li class="text-xl font-semibold text-customBlue-default mx-auto tracking-tight capitalize" *ngFor="let list of actions">{{list.name}}</li>
+        <div class="mr-4">
+            <ul class="ml-44 flex">
+                <li class="text-xl text-left font-semibold text-customBlue-default mx-auto tracking-tight capitalize" *ngFor="let list of actions">{{list.name}}</li>
             </ul>
         </div>
         <div class="flex">
-            <div class="w-3/12">
-                <ul class="mt-4" *ngFor="let options of roles">
-                    <li class="text-xl font-semibold text-customBlue-default tracking-tight capitalize">{{options.role}}</li>
+            <div class="w-full">
+                <ul class="mt-4 flex" *ngFor="let options of roles">
+                    <li class="text-xl font-semibold text-customBlue-default tracking-tight w-48 capitalize">{{options.role}}</li>
+                    <label class="label-container w-1/6 mr-auto" *ngFor="let list of actions">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark rounded-md"></span>
+                      </label>
                 </ul>
-            </div>
-            <div class="w-9/12 mt-4">
-                <input type="checkbox" id="">
             </div>
         </div>
     </div>
