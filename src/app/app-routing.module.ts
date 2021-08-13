@@ -12,6 +12,7 @@ import { ConfigAvancadasComponent } from './components/page.config.components/co
 import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
+import { ConfigTurmasComponent } from './components/page.config.components/config-turmas/config-turmas.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
       {path:'campos-customizados', component: ConfigCamposCustomizadosComponent },
       {path:'integracoes', component: ConfigIntegracoesComponent },
       {path:'login', component: ConfigLoginComponent },
+      {path:'disciplines', component: ConfigTurmasComponent },
       ]
   }
 ];

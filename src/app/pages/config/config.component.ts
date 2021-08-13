@@ -28,12 +28,16 @@ export class ConfigComponent implements OnInit {
     this.router.navigate(['campos-customizados'], {relativeTo:this.route});
     this.selected =  'item3';
   }
+  configDisciplines(){
+    this.router.navigate(['disciplines'], {relativeTo:this.route});
+    this.selected =  'item4';
+  }
   configIntegracoes(){
     this.router.navigate(['integracoes'], {relativeTo:this.route});
-    this.selected =  'item4';
+    this.selected =  'item5';
   }
   configLogin(){
     this.router.navigate(['login'], {relativeTo:this.route});
-    this.selected =  'item5';
+    this.selected =  'item6';
   }
 }

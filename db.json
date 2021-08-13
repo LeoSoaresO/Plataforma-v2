@@ -250,5 +250,18 @@
     "content_screen_script": true,
     "global_screen_script": false,
     "customer_support_email": "ds@inicie.digital"
+  },
+  "settingsDiscipline": {
+    "enable_likes": true,
+    "force_likes": false,
+    "enable_reminders": false,
+    "force_reminders": false,
+    "default_ordering_per_discipline": false,
+    "default_ordering": true,
+    "enable_bank": true,
+    "quiz_allowed_ips": [
+      "192.168.0.1",
+      "10.1.1.1"
+    ]
   }
 }

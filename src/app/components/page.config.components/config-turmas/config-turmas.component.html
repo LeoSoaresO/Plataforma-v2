@@ -1,0 +1,60 @@
+<section class="px-8">
+    <h1 class="text-customBlue-default font-bold text-xl">Turmas</h1>
+        <div class="flex flex-col">
+            <div class="text-left py-2 " >
+                <h2 class="font-bold my-2">Curtidas</h2>
+                <div class="flex justify-between items-center">
+                    <h2 class="mt-1">Habilitar curtidas nas perguntas e respostas</h2>
+                    <input [checked]="settingsDiscipline.enable_likes" (change)="settingsDiscipline.enable_likes = !settingsDiscipline.enable_likes" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+                <div class="flex justify-between items-center">
+                    <h2 class="mt-1">Turmas obrigatóriamente exibem curtidas</h2>
+                    <input [checked]="settingsDiscipline.force_likes" (change)="settingsDiscipline.force_likes = !settingsDiscipline.force_likes" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+            </div>
+            <div class="text-left py-2 ">
+                <h2 class="font-bold my-2">Lembrete de atividades pendentes</h2>
+                <div class="flex justify-between items-center">
+                    <h2 class="mt-1">Habilitar lembretes</h2>
+                    <input [checked]="settingsDiscipline.enable_reminders" (change)="settingsDiscipline.enable_reminders = !settingsDiscipline.enable_reminders" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+                <div class="flex justify-between items-center">
+                    <h2 class="mt-1">Turmas obrigatóriamente constam nos lembretes</h2>
+                    <input [checked]="settingsDiscipline.force_reminders" (change)="settingsDiscipline.force_reminders = !settingsDiscipline.force_reminders" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+            </div>
+            <div class="text-left py-2 ">
+                <h2 class="font-bold my-2">Recursos e aulas</h2>
+                <div class="flex justify-between items-center">
+                    <h2 class="mt-1">Permitir configuraçāo de ordenaçāo por disciplina</h2>
+                    <input [checked]="settingsDiscipline.default_ordering_per_discipline" (change)="settingsDiscipline.default_ordering_per_discipline = !settingsDiscipline.default_ordering_per_discipline" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+                <div class="">
+                    <h2 class="mt-2">Ordenaçāo padrāo dos conteúdos e aulas novas</h2>
+                    <input type="text" class="w-3/5 border-b-2 bg-transparent mt-1" placeholder="Nuvem Mestra" style="border-color: #A9AEB3;">
+                </div>
+                <div class="w-4/5 mt-2">
+                    <span class="font-bold text-xs">*Essa opção define a configuração padrão das disciplinas recém criadas. Caso não seja permitida a edição individual, todas as disciplinas usarão esta ordenação obrigatóriamente.</span>
+                </div>
+            </div>
+            <div class="text-left py-2 ">
+                <h2 class="font-bold my-2">Banco de questões</h2>
+                <div class="flex justify-between items-center">
+                    <h2 class="mt-1">Habilitar Banco de questões</h2>
+                    <input [checked]="settingsDiscipline.enable_bank" (change)="settingsDiscipline.enable_bank = !settingsDiscipline.login_screen_script" id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                </div>
+                <div class="">
+                    <h2 class="mt-2">IP's questionários</h2>
+                    <input type="text" class="w-3/5 border-b-2 bg-transparent mt-1" placeholder="Nuvem Mestra" style="border-color: #A9AEB3;">
+                </div>
+                <div class="w-4/5 mt-2">
+                    <span class="font-bold text-xs">*Endereços de IP autorizados a acessar questionários. Caso este campo esteja vazio, todos os endereços IP poderão acessar questionários.</span>
+                </div>
+            </div>            
+        </div>
+        <div class="flex row justify-end">
+            <div class="">
+                <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" style="color: #FFFFFF;background-color: #233674" (click)="postDisciplineSettings()">Salvar</button>
+            </div>
+        </div>  
+</section>
