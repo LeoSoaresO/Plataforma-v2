@@ -32,6 +32,7 @@ import { ConfigLoginComponent } from './components/page.config.components/config
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { RolesComponent } from './components/page.permissions.components/roles/roles.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     ConfigCamposCustomizadosComponent,
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
+    RolesComponent,
   ],
   imports: [
     BrowserModule,

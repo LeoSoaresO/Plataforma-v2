@@ -18,4 +18,20 @@ export class PermissionsService {
       return response
     })
   }
+
+  getRoles(){
+    return this.http.get(`${API_Routes.URL}/permission_roles`)
+    .toPromise()
+    .then((response: any) =>{
+      return response
+    })
+  }
+
+  getActions(){
+    return this.http.get(`${API_Routes.URL}/actions`)
+    .toPromise()
+    .then((response: any) =>{
+      return response
+    })
+  }
 }
