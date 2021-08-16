@@ -32,7 +32,7 @@ import { ConfigLoginComponent } from './components/page.config.components/config
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { ConfigTurmasComponent } from './components/page.config.components/config-turmas/config-turmas.component';
+import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
 
 
 @NgModule({
@@ -52,7 +52,7 @@ import { ConfigTurmasComponent } from './components/page.config.components/confi
     ConfigCamposCustomizadosComponent,
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
-    ConfigTurmasComponent,
+    ConfigDisciplinesurmasComponent,
   ],
   imports: [
     BrowserModule,

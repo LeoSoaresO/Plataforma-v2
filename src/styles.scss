@@ -26,3 +26,34 @@ input:focus, textarea:focus, select:focus{
 .bg-card{
     background-color: #D8E5F8;    
 }
+//checkbox
+#toogle{
+    height: 1.4rem;
+}
+#toogle:before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    top: 0.2rem;
+    left: 0.3rem;
+    transform: scale(1.1);
+    background-color: white;
+    transition: .2s ease-in-out;
+}
+
+#toogle:checked {
+    background-color: $blue;
+}
+
+#toogle:checked:before {
+    left: 1.5rem;
+}
+
+.hover {
+    transition: ease-in-out 0.7s;
+    &:hover {
+        @include hBlue;
+    }
+}

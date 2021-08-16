@@ -2,20 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { SettingsDisciplineService } from 'src/app/services/settings-disciplines.service';
 
 @Component({
-  selector: 'app-config-turmas',
-  templateUrl: './config-turmas.component.html',
-  styleUrls: ['./config-turmas.component.scss']
+  selector: 'app-config-disciplines',
+  templateUrl: './config-disciplines.component.html',
+  styleUrls: ['./config-disciplines.component.scss']
 })
-export class ConfigTurmasComponent implements OnInit {
+export class ConfigDisciplinesurmasComponent implements OnInit {
 
   settingsDiscipline: any = [];
+  defaultOrderOptions: any = [{select:true, text: 'A mais recente aparece no inicio'},{ select:false, text:'A mais recente aparece no final'}];
 
   constructor(
     private settingsDisciplineService: SettingsDisciplineService
   ) { }
 
+  
+
   ngOnInit(): void {
     this.getDisciplineSettings();
+     
   }
 
   getDisciplineSettings() {
