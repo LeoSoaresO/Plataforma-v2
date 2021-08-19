@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faThinkPeaks } from '@fortawesome/free-brands-svg-icons';
 import { PermissionsService } from 'src/app/services/permissions.service';
 @Component({
   selector: 'app-permissions',
@@ -9,7 +10,8 @@ import { PermissionsService } from 'src/app/services/permissions.service';
 export class PermissionsComponent implements OnInit {
 
 //Variables
-menus: any
+menus: any;
+name: any;
 
   constructor(
       private route: ActivatedRoute,
@@ -23,6 +25,13 @@ menus: any
 
   async getMenus(){
     const response = await this.permissionsService.getMenus()
-    this.menus = response  
+    this.menus = response
+    console.log(this.menus);
+    this.getNameClick(this.menus[0].menuName)
   }
+
+  getNameClick(name: any) {
+    this.name = name 
+  }
+   
 }

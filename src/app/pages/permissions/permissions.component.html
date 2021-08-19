@@ -5,17 +5,17 @@
         <div class="flex md:flex-row sm:flex-col gap-12">
             <div class="w-1/3 max:w-1/3 my-8 py-8 px-6 shadow-card round-card">
                 <div class="custom">
-                    <a *ngFor="let menu of menus" id="{{menu.id}}">
+                    <a *ngFor="let menu of menus" id="{{menu.id}}" (click)="getNameClick(menu.menuName)">
                         <div class="text-left px-10 py-2 rounded-lg">
-                            <h2 class="font-bold my-2 capitalize">{{menu.menuName}}</h2>
+                            <h2 class="font-bold my-2 capitalize" >{{menu.menuName}}</h2>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="w-3/5 my-8 py-8 shadow-card round-card h-96 bg-customWhite-default">
-                <app-roles></app-roles>
+                <app-roles [menuName]="name"></app-roles>
             </div>
-        </div>  
+        </div>
 </section>
 
 

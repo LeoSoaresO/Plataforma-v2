@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PermissionsService } from 'src/app/services/permissions.service';
 
 
@@ -8,10 +8,10 @@ import { PermissionsService } from 'src/app/services/permissions.service';
   styleUrls: ['./roles.component.scss']
 })
 export class RolesComponent implements OnInit {
-
 //Variables
 roles: any
 actions: any
+@Input() menuName: any;
 
   constructor(
   private permissionsService: PermissionsService
@@ -20,6 +20,7 @@ actions: any
   ngOnInit(): void {
     this.getRoles();
     this.getActions();
+    console.log(this.menuName);    
   }
 
   async getRoles(){
