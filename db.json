@@ -266,48 +266,15 @@
   },
   "settingsCustomSchemas": [
     {
-      "id": 1,
-      "cs_code": "ID",
-      "screen_name": "ID",
-      "screen_label": "ID ALUNO",
+      "cs_code": "asd",
+      "screen_name": "asd",
+      "screen_label": "asdasd",
       "mandatory": 0,
       "unique": 1,
       "default": null,
-      "type": "date",
-      "custom_format": null
-    },
-    {
-      "id": 2,
-      "cs_code": "ID",
-      "screen_name": "Nome",
-      "screen_label": "Nome ALUNO",
-      "mandatory": 0,
-      "unique": 1,
-      "default": null,
-      "type": "date",
-      "custom_format": null
-    },
-    {
-      "cs_code": "1",
-      "screen_name": "qweqwe",
-      "screen_label": "qweqwe",
-      "mandatory": 0,
-      "unique": 1,
-      "default": null,
-      "type": "date",
-      "custom_format": "qweqwe",
-      "id": 3
-    },
-    {
-      "cs_code": "12",
-      "screen_name": "qweqwe",
-      "screen_label": "qweqwe",
-      "mandatory": 0,
-      "unique": 1,
-      "default": null,
-      "type": "date",
-      "custom_format": "qweqwe",
-      "id": 4
+      "type": "number",
+      "custom_format": "sadasdas",
+      "id": 1
     }
   ]
 }

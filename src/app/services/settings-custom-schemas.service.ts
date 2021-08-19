@@ -19,4 +19,8 @@ export class SettingsCustomSchemasService {
   postCustomSchemasSettings(params: any): Observable<any> {
     return this.http.post(`${API_Routes.URL}/settingsCustomSchemas/`, params)
   }
+
+  delCustomSchemasSettings(id: number): Observable<any> {
+    return this.http.delete(`${API_Routes.URL}/settingsCustomSchemas/${id}`)
+  }
 }

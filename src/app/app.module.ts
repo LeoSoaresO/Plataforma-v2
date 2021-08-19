@@ -14,6 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -33,6 +37,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
+import { ModalDelete } from './components/page.config.components/config-campos-customizados/modal/modalDelete';
 
 
 @NgModule({
@@ -53,6 +58,7 @@ import { ConfigDisciplinesurmasComponent } from './components/page.config.compon
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
     ConfigDisciplinesurmasComponent,
+    ModalDelete
   ],
   imports: [
     BrowserModule,
@@ -66,11 +72,18 @@ import { ConfigDisciplinesurmasComponent } from './components/page.config.compon
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ColorPickerModule,
+    DynamicDialogModule,
+    DialogModule,
+    ButtonModule,
+    ConfirmDialogModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+		ModalDelete
+	],
 })
 export class AppModule { }

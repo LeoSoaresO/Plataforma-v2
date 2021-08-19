@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { faEllipsisV, faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
+import { DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
 import { SettingsCustomSchemasService } from 'src/app/services/settings-custom-schemas.service';
+import { PrimeNGConfig, ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-config-campos-customizados',
   templateUrl: './config-campos-customizados.component.html',
-  styleUrls: ['./config-campos-customizados.component.scss']
+  styleUrls: ['./config-campos-customizados.component.scss'],
+  providers:[ConfirmationService]
 })
 export class ConfigCamposCustomizadosComponent implements OnInit {
   settingsCustomSchemas: any = [];
   showModal: boolean;
+  showModalDelete: boolean;
   customSchemasForm: FormGroup;
   success = false;
   tipoCampo: any = ['date', 'string', 'number','regex','list','boolean'];
@@ -18,14 +22,20 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
   faEllipisisV = faEllipsisV
   faPlus = faPlus
   faTimes = faTimes
+
+  ref: DynamicDialogRef;
+
   constructor(
     private settingsCustomSchemasService: SettingsCustomSchemasService,
-    private FormBuilder: FormBuilder
+    private FormBuilder: FormBuilder,
+    private confirmationService: ConfirmationService,
+    private primengConfig: PrimeNGConfig
   ) { }
 
   ngOnInit(): void {
     this.getCustomSchemasSettings();
     this.createCustomSchemasForm();
+    this.primengConfig.ripple = true;
   }
   
   //Forms
@@ -46,34 +56,6 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
     })
   }
 
-
-  // postCustomSchemas(){
-  //   let codCampo = this.customSchemasForm.controls.codCampo.value
-  //   let nomeCampo = this.customSchemasForm.controls.nomeCampo.value
-  //   let descCampo = this.customSchemasForm.controls.descCampo.value
-  //   let tipoCampo = this.customSchemasForm.controls.tipoCampo.value
-  //   let mascaraDados = this.customSchemasForm.controls.mascaraDados.value
-  //   const params = {
-  //      "cs_code": codCampo,
-  //      "screen_name": nomeCampo,
-  //      "screen_label": descCampo,
-  //      "mandatory": 0,
-  //      "unique": 1,
-  //      "default": null,
-  //      "type": tipoCampo, // string, number, date, regex, list, boolean
-  //      "custom_format": mascaraDados,
-  //   }
-  //     console.log(params);
-  //     console.log(JSON.stringify(params));            
-  //     const response = this.settingsCustomSchemasService.postCustomSchemasSettings(params)
-  //     console.log(response)
-  //        if(response){
-  //         this.success = true
-  //         if (this.success == true) {
-  //           this.showModal = false
-  //         }
-  //        }
-  // }
 
   getCustomSchemasSettings() {
     this.settingsCustomSchemasService.getCustomSchemasSettings()
@@ -102,4 +84,23 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
     .subscribe(() => console.log(this.settingsCustomSchemas));
   }
 
+    remove(id: number) {
+        this.confirmationService.confirm({
+            message: 'Deseja excluir?',
+            icon: 'pi pi-info-circle',
+            accept: () => {
+              this.settingsCustomSchemasService.delCustomSchemasSettings(id)
+              .subscribe(() => console.log(this.settingsCustomSchemas));
+            },
+            reject: () => {
+
+            }
+        });
+    }
+
+  delCustomSchemasSettings(id: number){
+    this.showModalDelete = !this.showModalDelete;
+    this.settingsCustomSchemasService.delCustomSchemasSettings(id)
+    .subscribe(() => console.log(this.settingsCustomSchemas));
+  }
 }
