@@ -17,6 +17,7 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
   showModalDelete: boolean;
   customSchemasForm: FormGroup;
   success = false;
+  settingCustomSchema: any = [];
   tipoCampo: any = ['date', 'string', 'number','regex','list','boolean'];
   // Icons
   faEllipisisV = faEllipsisV
@@ -64,7 +65,7 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
   }
 
   postCustomSchemasSettings(){
-        let codCampo = this.customSchemasForm.controls.codCampo.value
+    let codCampo = this.customSchemasForm.controls.codCampo.value
     let nomeCampo = this.customSchemasForm.controls.nomeCampo.value
     let descCampo = this.customSchemasForm.controls.descCampo.value
     let tipoCampo = this.customSchemasForm.controls.tipoCampo.value
@@ -84,23 +85,35 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
     .subscribe(() => console.log(this.settingsCustomSchemas));
   }
 
-    remove(id: number) {
-        this.confirmationService.confirm({
-            message: 'Deseja excluir?',
-            icon: 'pi pi-info-circle',
-            accept: () => {
-              this.settingsCustomSchemasService.delCustomSchemasSettings(id)
-              .subscribe(() => console.log(this.settingsCustomSchemas));
-            },
-            reject: () => {
+  remove(id: number) {
+      this.confirmationService.confirm({
+          header: 'Deseja excluir?',
+          accept: () => {
+            this.settingsCustomSchemasService.delCustomSchemasSettings(id)
+            .subscribe(() => console.log(this.settingsCustomSchemas));
+          },
+          reject: () => {
 
-            }
-        });
-    }
+          }
+      });
+  }
+
+  getCustomSchema(id:number){
+    this.settingCustomSchema = this.getCustomSchemaSetting(id);
+    console.log(this.settingCustomSchema);
+    
+  }
 
   delCustomSchemasSettings(id: number){
     this.showModalDelete = !this.showModalDelete;
     this.settingsCustomSchemasService.delCustomSchemasSettings(id)
     .subscribe(() => console.log(this.settingsCustomSchemas));
+  }
+
+  getCustomSchemaSetting(id:number){
+    return this.settingsCustomSchemasService.getCustomSchemaSetting(id)
+    .subscribe(settingCustomSchema => this.settingCustomSchema = settingCustomSchema);
+    // console.log(this.settingCustomSchema);
+      
   }
 }

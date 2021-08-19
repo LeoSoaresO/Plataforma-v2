@@ -13,7 +13,7 @@
                 <td>{{item.cs_code}}</td>
                 <td>{{item.screen_label}}</td>
                 <td class="flex justify-center gap-2">
-                    <button>
+                    <button (click)='getCustomSchema(item.id)'>
                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="13" cy="13" r="13" fill="#D8E5F8"/>
                         <path d="M20.625 7.89352L17.7315 5L6.15741 16.5741L5 20.625L9.05093 19.4676L20.625 7.89352ZM15.4167 7.31481L18.3102 10.2083L15.4167 7.31481ZM6.15741 16.5741L9.05093 19.4676L6.15741 16.5741Z" stroke="#484B4D" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
@@ -107,7 +107,7 @@
 
   <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>       
 </section>
-<p-confirmDialog #cd [style]="{width: '25vw'}">
+<p-confirmDialog #cd [style]="{width: '25vw'}" [transitionOptions]="'100ms'">
     <ng-template pTemplate="footer" class="text-center">
         <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
         <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>

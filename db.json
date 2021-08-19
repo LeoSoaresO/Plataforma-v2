@@ -266,15 +266,48 @@
   },
   "settingsCustomSchemas": [
     {
-      "cs_code": "asd",
-      "screen_name": "asd",
+      "cs_code": "1",
+      "screen_name": "qweqwe",
+      "screen_label": "qweqwe",
+      "mandatory": 0,
+      "unique": 1,
+      "default": null,
+      "type": "date",
+      "custom_format": "qweqwe",
+      "id": 1
+    },
+    {
+      "cs_code": "2",
+      "screen_name": "weqwe",
+      "screen_label": "dasd",
+      "mandatory": 0,
+      "unique": 1,
+      "default": null,
+      "type": "string",
+      "custom_format": "qweqwe",
+      "id": 2
+    },
+    {
+      "cs_code": "3",
+      "screen_name": "qweqwe",
+      "screen_label": "sdawqd",
+      "mandatory": 0,
+      "unique": 1,
+      "default": null,
+      "type": "regex",
+      "custom_format": "qweqw",
+      "id": 3
+    },
+    {
+      "cs_code": "4",
+      "screen_name": "qweqwe",
       "screen_label": "asdasd",
       "mandatory": 0,
       "unique": 1,
       "default": null,
-      "type": "number",
-      "custom_format": "sadasdas",
-      "id": 1
+      "type": "string",
+      "custom_format": "qweqwe",
+      "id": 4
     }
   ]
 }
