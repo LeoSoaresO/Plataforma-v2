@@ -322,6 +322,38 @@
         "create": true,
         "delete": false
       }
+    },
+    {
+      "id": 5,
+      "role": "512",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 6,
+      "role": "vishe",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 7,
+      "role": "ué",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 8,
+      "role": "546",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
     }
   ]
 }

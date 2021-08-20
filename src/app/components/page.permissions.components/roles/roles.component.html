@@ -1,5 +1,8 @@
 <section class="ml-10">
-    <h1 class="font-bold text-customBlue-default text-2xl capitalize">{{menuName}}</h1>
+	<div class="flex justify-between">
+		<h1 class="font-bold text-customBlue-default text-2xl capitalize">{{menuName}}</h1>
+		<button class="py-2 px-3.5 right-32 rounded-full add shadow-lg text-customWhite-default font-bold" (click)="showModal = !showModal"><fa-icon [icon]="faPlus"></fa-icon></button>
+	</div>
     <div class="mt-16">
         <div class="mr-4">
             <ul class="ml-44 flex">
@@ -19,3 +22,47 @@
         </div>
     </div>
 </section>
+
+
+  <!-- Modal add User -->
+  <div *ngIf="showModal" class="transition ease-out duration-700 animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
+    <div class="relative w-4/12 my-6 mx-auto absolute bg-customWhite-default rounded-lg">
+      <!--content-->
+      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class="text-center p-5 border-b border-solid border-customBlue-light rounded-t">
+          <h3 class="text-xl font-bold text-customBlue-default">
+            Criar novo perfil
+          </h3>
+        </div>
+        <!--body-->
+        <div class="relative p-6 flex-auto">
+            <form [formGroup]="roleForm">
+                <div class="mt-2">
+                    <label for="" class="font-semibold text-customBlue-default">Nome do perfil customizado</label>
+                    <input type="text" class="w-full border border-customGray-light rounded-sm p-2 text-md mt-2" required formControlName="roleName">
+                </div>
+                <div class="mt-5">
+                    <label for="" class="font-semibold text-customBlue-default">Tipo de perfil customizado</label>
+                    <select name="" class="w-full border border-customGray-light rounded-sm p-2 text-md mt-2" id="" required formControlName="roleType">
+                        <option value="1">test</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <!--footer-->
+        <div class="flex items-center justify-center p-6 rounded-b">
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-7 py-2.5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postRoles()">
+            Adicionar
+          </button>
+          <button class="text-customGray-textGray background-transparent font-semibold px-7 py-2.5 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="showModal = !showModal">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>
+
+
+
