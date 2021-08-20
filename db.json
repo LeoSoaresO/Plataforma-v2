@@ -267,8 +267,8 @@
   "settingsCustomSchemas": [
     {
       "cs_code": "1",
-      "screen_name": "qweqwe",
-      "screen_label": "qweqwe",
+      "screen_name": "qweqwe 2",
+      "screen_label": "qweqwe 2",
       "mandatory": 0,
       "unique": 1,
       "default": null,
@@ -299,15 +299,40 @@
       "id": 3
     },
     {
-      "cs_code": "4",
-      "screen_name": "qweqwe",
-      "screen_label": "asdasd",
+      "cs_code": "1",
+      "screen_name": "qweqwe 2",
+      "screen_label": "qweqwe",
       "mandatory": 0,
       "unique": 1,
       "default": null,
-      "type": "string",
+      "type": "date",
       "custom_format": "qweqwe",
       "id": 4
+    },
+    {
+      "cs_code": "1",
+      "screen_name": "qweqwe 2",
+      "screen_label": "qweqwe",
+      "mandatory": 0,
+      "unique": 1,
+      "default": null,
+      "type": "date",
+      "custom_format": "qweqwe",
+      "id": 5
+    }
+  ],
+  "settingsLti": [
+    {
+      "name": "Biblioteca A 3",
+      "description": null,
+      "url": "https://bibliotecaa.grupoa.com.br/lti/launch.php",
+      "consumer_key": "20160708-IEPPC",
+      "secret": "63bf300d4baac1b807371c7d084fbb67",
+      "custom_parameters": "",
+      "container": "",
+      "share_name": "",
+      "share_email": "",
+      "id": 1
     }
   ]
 }

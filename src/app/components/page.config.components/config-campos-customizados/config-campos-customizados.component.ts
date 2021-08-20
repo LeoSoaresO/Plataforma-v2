@@ -19,6 +19,8 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
   success = false;
   settingCustomSchema: any = [];
   tipoCampo: any = ['date', 'string', 'number','regex','list','boolean'];
+  editMode: boolean;
+  customSchemaId: number;
   // Icons
   faEllipisisV = faEllipsisV
   faPlus = faPlus
@@ -45,7 +47,6 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
       codCampo: ['', [Validators.required]],
       nomeCampo: ['', [Validators.required]],
       descCampo: ['', [Validators.required]],
-      userCode: ['', [Validators.required]],
       mascaraDados: ['', [Validators.required]],
       tipoCampo: ['']
     })
@@ -81,8 +82,15 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
        "custom_format": mascaraDados,
     }
 
-    this.settingsCustomSchemasService.postCustomSchemasSettings(params)
-    .subscribe(() => console.log(this.settingsCustomSchemas));
+    if (this.editMode) {
+      this.editMode = false;
+      this.settingsCustomSchemasService.updatetCustomSchemaSetting(this.customSchemaId, params)
+      .subscribe(() => console.log(this.settingsCustomSchemas));
+    }else{
+      this.settingsCustomSchemasService.postCustomSchemasSettings(params)
+      .subscribe(() => console.log(this.settingsCustomSchemas));
+    }
+
   }
 
   remove(id: number) {
@@ -98,22 +106,40 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
       });
   }
 
-  getCustomSchema(id:number){
-    this.settingCustomSchema = this.getCustomSchemaSetting(id);
-    console.log(this.settingCustomSchema);
-    
-  }
-
   delCustomSchemasSettings(id: number){
-    this.showModalDelete = !this.showModalDelete;
     this.settingsCustomSchemasService.delCustomSchemasSettings(id)
     .subscribe(() => console.log(this.settingsCustomSchemas));
   }
 
+  setValueForm(settingCustomSchema: any){
+    console.log(this.customSchemasForm);
+    
+    this.customSchemasForm.controls['codCampo'].setValue(settingCustomSchema.cs_code);
+    this.customSchemasForm.controls['nomeCampo'].setValue(settingCustomSchema.screen_name);
+    this.customSchemasForm.controls['descCampo'].setValue(settingCustomSchema.screen_label);
+    this.customSchemasForm.controls['tipoCampo'].setValue(settingCustomSchema.type);
+    this.customSchemasForm.controls['mascaraDados'].setValue(settingCustomSchema.custom_format);
+  }
+
+  openModal(){
+    this.customSchemasForm.controls['codCampo'].setValue('');
+    this.customSchemasForm.controls['nomeCampo'].setValue('');
+    this.customSchemasForm.controls['descCampo'].setValue('');
+    this.customSchemasForm.controls['tipoCampo'].setValue('');
+    this.customSchemasForm.controls['mascaraDados'].setValue('');
+    this.showModal = !this.showModal;
+  }
+
   getCustomSchemaSetting(id:number){
-    return this.settingsCustomSchemasService.getCustomSchemaSetting(id)
-    .subscribe(settingCustomSchema => this.settingCustomSchema = settingCustomSchema);
-    // console.log(this.settingCustomSchema);
-      
+    this.customSchemaId = id;
+    this.settingsCustomSchemasService.getCustomSchemaSetting(id)
+    .subscribe(settingCustomSchema => this.setValueForm(settingCustomSchema));
+    this.showModal = !this.showModal;
+    this.editMode = true;
+    
+    
+
+
+
   }
 }

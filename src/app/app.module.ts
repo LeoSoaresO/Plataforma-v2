@@ -37,7 +37,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
-import { ModalDelete } from './components/page.config.components/config-campos-customizados/modal/modalDelete';
+import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
 
 
 @NgModule({
@@ -58,7 +58,7 @@ import { ModalDelete } from './components/page.config.components/config-campos-c
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
     ConfigDisciplinesurmasComponent,
-    ModalDelete
+    ConfigLtiComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,8 +82,5 @@ import { ModalDelete } from './components/page.config.components/config-campos-c
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-		ModalDelete
-	],
 })
 export class AppModule { }
