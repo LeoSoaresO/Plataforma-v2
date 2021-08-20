@@ -252,44 +252,76 @@
     "customer_support_email": "ds@inicie.digital"
   },
   "actions": [
-      {
-          "name": "Criar",
-          "external_id": "create"
-      },
-      {
-          "name": "Visualizar",
-          "external_id": "read"
-      },
-      {
-          "name": "Editar",
-          "external_id": "update"
-      },
-      {
-          "name": "Remover",
-          "external_id": "delete"
+    {
+      "name": "Criar",
+      "external_id": "create"
+    },
+    {
+      "name": "Visualizar",
+      "external_id": "read"
+    },
+    {
+      "name": "Editar",
+      "external_id": "update"
+    },
+    {
+      "name": "Remover",
+      "external_id": "delete"
+    }
+  ],
+  "permission_roles": [
+    {
+      "role": "super-admin",
+      "permissions": {
+        "create": true,
+        "delete": false
       }
-    ],
-    "permission_roles": [
-      {
-          "role": "super-admin",
-          "permissions": {
-              "create": true,
-              "delete": false
-          }
-      },
-      {
-          "role": "admin",
-          "permissions": {
-              "create": true,
-              "delete": false
-          }
-      },
-      {
-          "role": "teacher",
-          "permissions": {
-              "create": true,
-              "delete": false
-          }
+    },
+    {
+      "role": "admin",
+      "permissions": {
+        "create": true,
+        "delete": false
       }
+    },
+    {
+      "role": "teacher",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 1,
+      "role": "Leo",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 2,
+      "role": "teste",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 3,
+      "role": "teste",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 4,
+      "role": "123",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    }
   ]
 }

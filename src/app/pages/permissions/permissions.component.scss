@@ -23,3 +23,8 @@
   ::-webkit-scrollbar-thumb:hover {
     background: darken($color: $blue, $amount: 5%); 
   }
+
+  .add {
+    top: 21%;
+    background-color: $orange;
+}

@@ -34,4 +34,15 @@ export class PermissionsService {
       return response
     })
   }
+
+  postRoles(params: any){
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    return this.http.post(`${API_Routes.URL}/permission_roles`,params , { headers: headers })
+    .toPromise()
+    .then((response: any) =>{
+      return response
+    })
+  }
 }
