@@ -354,6 +354,14 @@
         "create": true,
         "delete": false
       }
+    },
+    {
+      "id": 9,
+      "role": "test",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
     }
   ]
 }
