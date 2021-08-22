@@ -48,6 +48,8 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
       nomeCampo: ['', [Validators.required]],
       descCampo: ['', [Validators.required]],
       mascaraDados: ['', [Validators.required]],
+      mandatory: ['', [Validators.required]],
+      unique: ['', [Validators.required]],      
       tipoCampo: ['']
     })
   }
@@ -71,12 +73,14 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
     let descCampo = this.customSchemasForm.controls.descCampo.value
     let tipoCampo = this.customSchemasForm.controls.tipoCampo.value
     let mascaraDados = this.customSchemasForm.controls.mascaraDados.value
+    let mandatory = this.customSchemasForm.controls.mandatory.value == false ? 0 : 1; 
+    let unique = this.customSchemasForm.controls.unique.value == false ? 0 : 1;    
     const params = {
        "cs_code": codCampo,
        "screen_name": nomeCampo,
        "screen_label": descCampo,
-       "mandatory": 0,
-       "unique": 1,
+       "mandatory": mandatory,
+       "unique": unique,
        "default": null,
        "type": tipoCampo, // string, number, date, regex, list, boolean
        "custom_format": mascaraDados,
@@ -119,6 +123,18 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
     this.customSchemasForm.controls['descCampo'].setValue(settingCustomSchema.screen_label);
     this.customSchemasForm.controls['tipoCampo'].setValue(settingCustomSchema.type);
     this.customSchemasForm.controls['mascaraDados'].setValue(settingCustomSchema.custom_format);
+    if (settingCustomSchema.mandatory == 1) {
+      
+      this.customSchemasForm.controls['mandatory'].setValue(true)  
+    }else{
+      this.customSchemasForm.controls['mandatory'].setValue(false) 
+    }
+
+    if (settingCustomSchema.unique == 1) {
+      this.customSchemasForm.controls['unique'].setValue(true)  
+    }else{
+      this.customSchemasForm.controls['unique'].setValue(false) 
+    }     
   }
 
   openModal(){
@@ -127,6 +143,8 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
     this.customSchemasForm.controls['descCampo'].setValue('');
     this.customSchemasForm.controls['tipoCampo'].setValue('');
     this.customSchemasForm.controls['mascaraDados'].setValue('');
+    this.customSchemasForm.controls['mandatory'].setValue(false);
+    this.customSchemasForm.controls['unique'].setValue(false);    
     this.showModal = !this.showModal;
   }
 
@@ -136,10 +154,10 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
     .subscribe(settingCustomSchema => this.setValueForm(settingCustomSchema));
     this.showModal = !this.showModal;
     this.editMode = true;
-    
-    
+  }
 
-
-
+    closeModal(){
+    this.showModal = false;
+    this.editMode = false;
   }
 }

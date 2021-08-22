@@ -76,9 +76,10 @@ export class ConfigLtiComponent implements OnInit {
     let consumer_key = this.ltiForm.controls.consumer_key.value
     let secret = this.ltiForm.controls.secret.value
     let custom_parameters = this.ltiForm.controls.custom_parameters.value
-    let container = this.ltiForm.controls.container.value
-    let share_name = this.ltiForm.controls.share_name.value
-    let share_email = this.ltiForm.controls.share_email.value
+    let tipoContainer = this.ltiForm.controls.tipoContainer.value
+    let share_name = this.ltiForm.controls.share_name.value == false ? 0 : 1; 
+    let share_email = this.ltiForm.controls.share_email.value == false ? 0 : 1;
+
     const params = {
       "name": name,
       "description": description,
@@ -86,7 +87,7 @@ export class ConfigLtiComponent implements OnInit {
       "consumer_key": consumer_key,
       "secret": secret,
       "custom_parameters": custom_parameters,
-      "container": container,
+      "container": tipoContainer,
       "share_name": share_name,
       "share_email": share_email
     }
@@ -121,12 +122,28 @@ export class ConfigLtiComponent implements OnInit {
   }
 
   setValueForm(settingsLti: any){
+    console.log(settingsLti);
+    console.log(this.ltiForm.controls);
+    
+    
     this.ltiForm.controls['name'].setValue(settingsLti.name);
     this.ltiForm.controls['url'].setValue(settingsLti.url);
     this.ltiForm.controls['description'].setValue(settingsLti.description);
     this.ltiForm.controls['consumer_key'].setValue(settingsLti.consumer_key);
     this.ltiForm.controls['secret'].setValue(settingsLti.secret);
     this.ltiForm.controls['tipoContainer'].setValue(settingsLti.container);
+    if (settingsLti.share_name == 1) {
+      
+      this.ltiForm.controls['share_name'].setValue(true)  
+    }else{
+      this.ltiForm.controls['share_name'].setValue(false) 
+    }
+
+    if (settingsLti.share_email == 1) {
+      this.ltiForm.controls['share_email'].setValue(true)  
+    }else{
+      this.ltiForm.controls['share_email'].setValue(false) 
+    }
   }
 
   openModal(){
@@ -136,6 +153,8 @@ export class ConfigLtiComponent implements OnInit {
     this.ltiForm.controls['consumer_key'].setValue('');
     this.ltiForm.controls['secret'].setValue('');
     this.ltiForm.controls['tipoContainer'].setValue('');
+    this.ltiForm.controls['share_name'].setValue(false);
+    this.ltiForm.controls['share_email'].setValue(false);    
     this.showModal = !this.showModal;
   }
 
@@ -145,6 +164,11 @@ export class ConfigLtiComponent implements OnInit {
     .subscribe(settingLti => this.setValueForm(settingLti));
     this.showModal = !this.showModal;
     this.editMode = true;
+  }
+
+  closeModal(){
+    this.showModal = false;
+    this.editMode = false;
   }
 
 }

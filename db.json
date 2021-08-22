@@ -267,72 +267,62 @@
   "settingsCustomSchemas": [
     {
       "cs_code": "1",
-      "screen_name": "qweqwe 2",
-      "screen_label": "qweqwe 2",
-      "mandatory": 0,
-      "unique": 1,
-      "default": null,
-      "type": "date",
-      "custom_format": "qweqwe",
-      "id": 1
-    },
-    {
-      "cs_code": "2",
-      "screen_name": "weqwe",
-      "screen_label": "dasd",
+      "screen_name": "Campo 1",
+      "screen_label": "Campo 2",
       "mandatory": 0,
       "unique": 1,
       "default": null,
       "type": "string",
-      "custom_format": "qweqwe",
+      "custom_format": "Máscara 0000",
+      "id": 1
+    },
+    {
+      "cs_code": "teste checkbox",
+      "screen_name": "weqt",
+      "screen_label": "wqtwqt",
+      "mandatory": 1,
+      "unique": 0,
+      "default": null,
+      "type": "string",
+      "custom_format": "qwrqwr",
       "id": 2
     },
     {
-      "cs_code": "3",
-      "screen_name": "qweqwe",
-      "screen_label": "sdawqd",
+      "cs_code": "3r",
+      "screen_name": "wqrwr",
+      "screen_label": "qwr",
       "mandatory": 0,
       "unique": 1,
       "default": null,
-      "type": "regex",
-      "custom_format": "qweqw",
+      "type": "string",
+      "custom_format": "wrwr",
       "id": 3
-    },
-    {
-      "cs_code": "1",
-      "screen_name": "qweqwe 2",
-      "screen_label": "qweqwe",
-      "mandatory": 0,
-      "unique": 1,
-      "default": null,
-      "type": "date",
-      "custom_format": "qweqwe",
-      "id": 4
-    },
-    {
-      "cs_code": "1",
-      "screen_name": "qweqwe 2",
-      "screen_label": "qweqwe",
-      "mandatory": 0,
-      "unique": 1,
-      "default": null,
-      "type": "date",
-      "custom_format": "qweqwe",
-      "id": 5
     }
   ],
   "settingsLti": [
     {
-      "name": "Biblioteca A 3",
-      "description": null,
-      "url": "https://bibliotecaa.grupoa.com.br/lti/launch.php",
-      "consumer_key": "20160708-IEPPC",
-      "secret": "63bf300d4baac1b807371c7d084fbb67",
+      "name": "teste 6",
+      "description": "qwrqw",
+      "url": "qwr",
+      "consumer_key": "rqw",
+      "secret": "fwq",
       "custom_parameters": "",
-      "container": "",
-      "share_name": "",
-      "share_email": "",
-      "id": 1
+      "container": "iframe",
+      "share_name": 1,
+      "share_email": 0,
+      "id": 7
+    },
+    {
+      "name": "teste 7 ",
+      "description": "twet",
+      "url": "wetwe",
+      "consumer_key": "ewt",
+      "secret": "wet",
+      "custom_parameters": "",
+      "container": "window",
+      "share_name": 1,
+      "share_email": 0,
+      "id": 8
     }
   ]
 }

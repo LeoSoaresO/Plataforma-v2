@@ -46,7 +46,7 @@
           <h3 class="text-xl font-bold text-customBlue-default">
             Adicionar campo customizado
           </h3>
-          <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="showModal = !showModal">
+          <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="closeModal()">
             <span class="bg-transparent h-6 w-6 text-2xl block outline-none focus:outline-none">
               <fa-icon [icon]="faTimes"></fa-icon>
             </span>
@@ -82,11 +82,11 @@
                     </div>
                     <div class="flex justify-between mt-2">
                         <label>Preenchimento obrigatório</label>
-                        <input [checked]="settingsCustomSchemas.mandatory" (change)="settingsCustomSchemas.mandatory = !settingsCustomSchemas.mandatory" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                        <input formControlName="mandatory" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
                     </div>
                     <div class="flex justify-between mt-2">
                         <label>Valor único</label>
-                        <input [checked]="settingsCustomSchemas.unique" (change)="settingsCustomSchemas.unique = !settingsCustomSchemas.unique" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                        <input  formControlName="unique" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
                     </div>                    
                 </div>
 
@@ -97,7 +97,7 @@
           <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postCustomSchemasSettings()" (click)="showModal = !showModal">
             Salvar
           </button>
-          <button class="text-customGray-textGray background-transparent font-semibold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="showModal = !showModal">
+          <button class="text-customGray-textGray background-transparent font-semibold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="closeModal()">
             Fechar
           </button>
         </div>
