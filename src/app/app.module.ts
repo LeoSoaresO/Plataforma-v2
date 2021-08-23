@@ -40,6 +40,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
 import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
 import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
+import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { ConfigTermsComponent } from './components/page.config.components/config
     ConfigDisciplinesurmasComponent,
     ConfigLtiComponent,
     ConfigTermsComponent,
+    ConfigTimetablesComponent,
   ],
   imports: [
     BrowserModule,

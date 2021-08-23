@@ -316,5 +316,9 @@
   "settingsTerms": {
     "terms_mandatory": false,
     "terms": "<h1>asdasdasd sad as da</h1><p>asda sd d d a a d d a ad d a</p>"
+  },
+  "settingsTimatables": {
+    "timetable_enabled": false,
+    "frequency_status_enabled": true
   }
 }

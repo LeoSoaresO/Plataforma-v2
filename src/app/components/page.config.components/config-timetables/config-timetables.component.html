@@ -1,0 +1,24 @@
+<section class="px-8">
+    <h1 class="text-customBlue-default font-bold text-xl">Grade Horárias</h1>
+    <h2 class="font-bold text-lg my-4" style="color: #484B4D">Configurações</h2>
+    
+    <form [formGroup]="timetablesForm">
+        <div class="flex justify-between my-2">
+            <label>Tornar mandatório o aceite dos termos de uso da instituiçāo</label>
+            <input  formControlName="timetable_enabled" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+        </div>      
+        <div class="flex justify-between my-2">
+            <label>Tornar mandatório o aceite dos termos de uso da instituiçāo</label>
+            <input  formControlName="frequency_status_enabled" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+        </div>               
+    </form>
+
+    <div class="flex row justify-end my-8">
+        <div class="">
+            <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" style="color: #FFFFFF;background-color: #233674" (click)="saveTimetables()">Salvar</button>
+        </div>
+    </div>  
+
+
+</section>
+

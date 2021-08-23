@@ -3,7 +3,7 @@
 <section class="pl-48 px-12 py-8">
     <h1 class="text-customBlue-default font-bold text-3xl">Configurações</h1>
         <div class="flex md:flex-row sm:flex-col gap-12">
-            <div class="w-1/3 my-8 py-8 px-6 shadow-card round-card" style="max-width: 380px; max-height: 510px;">
+            <div class="w-1/3 my-8 py-8 px-6 shadow-card round-card" style="max-width: 380px; max-height: 560px;">
                 <a (click)='configGerais()'>
                     <div class="text-left px-10 py-2 bg-card rounded-lg" [ngClass]="{'bg-card': selected === 'item1'}">
                         <h2 class="font-bold my-2">Configrações gerais</h2>
@@ -23,24 +23,29 @@
                     <div class="text-left px-10 py-2 rounded-lg " [ngClass]="{'bg-card': selected === 'item4'}" >
                         <h2 class="font-bold my-2">Provedores LTI</h2>
                     </div>
-                </a>                
+                </a> 
+                <a (click)='configTimetables()'>
+                    <div class="text-left px-10 py-2 rounded-lg " [ngClass]="{'bg-card': selected === 'item5'}" >
+                        <h2 class="font-bold my-2">Grade Horárias</h2>
+                    </div>
+                </a>                                
                 <a (click)='configCamposCustom()'>
-                    <div class="text-left px-10 py-2 rounded-lg" [ngClass]="{'bg-card': selected === 'item5'}" >
+                    <div class="text-left px-10 py-2 rounded-lg" [ngClass]="{'bg-card': selected === 'item6'}" >
                         <h2 class="font-bold my-2">Campos customizados</h2>
                     </div>
                 </a>
                 <a (click)='configDisciplines()'>
-                    <div class="text-left px-10 py-2 rounded-lg" [ngClass]="{'bg-card': selected === 'item6'}" >
+                    <div class="text-left px-10 py-2 rounded-lg" [ngClass]="{'bg-card': selected === 'item7'}" >
                         <h2 class="font-bold my-2">Turmas</h2>
                     </div>
                 </a>                
                 <a (click)='configIntegracoes()'>
-                    <div class="text-left px-10 py-2 rounded-lg" [ngClass]="{'bg-card': selected === 'item7'}" >
+                    <div class="text-left px-10 py-2 rounded-lg" [ngClass]="{'bg-card': selected === 'item8'}" >
                         <h2 class="font-bold my-2">Integrações</h2>
                     </div>
                 </a>
                 <a (click)='configLogin()'>
-                    <div class="text-left px-10 py-2 rounded-lg" [ngClass]="{'bg-card': selected === 'item8'}" >
+                    <div class="text-left px-10 py-2 rounded-lg" [ngClass]="{'bg-card': selected === 'item9'}" >
                         <h2 class="font-bold my-2">Login</h2>
                     </div>
                 </a>
