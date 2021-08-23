@@ -18,6 +18,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { NgxEditorModule } from 'ngx-editor';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -38,6 +39,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
 import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
+import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 
 
 @NgModule({
@@ -59,6 +61,7 @@ import { ConfigLtiComponent } from './components/page.config.components/config-l
     ConfigLoginComponent,
     ConfigDisciplinesurmasComponent,
     ConfigLtiComponent,
+    ConfigTermsComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import { ConfigLtiComponent } from './components/page.config.components/config-l
     DialogModule,
     ButtonModule,
     ConfirmDialogModule,
+    NgxEditorModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })

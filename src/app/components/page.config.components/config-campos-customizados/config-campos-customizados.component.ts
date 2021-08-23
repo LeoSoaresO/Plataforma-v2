@@ -90,9 +90,15 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
       this.editMode = false;
       this.settingsCustomSchemasService.updatetCustomSchemaSetting(this.customSchemaId, params)
       .subscribe(() => console.log(this.settingsCustomSchemas));
+      setTimeout(()=>{
+          this.getCustomSchemasSettings();
+      },500);        
     }else{
       this.settingsCustomSchemasService.postCustomSchemasSettings(params)
       .subscribe(() => console.log(this.settingsCustomSchemas));
+      setTimeout(()=>{
+          this.getCustomSchemasSettings();
+      },500);   
     }
 
   }
@@ -103,6 +109,9 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
           accept: () => {
             this.settingsCustomSchemasService.delCustomSchemasSettings(id)
             .subscribe(() => console.log(this.settingsCustomSchemas));
+            setTimeout(()=>{
+              this.getCustomSchemasSettings();
+            },500);   
           },
           reject: () => {
 
@@ -110,13 +119,7 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
       });
   }
 
-  delCustomSchemasSettings(id: number){
-    this.settingsCustomSchemasService.delCustomSchemasSettings(id)
-    .subscribe(() => console.log(this.settingsCustomSchemas));
-  }
-
   setValueForm(settingCustomSchema: any){
-    console.log(this.customSchemasForm);
     
     this.customSchemasForm.controls['codCampo'].setValue(settingCustomSchema.cs_code);
     this.customSchemasForm.controls['nomeCampo'].setValue(settingCustomSchema.screen_name);

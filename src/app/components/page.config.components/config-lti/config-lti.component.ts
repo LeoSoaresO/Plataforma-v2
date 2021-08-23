@@ -96,9 +96,16 @@ export class ConfigLtiComponent implements OnInit {
       this.editMode = false;
       this.settingsLtiService.updatetLtiSetting(this.ltiId, params)
       .subscribe(() => console.log(this.settingsLti));
+      setTimeout(()=>{
+          this.getLtiSettings() 
+      },500);      
+      
     }else{
       this.settingsLtiService.postLtiSettings(params)
       .subscribe(() => console.log(this.settingsLti));
+      setTimeout(()=>{
+          this.getLtiSettings() 
+      },500);  
     }
 
   }
@@ -109,6 +116,10 @@ export class ConfigLtiComponent implements OnInit {
           accept: () => {
             this.settingsLtiService.delLtiSettings(id)
             .subscribe(() => console.log(this.settingsLti));
+            setTimeout(()=>{
+                this.getLtiSettings() 
+            },500);  
+         
           },
           reject: () => {
 
@@ -116,10 +127,6 @@ export class ConfigLtiComponent implements OnInit {
       });
   }
 
-  delLtiSettings(id: number){
-    this.settingsLtiService.delLtiSettings(id)
-    .subscribe(() => console.log(this.settingsLti));
-  }
 
   setValueForm(settingsLti: any){
     console.log(settingsLti);

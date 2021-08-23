@@ -14,6 +14,7 @@ import { ConfigIntegracoesComponent } from './components/page.config.components/
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
 import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
 import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
+import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
     children: [
       {path:'gerais', component: ConfigGeraisComponent },
       {path:'avancadas', component: ConfigAvancadasComponent },
+      {path:'terms', component: ConfigTermsComponent },
       {path:'lti', component: ConfigLtiComponent },
       {path:'campos-customizados', component: ConfigCamposCustomizadosComponent },
       {path:'integracoes', component: ConfigIntegracoesComponent },

@@ -288,15 +288,15 @@
       "id": 2
     },
     {
-      "cs_code": "3r",
-      "screen_name": "wqrwr",
-      "screen_label": "qwr",
+      "cs_code": " teste e e  3",
+      "screen_name": "",
+      "screen_label": "",
       "mandatory": 0,
-      "unique": 1,
+      "unique": 0,
       "default": null,
-      "type": "string",
-      "custom_format": "wrwr",
-      "id": 3
+      "type": "",
+      "custom_format": "",
+      "id": 5
     }
   ],
   "settingsLti": [
@@ -311,18 +311,10 @@
       "share_name": 1,
       "share_email": 0,
       "id": 7
-    },
-    {
-      "name": "teste 7 ",
-      "description": "twet",
-      "url": "wetwe",
-      "consumer_key": "ewt",
-      "secret": "wet",
-      "custom_parameters": "",
-      "container": "window",
-      "share_name": 1,
-      "share_email": 0,
-      "id": 8
     }
-  ]
+  ],
+  "settingsTerms": {
+    "terms_mandatory": false,
+    "terms": "<h1>asdasdasd sad as da</h1><p>asda sd d d a a d d a ad d a</p>"
+  }
 }
