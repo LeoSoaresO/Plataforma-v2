@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faImage } from '@fortawesome/pro-light-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+//Icons
+faImage = faImage
 
   constructor() { }
 
