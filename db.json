@@ -345,6 +345,8 @@
     "meet_external_validation_url": "",
     "meet_external_report_enabled": "0",
     "meet_external_report_url": ""
+  },
+  "settingsAuth": {
+    "redirectToDiscipline": 0
   }
-
 }

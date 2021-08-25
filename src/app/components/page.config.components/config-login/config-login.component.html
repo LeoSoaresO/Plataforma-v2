@@ -1,24 +1,14 @@
 <section class="mx-8">
     <h1 class="text-xl font-bold text-customBlue-default">Login</h1>
-    <div class="mt-4">
-        <div class="flex justify-between mt-1">
-            <label>Redirecionar automaticamente listagem de disciplinas</label>
-            <input id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+    <form [formGroup]="settingsLoginForm">
+        <div class="mt-4">
+            <div class="flex justify-between mt-1">
+                <label>Redirecionar automaticamente listagem de disciplinas</label>
+                <input formControlName="redirectToDiscipline"  id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+            </div>
         </div>
-        <div class="flex justify-between mt-1">
-            <label>Habilitar validação de login</label>
-            <input id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-        </div>
-        <div class="flex justify-between mt-1">
-            <label>Habilitar validação de login com campo customizado</label>
-            <input id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-        </div>
-        <div class="flex justify-between mt-1">
-            <label>Habilitar seletor de usuários</label>
-            <input id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-        </div>
-    </div>
-    <div class="flex justify-end">
-        <button class="px-16 py-1.5 bg-customBlue-default text-customWhite-default font-semibold rounded-sm mt-6 hover">Editar</button>
+    </form>
+    <div class="flex justify-end mt-8">
+        <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" style="color: #FFFFFF;background-color: #233674" (click)="saveLogin()">Salvar</button>
     </div>
 </section>
