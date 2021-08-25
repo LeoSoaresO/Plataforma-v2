@@ -337,5 +337,14 @@
       "date": "1424124",
       "id": 6
     }
-  ]
+  ],
+  "settingsIntegration": {
+    "vlibras_enabled": "1",
+    "userway_enabled": "1",
+    "meet_external_validation_enabled": "0",
+    "meet_external_validation_url": "",
+    "meet_external_report_enabled": "0",
+    "meet_external_report_url": ""
+  }
+
 }
