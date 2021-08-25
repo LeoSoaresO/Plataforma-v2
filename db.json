@@ -320,5 +320,22 @@
   "settingsTimatables": {
     "timetable_enabled": false,
     "frequency_status_enabled": true
-  }
+  },
+  "timetablesExceptions": [
+    {
+      "name": "qwrqwr",
+      "date": "12312323",
+      "id": 4
+    },
+    {
+      "name": "adsadasd",
+      "date": "123123123213",
+      "id": 5
+    },
+    {
+      "name": "12312",
+      "date": "1424124",
+      "id": 6
+    }
+  ]
 }
