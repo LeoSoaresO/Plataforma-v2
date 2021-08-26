@@ -12,6 +12,7 @@ import { ConfigAvancadasComponent } from './components/page.config.components/co
 import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
+import { OrgUnitsComponent } from './pages/org-units/org-units.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'permissions', component: PermissionsComponent },
   { path: 'import', component: ImportComponent },
+  { path: 'ou', component: OrgUnitsComponent },
   { path: 'config', component: ConfigComponent ,
     children: [
       {path:'gerais', component: ConfigGeraisComponent },
