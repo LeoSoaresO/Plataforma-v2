@@ -33,6 +33,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { RolesComponent } from './components/page.permissions.components/roles/roles.component';
+import { CountdownComponent } from './components/countdown/countdown.component';
+import { CountdownModule } from 'ngx-countdown';
 
 
 @NgModule({
@@ -53,12 +55,14 @@ import { RolesComponent } from './components/page.permissions.components/roles/r
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
     RolesComponent,
+    CountdownComponent,
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     AppRoutingModule,
     HttpClientModule,
+    CountdownModule,
     BrowserAnimationsModule,
     NgxChartsModule,
     ReactiveFormsModule,

@@ -16,7 +16,7 @@ actions: any
 @Input() menuName: any;
 showModal: boolean;
 roleForm: FormGroup
-show = false
+show: boolean
 
 //icons
 faPlus = faPlus
