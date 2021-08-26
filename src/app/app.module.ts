@@ -35,6 +35,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { RolesComponent } from './components/page.permissions.components/roles/roles.component';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
+import { ResetComponent } from './components/reset/reset.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { CountdownModule } from 'ngx-countdown';
     ConfigLoginComponent,
     RolesComponent,
     CountdownComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,

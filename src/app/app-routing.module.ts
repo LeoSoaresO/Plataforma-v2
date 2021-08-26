@@ -12,10 +12,12 @@ import { ConfigAvancadasComponent } from './components/page.config.components/co
 import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
+import { ResetComponent } from './components/reset/reset.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'login', component: LoginComponent },
+  {path:'reset', component: ResetComponent },
+  { path: '', component: DashboardComponent },
   { path: 'users', component: UsersComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'permissions', component: PermissionsComponent },

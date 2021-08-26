@@ -1,0 +1,33 @@
+@import '../../../styles.scss';
+
+.btn-blue {
+    border: solid 1px blue;
+    border-color: lighten(blue, 20%);
+}
+
+.text-w {
+    color: #ffffff;
+}
+
+.border-gray {
+    border-color: lighten(gray, 25%);
+}
+
+.icons{
+    width: 10%;
+}
+.hover{
+    transition: 0.7s;
+    &:hover {
+        transition: 0.7s;
+        background-color: lighten(gray, 45%);
+    }
+}
+
+.c {
+    font-size: 16rem;
+}
+
+.h{
+    height: 100vh;
+}
