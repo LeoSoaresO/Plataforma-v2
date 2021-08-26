@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'permissions', component: PermissionsComponent },
   { path: 'import', component: ImportComponent },
-  { path: 'ou', component: OrgUnitsComponent },
+  { path: 'orgunits', component: OrgUnitsComponent },
   { path: 'config', component: ConfigComponent ,
     children: [
       {path:'gerais', component: ConfigGeraisComponent },
