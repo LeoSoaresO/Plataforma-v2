@@ -14,8 +14,6 @@ export class OrgUnitsComponent implements OnInit {
 
     data1: TreeNode[];
 
-    data2: TreeNode[];
-
     selectedNode: TreeNode;
 
     constructor(private messageService: MessageService) {}
@@ -92,7 +90,16 @@ export class OrgUnitsComponent implements OnInit {
     }
 
     onNodeSelect(event: any) {
+        console.log(event);
+        event.node.children.push({label:"other", styleClass:"AnotherOne"})
+        
         this.messageService.add({severity: 'success', summary: 'Node Selected', detail: event.node.label});
+    }
+
+    add(event:any){
+        console.log(event);
+        
+        // event.node.children.push({label:"other", styleClass:"AnotherOne"})
     }
 
 }

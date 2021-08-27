@@ -10,6 +10,9 @@
         <div class="node-content">
             <div>{{node.data.name}}</div>
         </div>
+        <div class="absolute top-2.5 -right-8">
+            <button type="button"(click)="add($event)">add</button>
+        </div>
     </ng-template>
     <ng-template let-node pTemplate="department">
         {{node.label}}
