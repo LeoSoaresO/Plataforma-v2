@@ -47,11 +47,10 @@ match
 
     if(password.value != confirm_password.value) {
       console.log('não foi');        
-      this.dontMatch == true
+      this.dontMatch = true
     } else {
       confirm_password.setCustomValidity('');
       console.log('foi'); 
-      this.dontMatch == false
     }
   }
 
