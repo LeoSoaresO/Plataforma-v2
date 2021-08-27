@@ -14,9 +14,45 @@ faImage = faImage
 faQuestionCircle = faQuestionCircle
 faUserHeadset = faUserHeadset
 
+//Variables
+dontMatch
+match
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  pass() {
+    var x = (<HTMLInputElement>document.getElementById('pass'));
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+  }
+
+  passConfirm() {
+    var x = (<HTMLInputElement>document.getElementById('confirm'));
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+  }
+
+  passMatch() {
+    var password = (<HTMLInputElement>document.getElementById('pass'));
+    var confirm_password = (<HTMLInputElement>document.getElementById('confirm'));
+
+    if(password.value != confirm_password.value) {
+      console.log('não foi');        
+      this.dontMatch == true
+    } else {
+      confirm_password.setCustomValidity('');
+      console.log('foi'); 
+      this.dontMatch == false
+    }
   }
 
 }
