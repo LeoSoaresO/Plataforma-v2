@@ -1,19 +1,17 @@
 <section class="px-8">
     <h1 class="text-customBlue-default font-bold text-xl">Campos customizados</h1>
-    <table class="table-fixed my-8 w-full">
+    <table class="my-8 w-full">
         <thead>
-            <tr class="text-center">
-                <th class="w-1/6 pb-4">Cod</th>
-                <th class="w-1/6 pb-4">Nome</th>
+            <tr class="">
+                <th class="text-center w-1/6 pb-4">Cod</th>
                 <th class="w-1/6 pb-4"></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of settingsCustomSchemas" class="text-center h-11">
-                <td>{{item.cs_code}}</td>
-                <td>{{item.screen_label}}</td>
+            <tr *ngFor="let item of settingsLti" class="h-11">
+                <td class="text-center">{{item.name}}</td>
                 <td class="flex justify-center gap-2">
-                    <button (click)='getCustomSchemaSetting(item.id)'>
+                    <button (click)='getLtiSetting(item.id)'>
                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="13" cy="13" r="13" fill="#D8E5F8"/>
                         <path d="M20.625 7.89352L17.7315 5L6.15741 16.5741L5 20.625L9.05093 19.4676L20.625 7.89352ZM15.4167 7.31481L18.3102 10.2083L15.4167 7.31481ZM6.15741 16.5741L9.05093 19.4676L6.15741 16.5741Z" stroke="#484B4D" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
@@ -54,39 +52,43 @@
         </div>
         <!--body-->
         <div class="relative p-6">
-            <form [formGroup]="customSchemasForm">
+            <form [formGroup]="ltiForm">
                 <div>
                     <div class="mt-2">
-                        <label class="my-1">Cod campo</label>
-                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="codCampo">
+                        <label class="my-1">Nome</label>
+                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="name">
                     </div>
                     <div class="mt-2">
-                        <label class="my-1">Nome do campo</label>
-                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md" required formControlName="nomeCampo">
+                        <label class="my-1">Lauch URL</label>
+                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md" required formControlName="url">
                     </div>
                     <div class="mt-2">
-                        <label class="my-1">Descrição do campo customizado</label>
-                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="descCampo">
+                        <label class="my-1">Descrição</label>
+                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="description">
                     </div>
                     <div class="mt-2">
-                        <label class="w-full my-1">Tipo de campo</label>
-                        <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" required formControlName="tipoCampo">
-                            <option *ngFor="let tipo of tipoCampo" [ngValue]="tipo">
+                        <label class="my-1">Costumer key</label>
+                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md" required formControlName="consumer_key">                    
+                    </div>
+                    <div class="mt-2">
+                        <label class="my-1">Senha</label>
+                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md" required formControlName="secret">                    
+                    </div>                    
+                    <div class="mt-2">
+                        <label class="w-full my-1">Modo de lauch</label>
+                        <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" required formControlName="tipoContainer">
+                            <option *ngFor="let tipo of tipoContainer" [ngValue]="tipo">
                                 {{tipo}}
                             </option>
                         </select> 
                     </div>
-                    <div class="mt-2">
-                        <label class="my-1">Máscara de dados</label>
-                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md" required formControlName="mascaraDados">                    
+                    <div class="flex justify-between mt-2">
+                        <label>Compartilhar nome</label>
+                        <input id="toogle" style="height:1.4rem;" formControlName="share_name" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
                     </div>
                     <div class="flex justify-between mt-2">
-                        <label>Preenchimento obrigatório</label>
-                        <input formControlName="mandatory" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-                    </div>
-                    <div class="flex justify-between mt-2">
-                        <label>Valor único</label>
-                        <input  formControlName="unique" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+                        <label>Compartilhar e-mail</label>
+                        <input formControlName="share_email" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
                     </div>                    
                 </div>
 
@@ -94,7 +96,7 @@
         </div>
         <!--footer-->
         <div class="flex items-center justify-end p-6 rounded-b">
-          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postCustomSchemasSettings()" (click)="showModal = !showModal">
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postLtiSettings()" (click)="showModal = !showModal">
             Salvar
           </button>
           <button class="text-customGray-textGray background-transparent font-semibold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="closeModal()">

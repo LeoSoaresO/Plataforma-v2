@@ -24,16 +24,32 @@ export class ConfigComponent implements OnInit {
     this.router.navigate(['avancadas'], {relativeTo:this.route});
     this.selected =  'item2';
   }
+  configTerms(){
+    this.router.navigate(['terms'], {relativeTo:this.route});
+    this.selected =  'item3';
+  }  
+  configLti(){
+    this.router.navigate(['lti'], {relativeTo:this.route});
+    this.selected =  'item4';
+  }  
+  configTimetables(){
+    this.router.navigate(['timetables'], {relativeTo:this.route});
+    this.selected =  'item5';
+  }    
   configCamposCustom(){
     this.router.navigate(['campos-customizados'], {relativeTo:this.route});
-    this.selected =  'item3';
+    this.selected =  'item6';
+  }
+  configDisciplines(){
+    this.router.navigate(['disciplines'], {relativeTo:this.route});
+    this.selected =  'item7';
   }
   configIntegracoes(){
     this.router.navigate(['integracoes'], {relativeTo:this.route});
-    this.selected =  'item4';
+    this.selected =  'item8';
   }
   configLogin(){
     this.router.navigate(['login'], {relativeTo:this.route});
-    this.selected =  'item5';
+    this.selected =  'item9';
   }
 }

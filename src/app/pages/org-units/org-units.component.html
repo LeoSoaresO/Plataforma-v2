@@ -10,7 +10,7 @@
                 <div>{{node.data.name}}</div>
             </div>
             <div class="absolute top-6 -right-4 add">
-                <button type="button" (click)="add($event, node)">
+                <button type="button" (click)="openModal()">
                     <svg class="add-svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12.5" cy="12.5" r="12.5" fill="#E8532C"/>
                     <path d="M13.5547 11.6328H16.375V13.6719H13.5547V16.8594H11.4062V13.6719H8.57812V11.6328H11.4062V8.57812H13.5547V11.6328Z" fill="#F4F4F4"/>
@@ -47,5 +47,59 @@
             {{node.label}}
         </ng-template>
     </p-organizationChart>
+
+    <!-- Modal add custom schema -->
+  <div *ngIf="showModal" class="transition ease-out duration-700 animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
+    <div class="my-6 ml-36 mx-auto absolute bg-customWhite-default rounded-lg" style="width: 35%;">
+      <!--content-->
+      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class="flex p-5 border-b border-solid border-customBlue-light rounded-t">
+          <h3 class="text-xl font-bold text-customBlue-default">
+            Criar nova unidade organizacional
+          </h3>
+          <p>
+            Crie uma nova unidade para os usuários que precisam de uma funçao específica               
+          </p>
+          <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="closeModal()">
+            <span class="bg-transparent h-6 w-6 text-2xl block outline-none focus:outline-none">
+              <fa-icon [icon]="faTimes"></fa-icon>
+            </span>
+          </button>
+        </div>
+        <!--body-->
+        <div class="relative p-6">
+            <form [formGroup]="orgUnitForm">
+                <div>
+                    <div class="mt-2">
+                        <label class="my-1">Nome da unidade organizacional</label>
+                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="nomeOrgUnit">
+                    </div>
+                    <div class="mt-2">
+                        <label class="w-full my-1">Tipo de campo</label>
+                        <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" required formControlName="tipoCampo">
+                            <option *ngFor="let tipo of tipoCampo" [ngValue]="tipo">
+                                {{tipo}}
+                            </option>
+                        </select> 
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <!--footer-->
+        <div class="flex items-center justify-end p-6 rounded-b">
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postOrgUnits()" (click)="showModal = !showModal">
+            Salvar
+          </button>
+          <button class="text-customGray-textGray background-transparent font-semibold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="closeModal()">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>       
 </section>
 

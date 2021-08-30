@@ -280,5 +280,103 @@
           "data": {"name":"Walter White", "avatar": "walter.jpg"}
         }
     ]
-  }]
+  }],
+  "settingsDiscipline": {
+    "enable_likes": true,
+    "force_likes": false,
+    "enable_reminders": false,
+    "force_reminders": false,
+    "default_ordering_per_discipline": false,
+    "default_ordering": true,
+    "enable_bank": true,
+    "quiz_allowed_ips": [
+      "192.168.0.1",
+      "10.1.1.1"
+    ]
+  },
+  "settingsCustomSchemas": [
+    {
+      "cs_code": "1",
+      "screen_name": "Campo 1",
+      "screen_label": "Campo 2",
+      "mandatory": 0,
+      "unique": 1,
+      "default": null,
+      "type": "string",
+      "custom_format": "Máscara 0000",
+      "id": 1
+    },
+    {
+      "cs_code": "teste checkbox",
+      "screen_name": "weqt",
+      "screen_label": "wqtwqt",
+      "mandatory": 1,
+      "unique": 0,
+      "default": null,
+      "type": "string",
+      "custom_format": "qwrqwr",
+      "id": 2
+    },
+    {
+      "cs_code": " teste e e  3",
+      "screen_name": "",
+      "screen_label": "",
+      "mandatory": 0,
+      "unique": 0,
+      "default": null,
+      "type": "",
+      "custom_format": "",
+      "id": 5
+    }
+  ],
+  "settingsLti": [
+    {
+      "name": "teste 6",
+      "description": "qwrqw",
+      "url": "qwr",
+      "consumer_key": "rqw",
+      "secret": "fwq",
+      "custom_parameters": "",
+      "container": "iframe",
+      "share_name": 1,
+      "share_email": 0,
+      "id": 7
+    }
+  ],
+  "settingsTerms": {
+    "terms_mandatory": false,
+    "terms": "<h1>asdasdasd sad as da</h1><p>asda sd d d a a d d a ad d a</p>"
+  },
+  "settingsTimatables": {
+    "timetable_enabled": false,
+    "frequency_status_enabled": true
+  },
+  "timetablesExceptions": [
+    {
+      "name": "qwrqwr",
+      "date": "12312323",
+      "id": 4
+    },
+    {
+      "name": "adsadasd",
+      "date": "123123123213",
+      "id": 5
+    },
+    {
+      "name": "12312",
+      "date": "1424124",
+      "id": 6
+    }
+  ],
+  "settingsIntegration": {
+    "vlibras_enabled": "1",
+    "userway_enabled": "1",
+    "meet_external_validation_enabled": "0",
+    "meet_external_validation_url": "",
+    "meet_external_report_enabled": "0",
+    "meet_external_report_url": ""
+  },
+  "settingsAuth": {
+    "redirectToDiscipline": 0
+  }
 }
