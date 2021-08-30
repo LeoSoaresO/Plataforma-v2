@@ -1,20 +1,51 @@
 <app-header></app-header>
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
+<section class="pl-48 px-12 py-8">
+    <h1 class="text-customBlue-default font-bold text-3xl">Configurações</h1>
+    <p-organizationChart [value]="data1" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event.node)"
+        styleClass="company">
+        <ng-template let-node pTemplate="person">
+            <div class="node-header p-corner-top">{{node.label}}</div>
+            <div class="node-content">
+                <div>{{node.data.name}}</div>
+            </div>
+            <div class="absolute top-6 -right-4 add">
+                <button type="button" (click)="add($event, node)">
+                    <svg class="add-svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12.5" cy="12.5" r="12.5" fill="#E8532C"/>
+                    <path d="M13.5547 11.6328H16.375V13.6719H13.5547V16.8594H11.4062V13.6719H8.57812V11.6328H11.4062V8.57812H13.5547V11.6328Z" fill="#F4F4F4"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="absolute top-8 -right-4 trash hidden">
+                <button type="button" (click)="trash($event, node)">
+                    <svg class="trash-svg" width="22" height="22" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="9.5" cy="9.99916" rx="9.5" ry="9.32143" fill="#E8532C"/>
+                    <g clip-path="url(#clip0)">
+                    <path d="M7.30794 9.0918C7.41292 9.0918 7.51361 9.13272 7.58784 9.20555C7.66207 9.27839 7.70378 9.37718 7.70378 9.48019V14.1409C7.70378 14.2439 7.66207 14.3427 7.58784 14.4155C7.51361 14.4884 7.41292 14.5293 7.30794 14.5293C7.20296 14.5293 7.10228 14.4884 7.02805 14.4155C6.95381 14.3427 6.91211 14.2439 6.91211 14.1409V9.48019C6.91211 9.37718 6.95381 9.27839 7.02805 9.20555C7.10228 9.13272 7.20296 9.0918 7.30794 9.0918ZM9.28711 9.0918C9.39209 9.0918 9.49277 9.13272 9.56701 9.20555C9.64124 9.27839 9.68294 9.37718 9.68294 9.48019V14.1409C9.68294 14.2439 9.64124 14.3427 9.56701 14.4155C9.49277 14.4884 9.39209 14.5293 9.28711 14.5293C9.18213 14.5293 9.08145 14.4884 9.00721 14.4155C8.93298 14.3427 8.89128 14.2439 8.89128 14.1409V9.48019C8.89128 9.37718 8.93298 9.27839 9.00721 9.20555C9.08145 9.13272 9.18213 9.0918 9.28711 9.0918ZM11.6621 9.48019C11.6621 9.37718 11.6204 9.27839 11.5462 9.20555C11.4719 9.13272 11.3713 9.0918 11.2663 9.0918C11.1613 9.0918 11.0606 9.13272 10.9864 9.20555C10.9121 9.27839 10.8704 9.37718 10.8704 9.48019V14.1409C10.8704 14.2439 10.9121 14.3427 10.9864 14.4155C11.0606 14.4884 11.1613 14.5293 11.2663 14.5293C11.3713 14.5293 11.4719 14.4884 11.5462 14.4155C11.6204 14.3427 11.6621 14.2439 11.6621 14.1409V9.48019Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4323 7.15067C14.4323 7.35669 14.3489 7.55426 14.2004 7.69994C14.052 7.84562 13.8506 7.92746 13.6406 7.92746H13.2448V14.9185C13.2448 15.3306 13.078 15.7257 12.781 16.0171C12.4841 16.3084 12.0814 16.4721 11.6615 16.4721H6.91146C6.49153 16.4721 6.08881 16.3084 5.79187 16.0171C5.49494 15.7257 5.32812 15.3306 5.32812 14.9185V7.92746H4.93229C4.72233 7.92746 4.52097 7.84562 4.3725 7.69994C4.22403 7.55426 4.14062 7.35669 4.14062 7.15067V6.37388C4.14062 6.16787 4.22403 5.97029 4.3725 5.82461C4.52097 5.67894 4.72233 5.5971 4.93229 5.5971H7.70312C7.70312 5.39108 7.78653 5.1935 7.935 5.04783C8.08347 4.90215 8.28483 4.82031 8.49479 4.82031H10.0781C10.2881 4.82031 10.4895 4.90215 10.6379 5.04783C10.7864 5.1935 10.8698 5.39108 10.8698 5.5971H13.6406C13.8506 5.5971 14.052 5.67894 14.2004 5.82461C14.3489 5.97029 14.4323 6.16787 14.4323 6.37388V7.15067ZM6.21321 7.92746L6.11979 7.97329V14.9185C6.11979 15.1245 6.2032 15.3221 6.35167 15.4678C6.50013 15.6135 6.7015 15.6953 6.91146 15.6953H11.6615C11.8714 15.6953 12.0728 15.6135 12.2213 15.4678C12.3697 15.3221 12.4531 15.1245 12.4531 14.9185V7.97329L12.3597 7.92746H6.21321ZM4.93229 7.15067V6.37388H13.6406V7.15067H4.93229Z" fill="white"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0">
+                    <rect width="12.6667" height="12.4286" fill="white" transform="translate(3.16602 4.82031)"/>
+                    </clipPath>
+                    </defs>
+                    </svg>
+                </button>
+            </div>
+            <div class="absolute top-14 -right-4 edit hidden">
+                <button type="button" (click)="edit($event, node)">
+                <svg class="edit-svg" width="22" height="22" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="9.5" cy="9.67885" rx="9.5" ry="9.32143" fill="#E8532C"/>
+                <path d="M12.2737 6.6598L13.282 7.64861L12.2737 6.6598ZM12.9221 5.7887L10.1959 8.46366C10.055 8.60169 9.95895 8.77753 9.91979 8.96904L9.66797 10.2059L10.9285 9.95832C11.1237 9.92002 11.3026 9.82613 11.4436 9.68788L14.1698 7.01291C14.2517 6.93253 14.3167 6.8371 14.361 6.73208C14.4053 6.62705 14.4282 6.51449 14.4282 6.40081C14.4282 6.28713 14.4053 6.17456 14.361 6.06954C14.3167 5.96451 14.2517 5.86908 14.1698 5.7887C14.0878 5.70832 13.9906 5.64455 13.8835 5.60105C13.7765 5.55755 13.6618 5.53516 13.5459 5.53516C13.4301 5.53516 13.3153 5.55755 13.2083 5.60105C13.1013 5.64455 13.004 5.70832 12.9221 5.7887V5.7887Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.4744 11.1395V12.5408C13.4744 12.7885 13.3741 13.0261 13.1955 13.2013C13.017 13.3765 12.7748 13.4749 12.5223 13.4749H7.28604C7.03354 13.4749 6.79138 13.3765 6.61283 13.2013C6.43429 13.0261 6.33398 12.7885 6.33398 12.5408V7.40291C6.33398 7.15515 6.43429 6.91755 6.61283 6.74236C6.79138 6.56717 7.03354 6.46875 7.28604 6.46875H8.71412" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </button>
+            </div>                        
+        </ng-template>
+        <ng-template let-node pTemplate="department">
+            {{node.label}}
+        </ng-template>
+    </p-organizationChart>
+</section>
 
-<h5>Advanced</h5>
-<p>Organization with advanced customization.</p>
-<p-organizationChart [value]="data1" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event)"
-    styleClass="company">
-    <ng-template let-node pTemplate="person">
-        <div class="node-header p-corner-top">{{node.label}}</div>
-        <div class="node-content">
-            <div>{{node.data.name}}</div>
-        </div>
-        <div class="absolute top-2.5 -right-8">
-            <button type="button"(click)="add($event)">add</button>
-        </div>
-    </ng-template>
-    <ng-template let-node pTemplate="department">
-        {{node.label}}
-    </ng-template>
-</p-organizationChart>

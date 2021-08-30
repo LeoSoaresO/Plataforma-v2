@@ -3,6 +3,21 @@
         padding: 0;
         border: 0 none;
     }
+    .p-person:hover{
+        .add{
+            top:0.5rem;
+            .add-svg{
+                transform: scale(0.9);
+            }
+        }
+
+        .trash{
+            display: flex;
+        }
+        .edit{
+            display: flex;
+        }
+    }
 
     .node-header, .node-content {
         padding: .5em .7rem;
