@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faImage, faUserHeadset } from '@fortawesome/pro-light-svg-icons';
 import { faQuestionCircle } from '@fortawesome/pro-solid-svg-icons';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,9 @@ faUserHeadset = faUserHeadset
 show = false
 cont = false
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +32,10 @@ cont = false
   next() {
     this.show = false;
     this.cont = true
+  }
+  
+  validateCod(){
+    this.router.navigate(['reset'])
   }
 
 }
