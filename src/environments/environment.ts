@@ -7,7 +7,7 @@ export const environment = {
 };
 
 export const API_Routes = {
-  URL: 'http://localhost:3000',
+  URL: 'http://bravo.localhost:8080/api',
   DOMAIN: 'localhost'
 }
 

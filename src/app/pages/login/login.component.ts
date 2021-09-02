@@ -4,7 +4,8 @@ import { faQuestionCircle } from '@fortawesome/pro-solid-svg-icons';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
-
+import { MsalService } from '@azure/msal-angular';
+import { AuthenticationResult } from '@azure/msal-browser';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,12 +23,16 @@ show = false
 cont = false
 loginForm: FormGroup;
 socialUser: SocialUser;
-isLoggedin: boolean = false;  
+isLoggedin: boolean = false; 
+title = 'msal-angular-tutorial';
+isIframe = false;
+loginDisplay = false;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder, 
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private msalservice: MsalService
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +56,24 @@ isLoggedin: boolean = false;
     this.socialAuthService.signOut();
   }
 
+  isLogged() : boolean{
+    return this.msalservice.instance.getActiveAccount() != null
+  }
+
+  loginWithMicrosoft(){
+    this.msalservice.loginPopup().subscribe((response: AuthenticationResult)=> {
+      this.msalservice.instance.setActiveAccount(response.account)
+      console.log(this.msalservice.instance.getActiveAccount()?.name)
+    });
+  }
+
+  logOutMicrosoft(){
+    this.msalservice.logout();
+    setTimeout(() =>{
+      this.router.navigate(['login'])
+   },3000);
+  }
+
   toggle(){
     this.show = false;
   }
@@ -62,6 +85,15 @@ isLoggedin: boolean = false;
   
   validateCod(){
     this.router.navigate(['reset'])
+  }
+
+  pass() {
+    var x = (<HTMLInputElement>document.getElementById('pass'));
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
   }
 
 }

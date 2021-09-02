@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MsalService } from '@azure/msal-angular';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -38,7 +39,16 @@ import { RolesComponent } from './components/page.permissions.components/roles/r
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
 import { ResetComponent } from './components/reset/reset.component';
+import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 
+export function MSALInstanceFactory(): IPublicClientApplication{
+  return new PublicClientApplication({
+    auth: {
+      clientId: '01e2af38-0675-478b-b255-eaa4a2704b97',
+      redirectUri: 'http://localhost:4200'
+    }
+  })
+}
 
 @NgModule({
   declarations: [
@@ -75,11 +85,14 @@ import { ResetComponent } from './components/reset/reset.component';
     NgxPaginationModule,
     ColorPickerModule,
     SocialLoginModule,
+    MsalModule,
     StoreModule.forRoot(reducers, {
       metaReducers
-    })
+    }),
   ],
   providers: [
+    MsalModule,
+    MsalService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -93,7 +106,11 @@ import { ResetComponent } from './components/reset/reset.component';
           }
         ]
       } as SocialAuthServiceConfig,
-    }    
+    },   
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory
+    },
   ],
   bootstrap: [AppComponent]
 })
