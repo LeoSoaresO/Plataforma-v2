@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -72,11 +74,27 @@ import { ResetComponent } from './components/reset/reset.component';
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ColorPickerModule,
+    SocialLoginModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '358550703280-e4r4qc3r193f6ud4trihkvtcg6dli38l.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

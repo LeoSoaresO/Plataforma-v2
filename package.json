@@ -27,6 +27,7 @@
     "@fortawesome/pro-solid-svg-icons": "^5.15.3",
     "@ngrx/store": "^12.2.0",
     "@swimlane/ngx-charts": "^18.0.1",
+    "angularx-social-login": "^4.0.1",
     "autoprefixer": "^10.3.1",
     "json-server": "^0.16.3",
     "ng2-search-filter": "^0.5.1",
