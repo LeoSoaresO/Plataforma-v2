@@ -48,6 +48,8 @@ loginDisplay = false;
     });
   }
 
+  //Login Functions
+
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
@@ -69,10 +71,9 @@ loginDisplay = false;
 
   logOutMicrosoft(){
     this.msalservice.logout();
-    setTimeout(() =>{
-      this.router.navigate(['login'])
-   },3000);
   }
+
+  //Other Functions
 
   toggle(){
     this.show = false;
