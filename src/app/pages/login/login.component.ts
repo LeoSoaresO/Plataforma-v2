@@ -22,6 +22,7 @@ faUserHeadset = faUserHeadset
 show = false
 cont = false
 loginForm: FormGroup;
+userForm: FormGroup;
 socialUser: SocialUser;
 isLoggedin: boolean = false; 
 title = 'msal-angular-tutorial';
@@ -36,6 +37,7 @@ loginDisplay = false;
   ) { }
 
   ngOnInit(): void {
+    this.form();
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -71,6 +73,13 @@ loginDisplay = false;
 
   logOutMicrosoft(){
     this.msalservice.logout();
+  }
+
+  form(){
+    this.userForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
 
   //Other Functions

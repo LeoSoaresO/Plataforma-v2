@@ -8,14 +8,14 @@
         <div class="w-full h-100 xl:my-auto">
             <img src="../../../assets/svg/logo.svg" alt="" class="w-4/5 h-2/8 mt-12 mb-8 mx-auto object-cover">  
 
-            <form class="mt-6" action="#" method="POST">
+            <form class="mt-6" action="#" method="POST" [formGroup]="userForm">
                 <div>
                     <label class="block text-gray-700 text-sm">E-mail</label>
-                    <input type="email" name="" id="" placeholder="Digite seu e-mail" class="w-full px-4 py-3 rounded-sm mt-2 border border-gray text-sm" autofocus autocomplete required>
+                    <input type="email" name="" id="" placeholder="Digite seu e-mail" class="w-full px-4 py-3 rounded-sm mt-2 border border-gray text-sm" autofocus autocomplete required formControlName="email">
                 </div>
 				<label class="block text-gray-700 text-sm mt-4">Senha</label>
                     <div class="flex">
-                        <input type="password" name="" id="pass" placeholder="Digite sua senha" class="w-full px-4 py-3 rounded-sm mt-2 border border-gray text-sm" autofocus autocomplete required>
+                        <input type="password" name="" id="pass" placeholder="Digite sua senha" class="w-full px-4 py-3 rounded-sm mt-2 border border-gray text-sm" autofocus autocomplete required formControlName="password">
                         <label class="checkbox-label">
                             <input type="checkbox" (click)="pass()">
                             <span class="checkbox-custom ">
@@ -29,7 +29,7 @@
             </form>
 
             <div class="flex flex-col">
-                <button type="submit" class="w-4/5 bg-customBlue-default text-w block rounded-sm font-semibold px-4 py-4 mt-6 mb-6 mx-auto hover:bg-blue-800 transition duration-700 ease-in-out">Entrar</button> 
+                <button type="submit" class="w-4/5 bg-customBlue-default text-w block rounded-sm font-semibold px-4 py-4 mt-6 mb-6 mx-auto hover:bg-blue-800 transition duration-700 ease-in-out" (click)="form()">Entrar</button> 
 
                 <button (click)="loginWithGoogle()" type="button" class="w-4/5 block bg-white text-gray-900 font-semibold rounded-sm px-4 py-3 border btn-blue shadow-lg mb-6 mx-auto hover">
                     <div class="flex items-center justify-center">
