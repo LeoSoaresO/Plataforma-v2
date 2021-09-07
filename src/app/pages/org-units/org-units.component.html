@@ -1,7 +1,7 @@
 <app-header></app-header>
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
 <section class="pl-48 px-12 py-8">
-    <h1 class="text-customBlue-default font-bold text-3xl">Configurações</h1>
+    <h1 class="text-customBlue-default font-bold text-3xl">Unidades oganizacionais</h1>
     <p-organizationChart [value]="data1" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event.node)"
         styleClass="company">
         <ng-template let-node pTemplate="person">
@@ -10,7 +10,7 @@
                 <div>{{node.data.name}}</div>
             </div>
             <div class="absolute top-6 -right-4 add">
-                <button type="button" (click)="openModal()">
+                <button type="button" (click)="openModal(node)">
                     <svg class="add-svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12.5" cy="12.5" r="12.5" fill="#E8532C"/>
                     <path d="M13.5547 11.6328H16.375V13.6719H13.5547V16.8594H11.4062V13.6719H8.57812V11.6328H11.4062V8.57812H13.5547V11.6328Z" fill="#F4F4F4"/>
@@ -54,18 +54,18 @@
       <!--content-->
       <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
         <!--header-->
-        <div class="flex p-5 border-b border-solid border-customBlue-light rounded-t">
-          <h3 class="text-xl font-bold text-customBlue-default">
-            Criar nova unidade organizacional
-          </h3>
-          <p>
-            Crie uma nova unidade para os usuários que precisam de uma funçao específica               
-          </p>
+        <div class="text-center p-5 border-b border-solid border-customBlue-light rounded-t">
           <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="closeModal()">
             <span class="bg-transparent h-6 w-6 text-2xl block outline-none focus:outline-none">
               <fa-icon [icon]="faTimes"></fa-icon>
             </span>
           </button>
+          <h3 class="text-xl font-bold text-customBlue-default">
+            Criar nova unidade organizacional
+          </h3>
+          <p class="mx-16 text-customBlue-default">
+            Crie uma nova unidade para os usuários que precisam de uma funçao específica               
+          </p>
         </div>
         <!--body-->
         <div class="relative p-6">

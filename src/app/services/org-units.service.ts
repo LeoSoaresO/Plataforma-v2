@@ -13,10 +13,12 @@ export class OrgUnitsService {
   ) { }
 
   getOrgUnits(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/orgUnits/`);
+    return this.http.get<any>(`${API_Routes.URL}/organizational-units/`);
   }
 
   postOrgUnits(params: any): Observable<any> {
-    return this.http.post(`${API_Routes.URL}/orgUnits/`, params)
+    return this.http.post(`${API_Routes.URL}/organizational-units/`, params)
   }
+
+
 }

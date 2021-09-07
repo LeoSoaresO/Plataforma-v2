@@ -251,36 +251,19 @@
     "global_screen_script": false,
     "customer_support_email": "ds@inicie.digital"
   },
-  "orgUnits": [{
-    "label": "CEO",
-    "type": "person",
-    "styleClass": "p-person",
-    "expanded": true,
-    "data": {"name":"Walter White", "avatar": "walter.jpg"},
-    "children": [
-        {
-          "label": "CEO",
-          "type": "person",
-          "styleClass": "p-person",
-          "expanded": true,
-          "data": {"name":"Walter White", "avatar": "walter.jpg"}
-        },
-        {
-          "label": "CEO",
-          "type": "person",
-          "styleClass": "p-person",
-          "expanded": true,
-          "data": {"name":"Walter White", "avatar": "walter.jpg"}
-        },
-        {
-          "label": "CEO",
-          "type": "person",
-          "styleClass": "p-person",
-          "expanded": true,
-          "data": {"name":"Walter White", "avatar": "walter.jpg"}
-        }
-    ]
-  }],
+  "orgUnits": [
+    {
+      "label": "CEO",
+      "type": "person",
+      "styleClass": "p-person",
+      "expanded": true,
+      "data": {
+        "name": "Walter White",
+        "avatar": "walter.jpg"
+      },
+      "id": 1
+    }
+  ],
   "settingsDiscipline": {
     "enable_likes": true,
     "force_likes": false,
