@@ -12,7 +12,10 @@ export class PermissionsService {
   ) { }
 
   getMenus(){
-    return this.http.get(`${API_Routes.URL}/permissionsMenu`)
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    return this.http.get(`${API_Routes.URL}/permissioning/group` ,{ headers: headers })
     .toPromise()
     .then((response: any) => {
       return response

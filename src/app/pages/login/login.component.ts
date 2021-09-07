@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-browser';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,16 +29,19 @@ isLoggedin: boolean = false;
 title = 'msal-angular-tutorial';
 isIframe = false;
 loginDisplay = false;
+options
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder, 
     private socialAuthService: SocialAuthService,
-    private msalservice: MsalService
+    private msalservice: MsalService,
+    private loginservice: LoginService
   ) { }
 
   ngOnInit(): void {
     this.form();
+    this.firstLoad();
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -98,12 +102,30 @@ loginDisplay = false;
   }
 
   pass() {
-    var x = (<HTMLInputElement>document.getElementById('pass'));
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
+      var x = (<HTMLInputElement>document.getElementById('pass'));
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
   }
+
+  //Requests 
+
+  async authUser(){
+    let e = this.userForm.controls.email.value
+    let p = this.userForm.controls.password.value
+    const params = {
+      "e": e,
+      "p": p,
+    }
+      console.log(params);     
+  }
+
+  async firstLoad(){
+    const response = await this.loginservice.firstLoad()
+    console.log(response); 
+    this.options = response   
   }
 
 }
