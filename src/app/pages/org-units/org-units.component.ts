@@ -21,7 +21,8 @@ export class OrgUnitsComponent implements OnInit {
     node: any;
     showModal: boolean;   
     orgUnitForm: FormGroup;
-    tipoCampo: any = ['date', 'string', 'number','regex','list','boolean'];
+    tipoCampo: any[];
+    editMode: boolean;
 
     // Icons
     faEllipisisV = faEllipsisV
@@ -43,6 +44,7 @@ export class OrgUnitsComponent implements OnInit {
     //Forms
     createOrgUnitForm(){
         this.orgUnitForm = this.FormBuilder.group({
+        externalId: ['', [Validators.required]],
         nomeOrgUnit: ['', [Validators.required]],
         tipoCampo: ['']
         })
@@ -50,29 +52,36 @@ export class OrgUnitsComponent implements OnInit {
 
     closeModal(){
         this.showModal = false;
+        this.editMode = false;
     }
 
     openModal(node: any){
+        this.getTypes();
         this.selectedNode = node;
+        this.orgUnitForm.controls['externalId'].setValue('');
         this.orgUnitForm.controls['nomeOrgUnit'].setValue('');
         this.orgUnitForm.controls['tipoCampo'].setValue('');
         this.showModal = !this.showModal;
-        console.log(this.selectedNode );
         
     }
 
     formatOrgunit(ou: any){
 
+        
+
         if (Array.isArray(ou)) {
+            console.log('ou', ou);
+            
             
             return ou.map(
                 (obj: any) => {
                     return {
-                        "id":obj.id,
+                        "external_id":obj.external_id,
                         "label": obj.name,
                         "type": "person",
                         "styleClass": "p-person",
                         "expanded": true,
+                        "types": obj?.types,
                         "data": {
                             "name": obj?.types[0].name,
                             "avatar": "walter.jpg"
@@ -82,7 +91,7 @@ export class OrgUnitsComponent implements OnInit {
                 }
             )        
         }else{
-            ou['id'] = ou.id;
+            ou['external_id'] = ou.external_id;
             ou['children'] = ou.children != null ? ou.children : [];
             ou['data'] = {"name": ou.types[0].name};
             ou['expanded'] = true;
@@ -91,7 +100,7 @@ export class OrgUnitsComponent implements OnInit {
             ou['type'] = "person";  
             
             delete ou['children_cache'];
-            delete ou['external_id'];
+            delete ou['id'];
             delete ou['parents'];
             delete ou['parents_cache'];
             delete ou['related_organizational_units'];
@@ -104,364 +113,14 @@ export class OrgUnitsComponent implements OnInit {
     }
 
     jsonReorder(orgUnits: any){
-        let test = [
-    {
-        "id": 1,
-        "name": "Douglas Group",
-        "external_id": "613688efab0ee",
-        "types": [
-            {
-                "id": 1,
-                "name": "Boyer, Dare and Hayes",
-                "label": "Maggio and Sons",
-                "model_type": "App\\Models\\OrganizationalUnit",
-                "external_id": "613688ef64957"
-            }
-        ],
-        "parents_cache": null,
-        "children_cache": [
-            "3"
-        ],
-        "parents": null,
-        "children": [
-		{
-                "id": 2,
-                "name": "Schroeder Ltd",
-                "external_id": "613688efafc5b",
-                "types": [
-                    {
-                        "id": 2,
-                        "name": "Morissette, Kuhlman and Luettgen",
-                        "label": "Ernser Ltd",
-                        "model_type": "App\\Models\\OrganizationalUnit",
-                        "external_id": "613688ef68d83"
-                    }
-                ],
-                "parents_cache": null,
-                "children_cache": [],
-                "parents": null,
-                "related_users": [],
-                "related_organizational_units": [],
-                "children": []
-            },
-            {
-                "id": 3,
-                "name": "Kemmer PLC",
-                "external_id": "613688efb2d87",
-                "types": [
-                    {
-                        "id": 1,
-                        "name": "Boyer, Dare and Hayes",
-                        "label": "Maggio and Sons",
-                        "model_type": "App\\Models\\OrganizationalUnit",
-                        "external_id": "613688ef64957"
-                    }
-                ],
-                "parents_cache": null,
-                "children_cache": [
-                    "2"
-                ],
-                "parents": null,
-                "children": [
-                    {
-                        "id": 2,
-                        "name": "Schroeder Ltd",
-                        "external_id": "613688efafc5b",
-                        "types": [
-                            {
-                                "id": 2,
-                                "name": "Morissette, Kuhlman and Luettgen",
-                                "label": "Ernser Ltd",
-                                "model_type": "App\\Models\\OrganizationalUnit",
-                                "external_id": "613688ef68d83"
-                            }
-                        ],
-                        "parents_cache": null,
-                        "children_cache": [
-                            "4"
-                        ],
-                        "parents": null,
-                        "children": [
-                            {
-                                "id": 4,
-                                "name": "Farrell, Mraz and Buckridge",
-                                "external_id": "613688efb64ba",
-                                "types": [
-                                    {
-                                        "id": 1,
-                                        "name": "Boyer, Dare and Hayes",
-                                        "label": "Maggio and Sons",
-                                        "model_type": "App\\Models\\OrganizationalUnit",
-                                        "external_id": "613688ef64957"
-                                    }
-                                ],
-                                "parents_cache": null,
-                                "children_cache": [
-                                    "5"
-                                ],
-                                "parents": null,
-                                "children": [
-                                    {
-                                        "id": 5,
-                                        "name": "Purdy LLC",
-                                        "external_id": "613688efb97fc",
-                                        "types": [
-                                            {
-                                                "id": 1,
-                                                "name": "Boyer, Dare and Hayes",
-                                                "label": "Maggio and Sons",
-                                                "model_type": "App\\Models\\OrganizationalUnit",
-                                                "external_id": "613688ef64957"
-                                            }
-                                        ],
-                                        "parents_cache": null,
-                                        "children_cache": null,
-                                        "parents": null,
-                                        "children": null,
-                                        "related_users": [],
-                                        "related_organizational_units": []
-                                    }
-                                ],
-                                "related_users": [],
-                                "related_organizational_units": []
-                            }
-                        ],
-                        "related_users": [],
-                        "related_organizational_units": []
-                    }
-                ],
-                "related_users": [],
-                "related_organizational_units": []
-            }
-        ],
-        "related_users": [],
-        "related_organizational_units": []
-    },
-    {
-        "id": 2,
-        "name": "Schroeder Ltd",
-        "external_id": "613688efafc5b",
-        "types": [
-            {
-                "id": 2,
-                "name": "Morissette, Kuhlman and Luettgen",
-                "label": "Ernser Ltd",
-                "model_type": "App\\Models\\OrganizationalUnit",
-                "external_id": "613688ef68d83"
-            }
-        ],
-        "parents_cache": null,
-        "children_cache": [
-            "4"
-        ],
-        "parents": null,
-        "children": [
-            {
-                "id": 4,
-                "name": "Farrell, Mraz and Buckridge",
-                "external_id": "613688efb64ba",
-                "types": [
-                    {
-                        "id": 1,
-                        "name": "Boyer, Dare and Hayes",
-                        "label": "Maggio and Sons",
-                        "model_type": "App\\Models\\OrganizationalUnit",
-                        "external_id": "613688ef64957"
-                    }
-                ],
-                "parents_cache": null,
-                "children_cache": [
-                    "5"
-                ],
-                "parents": null,
-                "children": [
-                    {
-                        "id": 5,
-                        "name": "Purdy LLC",
-                        "external_id": "613688efb97fc",
-                        "types": [
-                            {
-                                "id": 1,
-                                "name": "Boyer, Dare and Hayes",
-                                "label": "Maggio and Sons",
-                                "model_type": "App\\Models\\OrganizationalUnit",
-                                "external_id": "613688ef64957"
-                            }
-                        ],
-                        "parents_cache": null,
-                        "children_cache": null,
-                        "parents": null,
-                        "children": null,
-                        "related_users": [],
-                        "related_organizational_units": []
-                    }
-                ],
-                "related_users": [],
-                "related_organizational_units": []
-            }
-        ],
-        "related_users": [],
-        "related_organizational_units": []
-    },
-    {
-        "id": 3,
-        "name": "Kemmer PLC",
-        "external_id": "613688efb2d87",
-        "types": [
-            {
-                "id": 1,
-                "name": "Boyer, Dare and Hayes",
-                "label": "Maggio and Sons",
-                "model_type": "App\\Models\\OrganizationalUnit",
-                "external_id": "613688ef64957"
-            }
-        ],
-        "parents_cache": null,
-        "children_cache": [
-            "2"
-        ],
-        "parents": null,
-        "children": [
-            {
-                "id": 2,
-                "name": "Schroeder Ltd",
-                "external_id": "613688efafc5b",
-                "types": [
-                    {
-                        "id": 2,
-                        "name": "Morissette, Kuhlman and Luettgen",
-                        "label": "Ernser Ltd",
-                        "model_type": "App\\Models\\OrganizationalUnit",
-                        "external_id": "613688ef68d83"
-                    }
-                ],
-                "parents_cache": null,
-                "children_cache": [
-                    "4"
-                ],
-                "parents": null,
-                "children": [
-                    {
-                        "id": 4,
-                        "name": "Farrell, Mraz and Buckridge",
-                        "external_id": "613688efb64ba",
-                        "types": [
-                            {
-                                "id": 1,
-                                "name": "Boyer, Dare and Hayes",
-                                "label": "Maggio and Sons",
-                                "model_type": "App\\Models\\OrganizationalUnit",
-                                "external_id": "613688ef64957"
-                            }
-                        ],
-                        "parents_cache": null,
-                        "children_cache": [
-                            "5"
-                        ],
-                        "parents": null,
-                        "children": [
-                            {
-                                "id": 5,
-                                "name": "Purdy LLC",
-                                "external_id": "613688efb97fc",
-                                "types": [
-                                    {
-                                        "id": 1,
-                                        "name": "Boyer, Dare and Hayes",
-                                        "label": "Maggio and Sons",
-                                        "model_type": "App\\Models\\OrganizationalUnit",
-                                        "external_id": "613688ef64957"
-                                    }
-                                ],
-                                "parents_cache": null,
-                                "children_cache": null,
-                                "parents": null,
-                                "children": null,
-                                "related_users": [],
-                                "related_organizational_units": []
-                            }
-                        ],
-                        "related_users": [],
-                        "related_organizational_units": []
-                    }
-                ],
-                "related_users": [],
-                "related_organizational_units": []
-            }
-        ],
-        "related_users": [],
-        "related_organizational_units": []
-    },
-    {
-        "id": 4,
-        "name": "Farrell, Mraz and Buckridge",
-        "external_id": "613688efb64ba",
-        "types": [
-            {
-                "id": 1,
-                "name": "Boyer, Dare and Hayes",
-                "label": "Maggio and Sons",
-                "model_type": "App\\Models\\OrganizationalUnit",
-                "external_id": "613688ef64957"
-            }
-        ],
-        "parents_cache": null,
-        "children_cache": [
-            "5"
-        ],
-        "parents": null,
-        "children": [
-            {
-                "id": 5,
-                "name": "Purdy LLC",
-                "external_id": "613688efb97fc",
-                "types": [
-                    {
-                        "id": 1,
-                        "name": "Boyer, Dare and Hayes",
-                        "label": "Maggio and Sons",
-                        "model_type": "App\\Models\\OrganizationalUnit",
-                        "external_id": "613688ef64957"
-                    }
-                ],
-                "parents_cache": null,
-                "children_cache": null,
-                "parents": null,
-                "children": null,
-                "related_users": [],
-                "related_organizational_units": []
-            }
-        ],
-        "related_users": [],
-        "related_organizational_units": []
-    },
-    {
-        "id": 5,
-        "name": "Purdy LLC",
-        "external_id": "613688efb97fc",
-        "types": [
-            {
-                "id": 1,
-                "name": "Boyer, Dare and Hayes",
-                "label": "Maggio and Sons",
-                "model_type": "App\\Models\\OrganizationalUnit",
-                "external_id": "613688ef64957"
-            }
-        ],
-        "parents_cache": null,
-        "children_cache": null,
-        "parents": null,
-        "children": null,
-        "related_users": [],
-        "related_organizational_units": []
-    }
-]
 
         this.data1 = this.formatOrgunit(orgUnits);
+        
 
 
         for (let index = 0; index < this.data1.length; index++) {
             const element = this.data1[index];
+            console.log(element);
 
             this.childrenNames(element);
 
@@ -473,6 +132,7 @@ export class OrgUnitsComponent implements OnInit {
 
         for (let index = 0; index < orgUnit.children?.length; index++) {
             let oNode = orgUnit.children[index]; 
+
 
             oNode = this.formatOrgunit(oNode);
 
@@ -495,27 +155,40 @@ export class OrgUnitsComponent implements OnInit {
        
     }
 
+    getTypes(){
+        this.orgUnitsService.getTypes()
+        .subscribe( types => this.tipoCampo = types);        
+    }
+
     postOrgUnits(){
-        let children: any = {};
+        let external_id = this.orgUnitForm.controls.externalId.value
         let nomeOrgUnit = this.orgUnitForm.controls.nomeOrgUnit.value
         let tipoCampo = this.orgUnitForm.controls.tipoCampo.value
  
-        console.log(this.selectedNode);
         this.selectedNode = {
-            "external_id": "612f912e7b816",
+            "external_id": external_id,
             "name": nomeOrgUnit,
-            "parent_id": this.selectedNode.id,
-            "types": [1]
+            "parent_external_id": this.selectedNode.external_id,
+            "types": [tipoCampo]
         }
 
-        console.log('data1', this.selectedNode);
-        
+    if (this.editMode) {
+      this.editMode = false;
+      this.orgUnitsService.updateOrgUnits(this.selectedNode.external_id, this.selectedNode)
+      .subscribe(() => console.log(this.selectedNode));
+      setTimeout(()=>{
+          this.getOrgUnits();
+      },500);        
+    }else{
 
         this.orgUnitsService.postOrgUnits(this.selectedNode)
         .subscribe(() => console.log(this.selectedNode));
         setTimeout(()=>{
             this.getOrgUnits();
         },500);   
+    }        
+
+
     }    
 
     onNodeSelect(event: any) {
@@ -596,14 +269,14 @@ export class OrgUnitsComponent implements OnInit {
 
 
     edit(event:any,item: any){
-        // this.node = this.onNodeSelect(event);
+        this.editMode = true;
         console.log("item", item);
         event.stopPropagation();
-        console.log('check key', item.hasOwnProperty('children'));
-        let children: any = {};
-
-        item.data.name = "Novo nome";
-        item.label = "Novo Label"     
+        this.openModal(item);
+    
+        this.orgUnitForm.controls['externalId'].setValue(item.external_id);
+        this.orgUnitForm.controls['nomeOrgUnit'].setValue(item.label);
+        this.orgUnitForm.controls['tipoCampo'].setValue(item.types[0].id);
         
     }        
 

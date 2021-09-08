@@ -16,9 +16,16 @@ export class OrgUnitsService {
     return this.http.get<any>(`${API_Routes.URL}/organizational-units/`);
   }
 
+  getTypes(): Observable<any> {
+    return this.http.get<any>(`${API_Routes.URL}/types/`);
+  }  
+
   postOrgUnits(params: any): Observable<any> {
     return this.http.post(`${API_Routes.URL}/organizational-units/`, params)
   }
 
+  updateOrgUnits(id:number, params: any): Observable<any> {
+    return this.http.put(`${API_Routes.URL}/organizational-units/${id}`, params);
+  }   
 
 }

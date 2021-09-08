@@ -72,14 +72,18 @@
             <form [formGroup]="orgUnitForm">
                 <div>
                     <div class="mt-2">
-                        <label class="my-1">Nome da unidade organizacional</label>
-                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="nomeOrgUnit">
+                        <label class="my-1">Id externo</label>
+                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="externalId">
                     </div>
                     <div class="mt-2">
-                        <label class="w-full my-1">Tipo de campo</label>
+                        <label class="my-1">Nome da unidade organizacional</label>
+                        <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="nomeOrgUnit">
+                    </div>                    
+                    <div class="mt-2">
+                        <label class="w-full my-1">Nível da unidade organizacional</label>
                         <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" required formControlName="tipoCampo">
-                            <option *ngFor="let tipo of tipoCampo" [ngValue]="tipo">
-                                {{tipo}}
+                            <option *ngFor="let tipo of tipoCampo" [ngValue]="tipo.id">
+                                {{tipo.name}}
                             </option>
                         </select> 
                     </div>
