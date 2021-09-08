@@ -3,6 +3,7 @@ import {OrganizationChartModule} from 'primeng/organizationchart';
 import { OrgUnitsService } from 'src/app/services/org-units.service';
 import { faEllipsisV, faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PrimeNGConfig, ConfirmationService } from 'primeng/api';
 
 import {TreeNode} from 'primeng/api';
 import {MessageService} from 'primeng/api';
@@ -10,8 +11,8 @@ import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-org-units',
   templateUrl: './org-units.component.html',
-  providers: [MessageService],
-  styleUrls: ['./org-units.component.scss']
+  providers: [MessageService, ConfirmationService],
+  styleUrls: ['./org-units.component.scss'],
 })
 
 export class OrgUnitsComponent implements OnInit {
@@ -32,7 +33,9 @@ export class OrgUnitsComponent implements OnInit {
     constructor(
         private messageService: MessageService, 
         private orgUnitsService: OrgUnitsService,
-        private FormBuilder: FormBuilder
+        private FormBuilder: FormBuilder,
+        private confirmationService: ConfirmationService,
+        private primengConfig: PrimeNGConfig
     ) { }
 
     ngOnInit() {
@@ -165,28 +168,34 @@ export class OrgUnitsComponent implements OnInit {
         let nomeOrgUnit = this.orgUnitForm.controls.nomeOrgUnit.value
         let tipoCampo = this.orgUnitForm.controls.tipoCampo.value
  
-        this.selectedNode = {
-            "external_id": external_id,
-            "name": nomeOrgUnit,
-            "parent_external_id": this.selectedNode.external_id,
-            "types": [tipoCampo]
-        }
 
-    if (this.editMode) {
-      this.editMode = false;
-      this.orgUnitsService.updateOrgUnits(this.selectedNode.external_id, this.selectedNode)
-      .subscribe(() => console.log(this.selectedNode));
-      setTimeout(()=>{
-          this.getOrgUnits();
-      },500);        
-    }else{
 
-        this.orgUnitsService.postOrgUnits(this.selectedNode)
-        .subscribe(() => console.log(this.selectedNode));
-        setTimeout(()=>{
-            this.getOrgUnits();
-        },500);   
-    }        
+        if (this.editMode) {
+
+            this.selectedNode = {
+                "name": nomeOrgUnit,
+                "types": [tipoCampo]
+            }            
+            this.editMode = false;
+            this.orgUnitsService.updateOrgUnits(external_id, this.selectedNode)
+            .subscribe(() => console.log(this.selectedNode));
+            setTimeout(()=>{
+                this.getOrgUnits();
+            },500);        
+        }else{
+
+            this.selectedNode = {
+                "external_id": external_id,
+                "name": nomeOrgUnit,
+                "parent_external_id": this.selectedNode.external_id,
+                "types": [tipoCampo]
+            }            
+            this.orgUnitsService.postOrgUnits(this.selectedNode)
+            .subscribe(() => console.log(this.selectedNode));
+            setTimeout(()=>{
+                this.getOrgUnits();
+            },500);   
+        }        
 
 
     }    
@@ -197,73 +206,23 @@ export class OrgUnitsComponent implements OnInit {
         // this.messageService.add({severity: 'success', summary: 'Node Selected', detail: event.node.label});
     }
 
-    add(event:any,item: any){
-        // this.node = this.onNodeSelect(event);
-        console.log("item", item);
-        event.stopPropagation();
-        console.log('check key', item.hasOwnProperty('children'));
-        let children: any = {};
 
+    remove(event:any,item: any){
+        console.log(item);
         
-        if (item.hasOwnProperty('children')) {
-            
-            item.children.push({
-                data: {
-                    avatar: "",
-                    name: "teste"
-                },
-                label: "other",
-                styleClass: "p-person",
-                type: "person",
-                expanded: true
-            })
-        }else{
-            item['children'] = children = [{data: {
-                    avatar: "",
-                    name: "teste"
-                },
-                label: "other",
-                styleClass: "p-person",
-                type: "person",
-                expanded: true
-            }];
+      this.confirmationService.confirm({
+          header: 'Deseja excluir?',
+          accept: () => {
+            this.orgUnitsService.delOrgUnits(item.external_id)
+            .subscribe(() => console.log(item));
+            setTimeout(()=>{
+              this.getOrgUnits();
+            },500);   
+          },
+          reject: () => {
 
-        }        
-        
-    }
-
-    trash(event:any,item: any){
-        // this.node = this.onNodeSelect(event);
-        console.log("item", item);
-        event.stopPropagation();
-        console.log('check key', item.hasOwnProperty('children'));
-        let children: any = {};
-
-        
-        if (item.hasOwnProperty('children')) {
-            
-            item.children.push({
-                data: {
-                    avatar: "",
-                    name: "teste"
-                },
-                label: "other",
-                styleClass: "p-person",
-                type: "person",
-                expanded: true
-            })
-        }else{
-            item['children'] = children = [{data: {
-                    avatar: "",
-                    name: "teste"
-                },
-                label: "other",
-                styleClass: "p-person",
-                type: "person",
-                expanded: true
-            }];
-
-        }        
+          }
+      });  
         
     }   
 

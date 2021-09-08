@@ -28,4 +28,8 @@ export class OrgUnitsService {
     return this.http.put(`${API_Routes.URL}/organizational-units/${id}`, params);
   }   
 
+  delOrgUnits(id: number): Observable<any> {
+    return this.http.delete(`${API_Routes.URL}/organizational-units/${id}`)
+  }  
+
 }

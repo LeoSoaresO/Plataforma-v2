@@ -18,7 +18,7 @@
                 </button>
             </div>
             <div class="absolute top-8 -right-4 trash hidden">
-                <button type="button" (click)="trash($event, node)">
+                <button type="button" (click)="remove($event, node)">
                     <svg class="trash-svg" width="22" height="22" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <ellipse cx="9.5" cy="9.99916" rx="9.5" ry="9.32143" fill="#E8532C"/>
                     <g clip-path="url(#clip0)">
@@ -71,7 +71,7 @@
         <div class="relative p-6">
             <form [formGroup]="orgUnitForm">
                 <div>
-                    <div class="mt-2">
+                    <div class="mt-2" *ngIf="!editMode">
                         <label class="my-1">Id externo</label>
                         <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="externalId">
                     </div>
@@ -106,4 +106,10 @@
 
   <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>       
 </section>
+<p-confirmDialog #cd [style]="{width: '25vw'}" [transitionOptions]="'100ms'">
+    <ng-template pTemplate="footer" class="text-center">
+        <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>
 
