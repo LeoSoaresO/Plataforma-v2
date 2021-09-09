@@ -4,8 +4,8 @@
 <div *ngIf="!options" class="opacity-10 fixed inset-0 z-20" style="background-color: #000;"></div>
 
 <section class="flex flex-col md:flex-row items-center bg-customWhite-default">
-    <div class="bg-customGray-light hidden lg:block w-full md:w-1/2 xl:w-2/4 text-center">
-        <div class="flex items-stretch justify-center c">
+    <div class="bg-customGray-light hidden h lg:block w-full md:w-1/2 xl:w-2/4 text-center">
+        <div class="flex items-stretch justify-center h c">
             <fa-icon [icon]="faImage" class="self-center text-customGray-iconGray h" *ngIf="!options"></fa-icon>
             <img src="{{options.authentication.customization.login_background}}" *ngIf="options" class="h" alt="">
         </div>

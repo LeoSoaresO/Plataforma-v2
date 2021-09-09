@@ -116,10 +116,13 @@ options
     let e = this.userForm.controls.email.value
     let p = this.userForm.controls.password.value
     const params = {
-      "e": e,
-      "p": p,
+      "user": e,
+      "password": p,
     }
-      console.log(params);     
+      console.log(params);   
+      
+    const response = await this.loginservice.login(params)
+    console.log(response);    
   }
 
   async firstLoad(){
