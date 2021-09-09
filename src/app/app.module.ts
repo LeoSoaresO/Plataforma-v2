@@ -17,6 +17,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MsalService } from '@azure/msal-angular';
+import { CookieService } from 'ngx-cookie-service';
+
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -91,6 +93,7 @@ export function MSALInstanceFactory(): IPublicClientApplication{
     }),
   ],
   providers: [
+    CookieService,
     MsalModule,
     MsalService,
     {

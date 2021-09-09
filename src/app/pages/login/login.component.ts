@@ -7,6 +7,8 @@ import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-soc
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-browser';
 import { LoginService } from 'src/app/services/login.service';
+import { CookieService } from 'ngx-cookie-service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,13 +32,15 @@ title = 'msal-angular-tutorial';
 isIframe = false;
 loginDisplay = false;
 options
+test
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder, 
     private socialAuthService: SocialAuthService,
     private msalservice: MsalService,
-    private loginservice: LoginService
+    private loginservice: LoginService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +54,7 @@ options
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = (user != null);
-      console.log(this.socialUser);
+      this.setGoogleCredencials();     
     });
   }
 
@@ -87,6 +91,13 @@ options
   }
 
   //Other Functions
+
+  setGoogleCredencials(){
+    this.cookieService.set('user', JSON.stringify(this.socialUser));
+      this.test =  this.cookieService.get('user')
+      JSON.parse(this.test)
+      console.log(this.test) 
+  }
 
   toggle(){
     this.show = false;
