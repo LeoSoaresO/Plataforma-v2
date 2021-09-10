@@ -159,7 +159,7 @@ export class ConfigCamposCustomizadosComponent implements OnInit {
     this.editMode = true;
   }
 
-    closeModal(){
+  closeModal(){
     this.showModal = false;
     this.editMode = false;
   }

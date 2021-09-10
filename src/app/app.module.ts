@@ -19,6 +19,11 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NgxEditorModule } from 'ngx-editor';
+import {OrganizationChartModule} from 'primeng/organizationchart';
+import {ToastModule} from 'primeng/toast';
+import {PanelModule} from 'primeng/panel';
+import { TooltipModule } from 'primeng/tooltip';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -32,6 +37,7 @@ import { ConfigAvancadasComponent } from './components/page.config.components/co
 import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
+import { OrgUnitsComponent } from './pages/org-units/org-units.component';
 
 // Components
 import { LoginComponent } from './pages/login/login.component';
@@ -60,6 +66,7 @@ import { ConfigTimetablesComponent } from './components/page.config.components/c
     ConfigCamposCustomizadosComponent,
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
+    OrgUnitsComponent,
     ConfigDisciplinesurmasComponent,
     ConfigLtiComponent,
     ConfigTermsComponent,
@@ -77,11 +84,16 @@ import { ConfigTimetablesComponent } from './components/page.config.components/c
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ColorPickerModule,
+    OrganizationChartModule,
+    ToastModule,
+    PanelModule,
     DynamicDialogModule,
     DialogModule,
     ButtonModule,
     ConfirmDialogModule,
     NgxEditorModule,
+    TooltipModule,
+    OverlayPanelModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })
