@@ -39,6 +39,7 @@ export class OrgUnitsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.primengConfig.ripple = true;
         this.createOrgUnitForm();
         this.getOrgUnits();
 
