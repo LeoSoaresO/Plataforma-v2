@@ -23,6 +23,7 @@ import {OrganizationChartModule} from 'primeng/organizationchart';
 import {ToastModule} from 'primeng/toast';
 import {PanelModule} from 'primeng/panel';
 import { TooltipModule } from 'primeng/tooltip';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -92,6 +93,7 @@ import { ConfigTimetablesComponent } from './components/page.config.components/c
     ConfirmDialogModule,
     NgxEditorModule,
     TooltipModule,
+    OverlayPanelModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })

@@ -57,3 +57,11 @@ input:focus, textarea:focus, select:focus{
         @include hBlue;
     }
 }
+.p-button{
+    background: #fff !important;
+    border: unset !important;
+}
+
+.p-button:hover{
+    border: unset !important;
+}

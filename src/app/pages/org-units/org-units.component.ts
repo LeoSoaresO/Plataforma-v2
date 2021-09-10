@@ -24,6 +24,12 @@ export class OrgUnitsComponent implements OnInit {
     orgUnitForm: FormGroup;
     tipoCampo: any[];
     editMode: boolean;
+    displayBasic: boolean;
+    tooltipHelp: string = 'Estrutura organizacional é um recurso que permite organizar a estrutura de usuários da plataforma e também distribuiçāo dos cursos.';
+    tooltipHelpTitle: string = 'Exemplo de estrutura:';
+
+     
+    public textError: string = "";   
 
     // Icons
     faEllipisisV = faEllipsisV
@@ -74,8 +80,6 @@ export class OrgUnitsComponent implements OnInit {
         
 
         if (Array.isArray(ou)) {
-            console.log('ou', ou);
-            
             
             return ou.map(
                 (obj: any) => {
@@ -110,7 +114,7 @@ export class OrgUnitsComponent implements OnInit {
             delete ou['related_organizational_units'];
             delete ou['name'];
 
-            return ou            
+            return ou;    
         }
 
 
@@ -209,16 +213,22 @@ export class OrgUnitsComponent implements OnInit {
 
 
     remove(event:any,item: any){
-        console.log(item);
         
       this.confirmationService.confirm({
           header: 'Deseja excluir?',
           accept: () => {
             this.orgUnitsService.delOrgUnits(item.external_id)
-            .subscribe(() => console.log(item));
-            setTimeout(()=>{
-              this.getOrgUnits();
-            },500);   
+            .subscribe((response) => {
+                console.log(response)
+                setTimeout(()=>{
+                this.getOrgUnits();
+                },500);   
+            },(err) => {
+                this.displayBasic = true;
+                this.textError = err.error.error;
+                console.log('err',err);
+            });
+
           },
           reject: () => {
 
