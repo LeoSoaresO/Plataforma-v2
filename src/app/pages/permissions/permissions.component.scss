@@ -1,0 +1,25 @@
+@import '../../../styles.scss';
+
+.custom {
+    height: 480px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: darken($color: $blue-light, $amount: 5%); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $blue; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: darken($color: $blue, $amount: 5%); 
+  }

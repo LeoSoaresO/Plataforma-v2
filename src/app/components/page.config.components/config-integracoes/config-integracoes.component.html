@@ -1,24 +1,33 @@
 <section class="mx-8">
     <h1 class="text-xl font-bold text-customBlue-default">Integrações</h1>
-    <div class="mt-4">
-        <div class="flex justify-between mt-1">
-            <label>Habilitar V Libras</label>
-            <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+    <form [formGroup]="settingsIntegrationForm">
+
+        <div class="mt-4">
+            <div class="flex justify-between mt-2">
+                <label>Habilitar V Libras</label>
+                <input formControlName="vlibras_enabled" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+            </div>
+            <div class="flex justify-between mt-2">
+                <label>Habilitar UserWay</label>
+                <input formControlName="userway_enabled" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+            </div>
+            <div class="flex justify-between mt-2">
+                <label>Habilitar validação externa</label>
+                <input formControlName="meet_external_validation_enabled" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+            </div>
+            <div class="mb-4">
+                <input type="text" formControlName="meet_external_validation_url" placeholder="Url de validaçāo para redirecionamento" class="w-2/4 border-b-2 bg-transparent" style="border-color: #A9AEB3;" />
+            </div>
+            <div class="flex justify-between mt-2">
+                <label>Habilitar exportação automática de relatório</label>
+                <input formControlName="meet_external_report_enabled" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+            </div>
+            <div class="mb-4">
+                <input type="text" formControlName="meet_external_report_url" placeholder="Url para envios de relatórios" class="w-2/4 border-b-2 bg-transparent" style="border-color: #A9AEB3;"/>
+            </div>
         </div>
-        <div class="flex justify-between mt-1">
-            <label>Habilitar UserWay</label>
-            <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-        </div>
-        <div class="flex justify-between mt-1">
-            <label>Habilitar validação externa</label>
-            <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-        </div>
-        <div class="flex justify-between mt-1">
-            <label>Habilitar exportação automática de relatório</label>
-            <input id="toogle" class="relative w-12 h-5 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
-        </div>
-    </div>
+    </form>
     <div class="flex justify-end">
-        <button class="px-16 py-1.5 bg-customBlue-default text-customWhite-default font-semibold rounded-sm mt-6 hover">Editar</button>
+        <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" style="color: #FFFFFF;background-color: #233674" (click)="saveIntegration()">salvar</button>
     </div>
 </section>

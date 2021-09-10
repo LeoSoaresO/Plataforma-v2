@@ -13,7 +13,7 @@
 }
 
 #name {
-    width: 11%;
+    width: 40px;
     text-align: center;
     color: white;
     font-size: 18px;
@@ -55,4 +55,8 @@
 .add {
     top: 85%;
     background-color: $orange;
+}
+
+.d-n {
+    display: none !important;
 }

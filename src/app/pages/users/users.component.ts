@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { faEllipsisV, faPlus, faTimes } from '@fortawesome/pro-light-svg-icons';
 import { UsersService } from 'src/app/services/users.service';
@@ -34,7 +34,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private FormBuilder: FormBuilder
+    private FormBuilder: FormBuilder,
+    private el: ElementRef
   ) { }
 
   ngOnInit(): void {
@@ -70,15 +71,14 @@ export class UsersComponent implements OnInit {
   letter() {
     let users = this.users;
     users = users.map((i: any) => {
-      let name = i.first_name;      
-      let lastname = i.last_name;
-      let ini = name.charAt(0)+""+lastname.charAt(0);
+      let name = i.first_name;
+      let ini = name.charAt(0);
       i.ini = ini;
     })
     console.log(this.users)
   }
 
-  teste(){
+  select(){
     let test = this.users;
     test = test.map((i: any)=>{
       i.isSelected = this.isSelected;
@@ -109,26 +109,35 @@ export class UsersComponent implements OnInit {
   }
   
    getNumber(){
-     this.number = (<HTMLInputElement>document.getElementById('number')).value;
-     console.log(this.number);     
+     this.number = (<HTMLInputElement>document.getElementById('number')).value;    
    }
+
+   show(id: any) {
+			let show = document.getElementsByClassName('ss')[id].lastElementChild?.classList
+      if(show?.contains('hidden')){
+        show?.remove('hidden')
+        show?.add('show')
+      } else {
+        show?.add('hidden')
+        show?.remove('show')
+      }
+			console.log(show, id);			
+  }
 
   //Requests
   async getUsers(){ 
     const response = await this.usersService.getUsers()  
     this.users = response
     this.letter();
-    this.teste();
+    this.select();
   }  
 
   async postUsers(){
     let name = this.userForm.controls.name.value
-    let last = this.userForm.controls.lastName.value
     let email = this.userForm.controls.email.value
     let role = this.userForm.controls.userCode.value
     const params = {
       "first_name": name,
-      "last_name": last,
       "email": email,
       "role": [
         role
@@ -146,4 +155,12 @@ export class UsersComponent implements OnInit {
          }
          }
   }
+
+  // async delUser(id: any){
+  //   const response = await this.usersService.delUser(id)
+  //   console.log(response)
+  //   if(response){
+  //     this.reload();
+  //   }
+  // }
 }
