@@ -12,6 +12,10 @@ import { ConfigAvancadasComponent } from './components/page.config.components/co
 import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
+import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
+import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
+import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
+import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -24,9 +28,13 @@ const routes: Routes = [
     children: [
       {path:'gerais', component: ConfigGeraisComponent },
       {path:'avancadas', component: ConfigAvancadasComponent },
+      {path:'terms', component: ConfigTermsComponent },
+      {path:'lti', component: ConfigLtiComponent },
+      {path:'timetables', component: ConfigTimetablesComponent },
       {path:'campos-customizados', component: ConfigCamposCustomizadosComponent },
       {path:'integracoes', component: ConfigIntegracoesComponent },
       {path:'login', component: ConfigLoginComponent },
+      {path:'disciplines', component: ConfigDisciplinesurmasComponent },
       ]
   }
 ];
