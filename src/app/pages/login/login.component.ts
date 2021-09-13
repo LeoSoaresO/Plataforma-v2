@@ -26,13 +26,14 @@ show = false
 cont = false
 loginForm: FormGroup;
 userForm: FormGroup;
+reset: FormGroup
 socialUser: SocialUser;
 isLoggedin: boolean = false; 
 title = 'msal-angular-tutorial';
 isIframe = false;
 loginDisplay = false;
 options
-test
+gUser
 
   constructor(
     private router: Router,
@@ -44,8 +45,10 @@ test
   ) { }
 
   ngOnInit(): void {
+    this.checkGoogleUser();
     this.form();
     this.firstLoad();
+    this.resetForm();
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -54,7 +57,7 @@ test
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = (user != null);
-      this.setGoogleCredencials();     
+      this.setGoogleCredencials();
     });
   }
 
@@ -66,6 +69,7 @@ test
 
   logOut(): void {
     this.socialAuthService.signOut();
+    this.cookieService.delete('user');
   }
 
   isLogged() : boolean{
@@ -90,13 +94,28 @@ test
     })
   }
 
+  resetForm(){
+    this.reset = this.formBuilder.group({
+      email: ['', Validators.required]
+    })
+  }
+
   //Other Functions
 
   setGoogleCredencials(){
     this.cookieService.set('user', JSON.stringify(this.socialUser));
-      this.test =  this.cookieService.get('user')
-      JSON.parse(this.test)
-      console.log(this.test) 
+      let data =  this.cookieService.get('user')
+      this.gUser = JSON.parse(data)
+      console.log(this.gUser)
+      this.checkGoogleUser();
+  }
+
+  checkGoogleUser(){
+    if (this.gUser){
+      this.authGoogle();     
+    } else {
+      console.log('não tem nada no cookie'); 
+    }
   }
 
   toggle(){
@@ -106,6 +125,7 @@ test
   next() {
     this.show = false;
     this.cont = true
+    this.resetPassword();
   }
   
   validateCod(){
@@ -140,6 +160,26 @@ test
     const response = await this.loginservice.firstLoad()
     console.log(response); 
     this.options = response   
+  }
+
+  async resetPassword(){
+    let e = this.reset.controls.email.value
+    const params = {
+      "email" : e 
+    }
+    const response = await this.loginservice.resetPassword(params)
+    console.log(response); 
+    console.time('request')   
+  }
+
+  async authGoogle(){
+    this.cookieService.check('user')
+    console.log(this.gUser.authToken);
+    const params = {
+      "token": this.gUser.authToken
+    }
+    const response = await this.loginservice.loginWithGoogle(params)
+    console.log(response);
   }
 
 }

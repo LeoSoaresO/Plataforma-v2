@@ -88,12 +88,12 @@
         </div>
         <!--body-->
         <div class="relative p-6 flex-auto w-11/12 mx-auto">
-            <form>
+            <form [formGroup]="reset">
                 <p class="text-center text-sm">Para redefinir sua senha , informe o e-mail cadastrado na sua conta. Nós enviaremos um link para o seu e-mail com instruções para os proximos passos.</p>
                 <div class="mt-5">
                     <div class="mt-2">
                         <label for="" class="font-semibold text-customGray-dark">E-mail</label>
-                        <input type="text" class="w-full border border-customGray-light rounded-sm p-2 text-md mt-2" placeholder="Digite seu e-mail" required>
+                        <input type="text" class="w-full border border-customGray-light rounded-sm p-2 text-md mt-2" placeholder="Digite seu e-mail" required formControlName="email">
                     </div>
                 </div>
             </form>
