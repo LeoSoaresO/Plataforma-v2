@@ -12,7 +12,8 @@ export class DisciplineService {
     private http: HttpClient
   ) { }
 
-  getDisciplines(external_id: any): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/${external_id}/basic`);
+  getDisciplines(): Observable<any> {
+    // return this.http.get<any>(`${API_Routes.URL}/discplines`);
+    return this.http.get<any>(`http://localhost:3000/discplines`);
   }
 }

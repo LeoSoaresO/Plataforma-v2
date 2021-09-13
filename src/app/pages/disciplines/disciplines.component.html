@@ -1,5 +1,56 @@
 <app-header></app-header>
 <section class="pl-48 px-12 py-8">
+    <div>
+        <h1 class="text-customBlue-default font-bold text-3xl">Minhas turmas</h1>
+    </div>
+    <div class="grid grid-cols-6 gap-4 mt-8">
+        <div class="col-start-1 col-span-4 flex">
+            <button class="bg-disciplines rounded-l-md button-disciplines-selected p-2 px-4">Minhas turmas</button>
+            <button class="bg-disciplines p-2 px-4">Turmas abertas</button>
+            <button class="bg-disciplines rounded-r-md p-2 px-4">Minhas arquivadas</button>
+        </div>
+        <div class="col-span-1">
+            <input type="text" class="p-2" placeholder="Procurar por turmas">
+        </div>
+        <div class="col-span-1 flex gap-8">
+            <button>mosaico</button>
+            <button>lista</button>
+            <button>criar</button>
+        </div>
+
+    </div>
+
+    <div class="mt-8 flex grid grid-cols-4 gap-4">
+        <div class="grid grid-rows-2 shadow-card rounded-md h-64" *ngFor="let discipline of disciplines">
+            <div class="bg-card rounded-t-md" style="background-color:#D8E5F8 ;background-image: url('{{discipline.card_image}}'); background-size: contain; background: no-repeat;">
+                <h3 class="justify-center mt-12 mx-6" style="color:#484B4D; font-size: 18px; font-weight: bold;">{{discipline.title}}</h3>
+            </div>
+            <div class="p-4">
+                <div class="flex">
+                    <span class="flex items-center">
+                        <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.82504 11.6875C6.74661 11.6875 6.66819 11.6991 6.59338 11.7237C6.16813 11.8635 5.7209 11.9531 5.25004 11.9531C4.77918 11.9531 4.33195 11.8635 3.90637 11.7237C3.83156 11.6991 3.75347 11.6875 3.67504 11.6875C1.63871 11.6875 -0.0107751 13.3636 5.30078e-05 15.4268C0.00464675 16.2987 0.713067 17 1.57505 17H8.92503C9.78701 17 10.4954 16.2987 10.5 15.4268C10.5109 13.3636 8.86138 11.6875 6.82504 11.6875ZM5.25004 10.625C6.98976 10.625 8.40003 9.19793 8.40003 7.4375C8.40003 5.67707 6.98976 4.25 5.25004 4.25C3.51033 4.25 2.10005 5.67707 2.10005 7.4375C2.10005 9.19793 3.51033 10.625 5.25004 10.625ZM19.425 0H6.82504C5.95649 0 5.25004 0.73877 5.25004 1.64654V3.1875C6.01851 3.1875 6.72988 3.41262 7.35004 3.77852V2.125H18.9V11.6875H16.8V9.5625H12.6V11.6875H10.0984C10.7251 12.2417 11.1852 12.9735 11.4007 13.8125H19.425C20.2936 13.8125 21 13.0737 21 12.166V1.64654C21 0.73877 20.2936 0 19.425 0Z" fill="#E8532C"/>
+                        </svg>
+                    </span>
+                    <p class="ml-2">{{discipline.participants.users.teachers[0].name}}</p>
+                </div>
+                <div class="flex">
+                    <span *ngFor="let student of discipline.participants.users.students; let i = index" >
+                        <div *ngIf="i<3">
+                            <img src="{{student.image}}" alt="" style="width: 22px; height: 22px;">
+                        </div>
+                    </span>                    
+                    <p class="ml-2" >+{{discipline.participants.count.students}} alunos</p>
+                </div>
+                <div class="flex">
+                    <div class="h-3 relative max-w-xl rounded-full overflow-hidden">
+                        <div class="w-full h-full bg-gray-200 absolute"></div>
+                        <div class="h-full bg-green-500 absolute" style="width:10%"></div>
+                    </div>                  
+                </div>                
+            </div>
+        </div>
+    </div>
 
       
 </section>
