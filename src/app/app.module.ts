@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
-import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MsalService } from '@azure/msal-angular';
+import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MsalService, MsalInterceptorConfiguration, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -41,7 +41,8 @@ import { RolesComponent } from './components/page.permissions.components/roles/r
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
 import { ResetComponent } from './components/reset/reset.component';
-import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 export function MSALInstanceFactory(): IPublicClientApplication{
   return new PublicClientApplication({
@@ -50,6 +51,16 @@ export function MSALInstanceFactory(): IPublicClientApplication{
       redirectUri: 'http://localhost:4200'
     }
   })
+}
+
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string>>();
+  protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']);
+
+  return {
+    interactionType: InteractionType.Popup,
+    protectedResourceMap
+  };
 }
 
 @NgModule({
@@ -96,6 +107,18 @@ export function MSALInstanceFactory(): IPublicClientApplication{
     CookieService,
     MsalModule,
     MsalService,
+    {
+      provide: HTTP_INTERCEPTORS,
+        useClass: MsalInterceptor,
+        multi: true
+    },
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory
+    }, {
+      provide: MSAL_INTERCEPTOR_CONFIG,
+      useFactory: MSALInterceptorConfigFactory
+    },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

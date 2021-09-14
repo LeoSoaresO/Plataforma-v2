@@ -66,11 +66,12 @@ logOutGoogle: boolean = false
 
   logOutM(): void {
     this.cookieService.delete('userMicro');
+    this.msalservice.logout();
+    console.log('microsoft deletado, logOut concluído'); 
   }
 
   logOutN(): void {
     this.cookieService.delete('userNormal');
-    this.cookieService.delete('userGoogle');
     console.log('normal deletado, logOut concluído');    
     this.cookieService.set('logOut', 'true')
     this.checkUser();

@@ -8,6 +8,7 @@ import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-browser';
 import { LoginService } from 'src/app/services/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,8 @@ isIframe = false;
 loginDisplay = false;
 options
 gUser
+mUser
+apiResp
 
   constructor(
     private router: Router,
@@ -41,7 +44,8 @@ gUser
     private socialAuthService: SocialAuthService,
     private msalservice: MsalService,
     private loginservice: LoginService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private httpClient: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -79,12 +83,11 @@ gUser
   loginWithMicrosoft(){
     this.msalservice.loginPopup().subscribe((response: AuthenticationResult)=> {
       this.msalservice.instance.setActiveAccount(response.account)
-      console.log(this.msalservice.instance.getActiveAccount())
+      console.log(this.msalservice.instance.getActiveAccount());
+      if (this.msalservice.instance.getActiveAccount()){
+        this.callProfile();
+      }
     });
-  }
-
-  logOutMicrosoft(){
-    this.msalservice.logout();
   }
 
   form(){
@@ -176,10 +179,15 @@ gUser
 
   async authMicro(){
     const params = {
-      "token": this.gUser.authToken
+      "token": this.mUser.accessToken
     }
     const response = await this.loginservice.loginWithMicrosoft(params)
     console.log(response);
+    if (response) {
+      this.cookieService.set('userMicro', JSON.stringify(response.token));
+      this.cookieService.delete('logOut')
+      this.router.navigate(['dashboard'])
+    }
   }
 
   async firstLoad(){
@@ -202,4 +210,22 @@ gUser
     console.time('request')   
   }
 
+  callProfile(){
+    const requestObj = {
+      scopes: ["user.read"]
+  };
+  
+  this.msalservice.acquireTokenSilent(requestObj)
+  .toPromise()
+  .then( (tokenResponse) => {
+    this.mUser = tokenResponse
+    console.log(this.mUser.accessToken);
+      this.authMicro();
+  }).catch(function (error) {
+      console.log(error);
+  });  
+  }
+
 }
+
+
