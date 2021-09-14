@@ -1,7 +1,7 @@
 @import '../../../styles.scss';
 
 .custom {
-    height: 480px;
+    height: 100vh;
     overflow: auto;
 }
 
@@ -23,3 +23,8 @@
   ::-webkit-scrollbar-thumb:hover {
     background: darken($color: $blue, $amount: 5%); 
   }
+
+  .add {
+    top: 21%;
+    background-color: $orange;
+}

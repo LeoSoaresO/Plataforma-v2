@@ -7,7 +7,7 @@ export const environment = {
 };
 
 export const API_Routes = {
-  URL: 'http://bravo.localhost:8080/api',
+  URL: 'http://dev.telescopelms.info/api',
   DOMAIN: 'localhost'
 }
 

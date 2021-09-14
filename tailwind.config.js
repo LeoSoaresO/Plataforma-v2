@@ -27,7 +27,8 @@ module.exports = {
         dark: '#484B4D',
         superLight: '#EDEDED',
         textGray: '#8F9BB3',
-        superDark: '#231F20'
+        superDark: '#231F20',
+        iconGray: '#A9AEB3'
       },
       customBlue: {
         default: '#233674',
@@ -50,6 +51,22 @@ module.exports = {
         orange: '#F36C48',
         blue: '#233674'
       }
+    },
+    screens: {
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      'xs': '1700px',
+      // => @media (min-width: 1536px) { ... }
     }
   },
   variants: {

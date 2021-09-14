@@ -251,6 +251,119 @@
     "global_screen_script": false,
     "customer_support_email": "ds@inicie.digital"
   },
+  "actions": [
+    {
+      "name": "Criar",
+      "external_id": "create"
+    },
+    {
+      "name": "Visualizar",
+      "external_id": "read"
+    },
+    {
+      "name": "Editar",
+      "external_id": "update"
+    },
+    {
+      "name": "Remover",
+      "external_id": "delete"
+    }
+  ],
+  "permission_roles": [
+    {
+      "role": "super-admin",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "role": "admin",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "role": "teacher",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 1,
+      "role": "Leo",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 2,
+      "role": "teste",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 3,
+      "role": "teste",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 4,
+      "role": "123",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 5,
+      "role": "512",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 6,
+      "role": "vishe",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 7,
+      "role": "ué",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 8,
+      "role": "546",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    },
+    {
+      "id": 9,
+      "role": "test",
+      "permissions": {
+        "create": true,
+        "delete": false
+      }
+    }
+  ],
   "orgUnits": [
     {
       "label": "CEO",

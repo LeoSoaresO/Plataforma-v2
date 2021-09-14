@@ -50,26 +50,26 @@
                                 {{user.ini}}
                             </div>
                             <div class="text-left text-sm">
-                                <h2 class="font-semibold capitalize">{{user.first_name}} {{user.last_name}}</h2>
+                                <h2 class="font-semibold capitalize">{{user.name}}</h2>
                                 <span class="text-customGray-textGray">{{user.email}}</span>
                             </div>
                         </li>
                         <li class="w-4/12 text-center text-sm flex justify-evenly">
-                            <span class="py-2 px-4 bg-customBlue-normal text-customWhite-default rounded-md" *ngIf="user.role.includes('Aluno')">Aluno</span>
-                            <span class="py-2 px-4 bg-customRed-default text-customWhite-default rounded-md" *ngIf="user.role.includes('Super-Admin')">Super Admin</span>
-                            <span class="py-2 px-4 bg-customGray-light rounded-md" *ngIf="!user.role.includes('Aluno') && !user.role.includes('Super-Admin')">Nenhum</span>
+                            <!-- <span class="py-2 px-4 bg-customBlue-normal text-customWhite-default rounded-md" *ngIf="user.role.includes('Aluno')">Aluno</span>
+                            <span class="py-2 px-4 bg-customRed-default text-customWhite-default rounded-md" *ngIf="user.role.includes('Super-Admin')">Super Admin</span> -->
+                            <span class="py-2 px-4 bg-customGray-light rounded-md">Nenhum</span>
                         </li>
                         <li class="w-2/12 text-center text-sm">
-                            <div *ngIf="user.status == 1">
+                            <div *ngIf="user.status == 'ACTIVE'">
                                 <span class="active mr-4"></span>
                                 <span>Ativo</span>
                             </div>
-                            <div *ngIf="user.status == 2">
+                            <div *ngIf="user.status == ''">
                                 <span class="inactive mr-4"></span>
                                 <span>Inativo</span>
                             </div>
                         </li>
-                        <li class="w-5/12 text-center text-sm">24/05/2021 (5 dias sem atividade)</li>
+                        <li class="w-5/12 text-center text-sm">{{user.last_activity | date: 'dd/MM/yyyy' }}</li>
                         <li class="w-1/12 text-center">
                             <button (click)="show(user.id)" class="relative z-10 block p-2 transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
                                 <fa-icon [icon]="faEllipisisV" class="text-customBlue-default icon pl-6"></fa-icon>

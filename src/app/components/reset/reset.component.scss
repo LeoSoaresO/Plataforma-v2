@@ -29,9 +29,10 @@
 }
 
 .h{
-    height: 120vh;
+    height: 100vh;
 }
 
+/* Styling Checkbox Starts */
 .checkbox-label {
     display: block;
     position: relative;
@@ -40,6 +41,7 @@
     font-size: 22px;
     line-height: 24px;
     height: 24px;
+    width: 24px;
     clear: both;
 }
 
@@ -93,10 +95,4 @@
   border-width: 0 2px 2px 0;
   background-color: transparent;
   border-radius: 0;
-}
-
-.load {
-    position: absolute;
-    top: 40%;
-    left: 44%;
 }

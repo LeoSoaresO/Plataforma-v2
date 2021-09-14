@@ -71,7 +71,7 @@ export class UsersComponent implements OnInit {
   letter() {
     let users = this.users;
     users = users.map((i: any) => {
-      let name = i.first_name;
+      let name = i.name;
       let ini = name.charAt(0);
       i.ini = ini;
     })
@@ -128,6 +128,7 @@ export class UsersComponent implements OnInit {
   async getUsers(){ 
     const response = await this.usersService.getUsers()  
     this.users = response
+    console.log(response);    
     this.letter();
     this.select();
   }  

@@ -12,9 +12,39 @@ export class PermissionsService {
   ) { }
 
   getMenus(){
-    return this.http.get(`${API_Routes.URL}/permissionsMenu`)
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    return this.http.get(`${API_Routes.URL}/permissioning/group` ,{ headers: headers })
     .toPromise()
     .then((response: any) => {
+      return response
+    })
+  }
+
+  getRoles(){
+    return this.http.get(`${API_Routes.URL}/permission_roles`)
+    .toPromise()
+    .then((response: any) =>{
+      return response
+    })
+  }
+
+  getActions(){
+    return this.http.get(`${API_Routes.URL}/actions`)
+    .toPromise()
+    .then((response: any) =>{
+      return response
+    })
+  }
+
+  postRoles(params: any){
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    return this.http.post(`${API_Routes.URL}/permission_roles`,params , { headers: headers })
+    .toPromise()
+    .then((response: any) =>{
       return response
     })
   }

@@ -14,6 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MsalService, MsalInterceptorConfiguration, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
+import { CookieService } from 'ngx-cookie-service';
+
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
@@ -43,11 +48,35 @@ import { OrgUnitsComponent } from './pages/org-units/org-units.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { RolesComponent } from './components/page.permissions.components/roles/roles.component';
+import { CountdownComponent } from './components/countdown/countdown.component';
+import { CountdownModule } from 'ngx-countdown';
+import { ResetComponent } from './components/reset/reset.component';
+import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+
+export function MSALInstanceFactory(): IPublicClientApplication{
+  return new PublicClientApplication({
+    auth: {
+      clientId: '01e2af38-0675-478b-b255-eaa4a2704b97',
+      redirectUri: 'http://localhost:4200'
+    }
+  })
+}
 import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
 import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
 import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string>>();
+  protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']);
+
+  return {
+    interactionType: InteractionType.Popup,
+    protectedResourceMap
+  };
+}
 
 @NgModule({
   declarations: [
@@ -66,6 +95,9 @@ import { ConfigTimetablesComponent } from './components/page.config.components/c
     ConfigCamposCustomizadosComponent,
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
+    RolesComponent,
+    CountdownComponent,
+    ResetComponent,
     OrgUnitsComponent,
     ConfigDisciplinesurmasComponent,
     ConfigLtiComponent,
@@ -77,6 +109,7 @@ import { ConfigTimetablesComponent } from './components/page.config.components/c
     FontAwesomeModule,
     AppRoutingModule,
     HttpClientModule,
+    CountdownModule,
     BrowserAnimationsModule,
     NgxChartsModule,
     ReactiveFormsModule,
@@ -84,6 +117,8 @@ import { ConfigTimetablesComponent } from './components/page.config.components/c
     Ng2SearchPipeModule,
     NgxPaginationModule,
     ColorPickerModule,
+    SocialLoginModule,
+    MsalModule,
     OrganizationChartModule,
     ToastModule,
     PanelModule,
@@ -96,9 +131,43 @@ import { ConfigTimetablesComponent } from './components/page.config.components/c
     OverlayPanelModule,
     StoreModule.forRoot(reducers, {
       metaReducers
-    })
+    }),
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [
+    CookieService,
+    MsalModule,
+    MsalService,
+    {
+      provide: HTTP_INTERCEPTORS,
+        useClass: MsalInterceptor,
+        multi: true
+    },
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory
+    }, {
+      provide: MSAL_INTERCEPTOR_CONFIG,
+      useFactory: MSALInterceptorConfigFactory
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '358550703280-e4r4qc3r193f6ud4trihkvtcg6dli38l.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },   
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory
+    },
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
