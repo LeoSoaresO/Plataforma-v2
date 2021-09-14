@@ -14,10 +14,10 @@ export class SettingsLoginService {
   ) { }
 
   getLoginSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsAuth/`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/auth/`);
   }
 
   postLoginSettings(params: any): Observable<any> {
-    return this.http.patch(`${API_Routes.URL}/settingsAuth/`, params)
+    return this.http.patch(`${API_Routes.URL}/settings/auth/`, params)
   }  
 }

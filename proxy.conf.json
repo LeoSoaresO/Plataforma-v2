@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://dev.telescopelms.info",
+    "target": "http://alpha.localhost:8000",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

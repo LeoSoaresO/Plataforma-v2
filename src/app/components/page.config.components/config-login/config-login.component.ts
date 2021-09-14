@@ -33,7 +33,7 @@ export class ConfigLoginComponent implements OnInit {
 
   getLoginSettings(){
     this.settingsLoginService.getLoginSettings()
-    .subscribe(settingsLogin => this.setValueForm(settingsLogin));
+    .subscribe(settingsLogin => this.setValueForm(settingsLogin.data));
   }
 
   //Forms
