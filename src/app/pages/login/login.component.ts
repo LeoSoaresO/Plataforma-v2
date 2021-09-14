@@ -156,9 +156,8 @@ gUser
     console.log(response);
     if (response) {
       this.cookieService.set('userNormal', JSON.stringify(response.token));
-      setTimeout(() =>{
-        this.router.navigate(['dashboard'])
-     },5000);
+      this.cookieService.delete('logOut')
+      this.router.navigate(['dashboard'])
     }
   }
 
@@ -170,9 +169,8 @@ gUser
     const response = await this.loginservice.loginWithGoogle(params)
     console.log(response);
     if (response) {
-      setTimeout(() =>{
-        this.router.navigate(['dashboard'])
-     },5000);
+      this.cookieService.delete('logOut')
+      this.router.navigate(['dashboard'])
     }
   }
 
@@ -185,6 +183,10 @@ gUser
   }
 
   async firstLoad(){
+    if(!this.cookieService.check('logOut')){
+      this.router.navigate(['dashboard']);
+    }
+
     const response = await this.loginservice.firstLoad()
     console.log(response); 
     this.options = response   
