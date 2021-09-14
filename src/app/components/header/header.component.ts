@@ -58,9 +58,9 @@ logOutGoogle: boolean = false
 
   logOutG(): void {
     this.cookieService.delete('userGoogle');
+    this.cookieService.set('logOut', 'true') 
     this.socialAuthService.signOut();
     console.log('google deletado, logOut concluído');
-    this.cookieService.set('logOut', 'true') 
     this.checkUser();
   }
 
@@ -69,12 +69,13 @@ logOutGoogle: boolean = false
     this.cookieService.set('logOut', 'true')
     this.msalservice.logout();
     console.log('microsoft deletado, logOut concluído'); 
+    this.checkUser();
   }
 
   logOutN(): void {
     this.cookieService.delete('userNormal');
-    console.log('normal deletado, logOut concluído');    
     this.cookieService.set('logOut', 'true')
+    console.log('normal deletado, logOut concluído');    
     this.checkUser();
   }
 

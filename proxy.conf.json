@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "http://dev.telescopelms.info",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

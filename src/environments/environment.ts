@@ -7,7 +7,7 @@ export const environment = {
 };
 
 export const API_Routes = {
-  URL: 'http://dev.telescopelms.info/api',
+  URL: '/api',
   DOMAIN: 'localhost'
 }
 

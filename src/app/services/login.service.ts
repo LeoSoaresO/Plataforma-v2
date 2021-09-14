@@ -13,7 +13,10 @@ export class LoginService {
 
   firstLoad(){
     const headers = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "{$_SERVER['HTTP_ORIGIN']}",
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Max-Age': '86400'
     }
     console.time('request')
     return this.http.get(`${API_Routes.URL}/whoami` ,{ headers: headers })

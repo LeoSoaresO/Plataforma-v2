@@ -49,7 +49,6 @@ apiResp
   ) { }
 
   ngOnInit(): void {
-    this.checkGoogleUser();
     this.form();
     this.firstLoad();
     this.resetForm();
@@ -118,6 +117,7 @@ apiResp
       this.authGoogle();     
     } else {
       console.log('não tem nada no cookie'); 
+      this.cookieService.set('logOut', 'true')
     }
   }
 
@@ -191,6 +191,8 @@ apiResp
   }
 
   async firstLoad(){
+    this.cookieService.set('logOut', 'true')
+    this.cookieService.delete('userGoogle', 'userNormal', 'userMicro')
     if(!this.cookieService.check('logOut')){
       this.router.navigate(['dashboard']);
     }
