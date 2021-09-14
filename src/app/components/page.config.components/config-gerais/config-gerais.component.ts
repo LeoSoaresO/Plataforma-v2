@@ -30,12 +30,11 @@ export class ConfigGeraisComponent implements OnInit{
 
   getGeneralSettings() {
     this.settingsGeneralService.getGeneralSettings()
-    .subscribe(settingsGeneral => this.settingsGeneral = settingsGeneral);
+    .subscribe(settingsGeneral => this.settingsGeneral = settingsGeneral.data);
     
   }
 
   postGeneralSettings(){
-
     this.settingsGeneralService.postGeneralSettings(this.settingsGeneral)
     .subscribe(() => console.log(this.settingsGeneral));
   }

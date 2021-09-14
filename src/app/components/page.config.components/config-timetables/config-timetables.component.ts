@@ -79,7 +79,7 @@ export class ConfigTimetablesComponent implements OnInit {
 
   getTimetablesSettings(){
     this.settingsTimetablesService.getTimatablesSettings()
-    .subscribe(settingsTimetables => this.setValueForm(settingsTimetables));
+    .subscribe(settingsTimetables => this.setValueForm(settingsTimetables.data));
   }  
 
   getTimetablesExceptions(){

@@ -53,7 +53,7 @@ export class ConfigIntegracoesComponent implements OnInit {
 
   getIntegrationSettings(){
     this.settingsIntegrationsService.getIntegrationSettings()
-    .subscribe(settingsIntegration => this.setValueForm(settingsIntegration));
+    .subscribe(settingsIntegration => this.setValueForm(settingsIntegration.data));
   }
 
   //Forms

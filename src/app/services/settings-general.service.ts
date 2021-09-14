@@ -13,10 +13,10 @@ export class SettingsGeneralService {
   ) { }
 
   getGeneralSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsGeneral/`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/general/`);
   }
 
   postGeneralSettings(params: any): Observable<any> {
-    return this.http.patch(`${API_Routes.URL}/settingsGeneral/`, params)
+    return this.http.patch(`${API_Routes.URL}/settings/general/`, params)
   }
 }
