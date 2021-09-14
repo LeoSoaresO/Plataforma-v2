@@ -13,10 +13,10 @@ export class SettingsDisciplineService {
   ) { }
 
   getDisciplineSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsDiscipline/`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/discipline/`);
   }
 
   postDisciplineSettings(params: any): Observable<any> {
-    return this.http.patch(`${API_Routes.URL}/settingsDiscipline/`, params)
+    return this.http.patch(`${API_Routes.URL}/settings/discipline/`, params)
   }
 }

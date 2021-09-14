@@ -39,7 +39,7 @@ export class ConfigTermsComponent implements OnInit, OnDestroy {
 
   getTermsSettings(){
     this.settingsTermsService.getTermsSettings()
-    .subscribe(settingsTerms => this.setValueForm(settingsTerms));
+    .subscribe(settingsTerms => this.setValueForm(settingsTerms.data));
   }
 
   //Forms

@@ -13,22 +13,22 @@ export class SettingsLtiService {
   ) { }
 
   getLtiSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsLti/`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/lti/`);
   }
 
   getLtiSetting(id:number): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsLti/${id}`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/lti/${id}`);
   }  
 
   updatetLtiSetting(id:number, params: any): Observable<any> {
-    return this.http.put(`${API_Routes.URL}/settingsLti/${id}`, params);
+    return this.http.put(`${API_Routes.URL}/settings/lti/${id}`, params);
   } 
 
   postLtiSettings(params: any): Observable<any> {
-    return this.http.post(`${API_Routes.URL}/settingsLti/`, params)
+    return this.http.post(`${API_Routes.URL}/settings/lti/`, params)
   }
 
   delLtiSettings(id: number): Observable<any> {
-    return this.http.delete(`${API_Routes.URL}/settingsLti/${id}`)
+    return this.http.delete(`${API_Routes.URL}/settings/lti/${id}`)
   }
 }

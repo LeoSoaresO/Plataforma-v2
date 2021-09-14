@@ -66,7 +66,7 @@ export class ConfigLtiComponent implements OnInit {
 
   getLtiSettings() {
     this.settingsLtiService.getLtiSettings()
-    .subscribe(settingsLti => this.settingsLti = settingsLti);
+    .subscribe(settingsLti => this.settingsLti = settingsLti.data);
   }
 
   postLtiSettings(){

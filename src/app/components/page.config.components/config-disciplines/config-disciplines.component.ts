@@ -24,7 +24,7 @@ export class ConfigDisciplinesurmasComponent implements OnInit {
 
   getDisciplineSettings() {
     this.settingsDisciplineService.getDisciplineSettings()
-    .subscribe( settingsDiscipline => this.settingsDiscipline = settingsDiscipline );
+    .subscribe( settingsDiscipline => this.settingsDiscipline = settingsDiscipline.data );
   }
 
   postDisciplineSettings(){

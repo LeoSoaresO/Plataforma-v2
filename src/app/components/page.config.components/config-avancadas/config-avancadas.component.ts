@@ -20,7 +20,7 @@ export class ConfigAvancadasComponent implements OnInit {
 
   getAdvancedSettings() {
     this.settingsAdvancedService.getAdvancedSettings()
-    .subscribe( settingsAdvanced => this.settingsAdvanced = settingsAdvanced );
+    .subscribe( settingsAdvanced => this.settingsAdvanced = settingsAdvanced.data );
   }
 
   postAdvancedSettings(){

@@ -13,10 +13,10 @@ export class SettingsAdvancedService {
   ) { }
 
   getAdvancedSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsAdvanced/`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/advanced/`);
   }
 
   postAdvancedSettings(params: any): Observable<any> {
-    return this.http.patch(`${API_Routes.URL}/settingsAdvanced/`, params)
+    return this.http.patch(`${API_Routes.URL}/settings/advanced/`, params)
   }
 }

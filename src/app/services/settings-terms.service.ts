@@ -13,10 +13,10 @@ export class SettingsTermsService {
   ) { }
 
   getTermsSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsTerms/`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/terms/`);
   }
 
   postTermsSettings(params: any): Observable<any> {
-    return this.http.patch(`${API_Routes.URL}/settingsTerms/`, params)
+    return this.http.patch(`${API_Routes.URL}/settings/terms/`, params)
   }
 }

@@ -13,22 +13,22 @@ export class SettingsCustomSchemasService {
   ) { }
 
   getCustomSchemasSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsCustomSchemas/`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/customSchemas/`);
   }
 
   getCustomSchemaSetting(id:number): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settingsCustomSchemas/${id}`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/customSchemas/${id}`);
   }
 
   updatetCustomSchemaSetting(id:number, params: any): Observable<any> {
-    return this.http.put(`${API_Routes.URL}/settingsCustomSchemas/${id}`, params);
+    return this.http.put(`${API_Routes.URL}/settings/customSchemas/${id}`, params);
   }     
 
   postCustomSchemasSettings(params: any): Observable<any> {
-    return this.http.post(`${API_Routes.URL}/settingsCustomSchemas/`, params)
+    return this.http.post(`${API_Routes.URL}/settings/customSchemas/`, params)
   }
 
   delCustomSchemasSettings(id: number): Observable<any> {
-    return this.http.delete(`${API_Routes.URL}/settingsCustomSchemas/${id}`)
+    return this.http.delete(`${API_Routes.URL}/settings/customSchemas/${id}`)
   }
 }
