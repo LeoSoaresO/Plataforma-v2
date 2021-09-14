@@ -1,0 +1,68 @@
+<section class="px-8">
+    <h1 class="text-customBlue-default font-bold text-xl">Grade Horárias</h1>
+    <h2 class="font-bold text-lg my-4" style="color: #484B4D">Configurações</h2>
+    
+    <form [formGroup]="timetablesForm">
+        <div class="flex justify-between my-2">
+            <label>Habilitar grade horária</label>
+            <input  formControlName="timetable_enabled" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+        </div>      
+        <div class="flex justify-between my-2">
+            <label>Exibir status de chamada para professores</label>
+            <input  formControlName="frequency_status_enabled" id="toogle" style="height:1.4rem;" class="relative w-11 transition-all duration-200 ease-in-out bg-customGray-light rounded-full shadow-inner outline-none appearance-none cursor-pointer" type="checkbox" />
+        </div> 
+                   
+    </form>
+    <h2 class="font-bold text-lg my-6" style="color: #484B4D">Feriados</h2>
+    <form [formGroup]="timetablesExceptionForm" >
+        <div class="flex table w-full text-center" formArrayName="timetablesExceptions" *ngFor="let formGroup of timetablesExceptions.controls; let i = index;">
+            <div class="table-row-group" [formGroupName]="i">
+                <div class="table-row">
+                    <div class="table-cell">
+                        <label *ngIf="i == 0" for="name" style="color: #A9AEB3">Feriado</label>
+                    </div>
+                    <div class="table-cell">
+                        <label *ngIf="i == 0"  for="date" style="color: #A9AEB3">Data</label>
+                    </div>
+
+                </div>
+                <div class="table-row">
+                    <div class="table-cell px-2">
+                        <input formControlName="id" hidden >
+                        <input type="text" class="w-full border-b-2 bg-transparent mt-2"  formControlName="name" placeholder="Feriado">
+                    </div>
+                    <div class="table-cell px-2">
+                        <input type="text" class="w-full border-b-2 bg-transparent mt-2"  formControlName="date" placeholder="Data">
+                    </div>
+                    <div class="flex justify-center table-cell px-2">
+                        <button type="button" class="mt-2" (click)="removeItem(i)">
+                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="13" cy="13" r="13" fill="#D8E5F8"/>
+                            <path d="M9.55762 10.7344C9.69851 10.7344 9.83364 10.7893 9.93327 10.887C10.0329 10.9848 10.0889 11.1174 10.0889 11.2556V17.5108C10.0889 17.6491 10.0329 17.7816 9.93327 17.8794C9.83364 17.9772 9.69851 18.0321 9.55762 18.0321C9.41672 18.0321 9.2816 17.9772 9.18197 17.8794C9.08234 17.7816 9.02637 17.6491 9.02637 17.5108V11.2556C9.02637 11.1174 9.08234 10.9848 9.18197 10.887C9.2816 10.7893 9.41672 10.7344 9.55762 10.7344ZM12.2139 10.7344C12.3548 10.7344 12.4899 10.7893 12.5895 10.887C12.6891 10.9848 12.7451 11.1174 12.7451 11.2556V17.5108C12.7451 17.6491 12.6891 17.7816 12.5895 17.8794C12.4899 17.9772 12.3548 18.0321 12.2139 18.0321C12.073 18.0321 11.9378 17.9772 11.8382 17.8794C11.7386 17.7816 11.6826 17.6491 11.6826 17.5108V11.2556C11.6826 11.1174 11.7386 10.9848 11.8382 10.887C11.9378 10.7893 12.073 10.7344 12.2139 10.7344ZM15.4014 11.2556C15.4014 11.1174 15.3454 10.9848 15.2458 10.887C15.1461 10.7893 15.011 10.7344 14.8701 10.7344C14.7292 10.7344 14.5941 10.7893 14.4945 10.887C14.3948 10.9848 14.3389 11.1174 14.3389 11.2556V17.5108C14.3389 17.6491 14.3948 17.7816 14.4945 17.8794C14.5941 17.9772 14.7292 18.0321 14.8701 18.0321C15.011 18.0321 15.1461 17.9772 15.2458 17.8794C15.3454 17.7816 15.4014 17.6491 15.4014 17.5108V11.2556Z" fill="#484B4D"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.1201 8.12758C19.1201 8.40408 19.0082 8.66925 18.8089 8.86476C18.6097 9.06028 18.3394 9.17011 18.0576 9.17011H17.5264V18.5529C17.5264 19.1059 17.3025 19.6362 16.904 20.0272C16.5055 20.4182 15.965 20.6379 15.4014 20.6379H9.02637C8.46278 20.6379 7.92228 20.4182 7.52377 20.0272C7.12525 19.6362 6.90137 19.1059 6.90137 18.5529V9.17011H6.37012C6.08832 9.17011 5.81807 9.06028 5.61882 8.86476C5.41956 8.66925 5.30762 8.40408 5.30762 8.12758V7.08506C5.30762 6.80856 5.41956 6.54339 5.61882 6.34788C5.81807 6.15237 6.08832 6.04253 6.37012 6.04253H10.0889C10.0889 5.76603 10.2008 5.50086 10.4001 5.30535C10.5993 5.10984 10.8696 5 11.1514 5H13.2764C13.5582 5 13.8284 5.10984 14.0277 5.30535C14.2269 5.50086 14.3389 5.76603 14.3389 6.04253H18.0576C18.3394 6.04253 18.6097 6.15237 18.8089 6.34788C19.0082 6.54339 19.1201 6.80856 19.1201 7.08506V8.12758ZM8.08924 9.17011L7.96387 9.23162V18.5529C7.96387 18.8294 8.07581 19.0945 8.27507 19.29C8.47432 19.4856 8.74457 19.5954 9.02637 19.5954H15.4014C15.6832 19.5954 15.9534 19.4856 16.1527 19.29C16.3519 19.0945 16.4639 18.8294 16.4639 18.5529V9.23162L16.3385 9.17011H8.08924ZM6.37012 8.12758V7.08506H18.0576V8.12758H6.37012Z" fill="#484B4D"/>
+                            </svg>
+                        </button>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <button class="my-4 mx-4 items-center" type="button" (click)="addItem()">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="11" fill="#D8E5F8"/>
+                    <path d="M11.2344 9.89844H14.4062V11.2656H11.2344V14.8594H9.78125V11.2656H6.60938V9.89844H9.78125V6.57812H11.2344V9.89844Z" fill="#484B4D"/>
+                </svg>                
+            </button>
+        </div>
+
+    </form>
+
+    <div class="flex row justify-end my-8">
+        <div class="">
+            <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" style="color: #FFFFFF;background-color: #233674" (click)="saveTimetables()">Salvar</button>
+        </div>
+    </div>  
+
+
+</section>
+

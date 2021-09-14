@@ -13,6 +13,11 @@ import { ConfigCamposCustomizadosComponent } from './components/page.config.comp
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
 import { ResetComponent } from './components/reset/reset.component';
+import { OrgUnitsComponent } from './pages/org-units/org-units.component';
+import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
+import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
+import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
+import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,13 +27,18 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'permissions', component: PermissionsComponent },
   { path: 'import', component: ImportComponent },
+  { path: 'orgunits', component: OrgUnitsComponent },
   { path: 'config', component: ConfigComponent ,
     children: [
       {path:'gerais', component: ConfigGeraisComponent },
       {path:'avancadas', component: ConfigAvancadasComponent },
+      {path:'terms', component: ConfigTermsComponent },
+      {path:'lti', component: ConfigLtiComponent },
+      {path:'timetables', component: ConfigTimetablesComponent },
       {path:'campos-customizados', component: ConfigCamposCustomizadosComponent },
       {path:'integracoes', component: ConfigIntegracoesComponent },
       {path:'login', component: ConfigLoginComponent },
+      {path:'disciplines', component: ConfigDisciplinesurmasComponent },
       ]
   }
 ];

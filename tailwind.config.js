@@ -22,6 +22,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       customGray: {
+        default: '#A9AEB3',
         light: '#d9e0e6',
         dark: '#484B4D',
         superLight: '#EDEDED',

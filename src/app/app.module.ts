@@ -19,6 +19,16 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { MsalModule, MsalInterceptor, MSAL_INSTANCE, MsalService, MsalInterceptorConfiguration, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { CookieService } from 'ngx-cookie-service';
 
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { NgxEditorModule } from 'ngx-editor';
+import {OrganizationChartModule} from 'primeng/organizationchart';
+import {ToastModule} from 'primeng/toast';
+import {PanelModule} from 'primeng/panel';
+import { TooltipModule } from 'primeng/tooltip';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -32,6 +42,7 @@ import { ConfigAvancadasComponent } from './components/page.config.components/co
 import { ConfigCamposCustomizadosComponent } from './components/page.config.components/config-campos-customizados/config-campos-customizados.component';
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
+import { OrgUnitsComponent } from './pages/org-units/org-units.component';
 
 // Components
 import { LoginComponent } from './pages/login/login.component';
@@ -52,6 +63,10 @@ export function MSALInstanceFactory(): IPublicClientApplication{
     }
   })
 }
+import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
+import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
+import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
+import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
@@ -83,6 +98,11 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     RolesComponent,
     CountdownComponent,
     ResetComponent,
+    OrgUnitsComponent,
+    ConfigDisciplinesurmasComponent,
+    ConfigLtiComponent,
+    ConfigTermsComponent,
+    ConfigTimetablesComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,6 +119,16 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ColorPickerModule,
     SocialLoginModule,
     MsalModule,
+    OrganizationChartModule,
+    ToastModule,
+    PanelModule,
+    DynamicDialogModule,
+    DialogModule,
+    ButtonModule,
+    ConfirmDialogModule,
+    NgxEditorModule,
+    TooltipModule,
+    OverlayPanelModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
@@ -139,5 +169,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     },
   ],
   bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
