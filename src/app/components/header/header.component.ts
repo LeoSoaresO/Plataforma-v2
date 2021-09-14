@@ -66,6 +66,7 @@ logOutGoogle: boolean = false
 
   logOutM(): void {
     this.cookieService.delete('userMicro');
+    this.cookieService.set('logOut', 'true')
     this.msalservice.logout();
     console.log('microsoft deletado, logOut concluído'); 
   }

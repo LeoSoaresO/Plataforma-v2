@@ -169,7 +169,5 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     },
   ],
   bootstrap: [AppComponent]
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule { }
