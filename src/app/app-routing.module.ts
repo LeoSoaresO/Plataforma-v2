@@ -17,7 +17,7 @@ import { ResetComponent } from './components/reset/reset.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {path:'reset', component: ResetComponent },
-  { path: '', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'permissions', component: PermissionsComponent },

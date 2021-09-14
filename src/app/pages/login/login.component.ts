@@ -69,7 +69,7 @@ gUser
 
   logOut(): void {
     this.socialAuthService.signOut();
-    this.cookieService.delete('user');
+    this.cookieService.delete('userGoogle');
   }
 
   isLogged() : boolean{
@@ -79,7 +79,7 @@ gUser
   loginWithMicrosoft(){
     this.msalservice.loginPopup().subscribe((response: AuthenticationResult)=> {
       this.msalservice.instance.setActiveAccount(response.account)
-      console.log(this.msalservice.instance.getActiveAccount()?.name)
+      console.log(this.msalservice.instance.getActiveAccount())
     });
   }
 
@@ -103,8 +103,8 @@ gUser
   //Other Functions
 
   setGoogleCredencials(){
-    this.cookieService.set('user', JSON.stringify(this.socialUser));
-      let data =  this.cookieService.get('user')
+    this.cookieService.set('userGoogle', JSON.stringify(this.socialUser));
+      let data =  this.cookieService.get('userGoogle')
       this.gUser = JSON.parse(data)
       console.log(this.gUser)
       this.checkGoogleUser();
@@ -153,7 +153,35 @@ gUser
       console.log(params);   
       
     const response = await this.loginservice.login(params)
-    console.log(response);    
+    console.log(response);
+    if (response) {
+      this.cookieService.set('userNormal', JSON.stringify(response.token));
+      setTimeout(() =>{
+        this.router.navigate(['dashboard'])
+     },5000);
+    }
+  }
+
+  async authGoogle(){
+    console.log(this.gUser.authToken);
+    const params = {
+      "token": this.gUser.authToken
+    }
+    const response = await this.loginservice.loginWithGoogle(params)
+    console.log(response);
+    if (response) {
+      setTimeout(() =>{
+        this.router.navigate(['dashboard'])
+     },5000);
+    }
+  }
+
+  async authMicro(){
+    const params = {
+      "token": this.gUser.authToken
+    }
+    const response = await this.loginservice.loginWithMicrosoft(params)
+    console.log(response);
   }
 
   async firstLoad(){
@@ -170,16 +198,6 @@ gUser
     const response = await this.loginservice.resetPassword(params)
     console.log(response); 
     console.time('request')   
-  }
-
-  async authGoogle(){
-    this.cookieService.check('user')
-    console.log(this.gUser.authToken);
-    const params = {
-      "token": this.gUser.authToken
-    }
-    const response = await this.loginservice.loginWithGoogle(params)
-    console.log(response);
   }
 
 }

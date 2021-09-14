@@ -52,6 +52,20 @@ export class LoginService {
     })
   }
 
+  loginWithMicrosoft(params){
+    const headers = {
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "{$_SERVER['HTTP_ORIGIN']}",
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Max-Age': '86400'
+    }
+    return this.http.post(`${API_Routes.URL}/auth?provider=microsoft` ,params ,{ headers: headers })
+    .toPromise()
+    .then(( response: any )=>{
+      return response
+    })
+  }
+
   resetPassword(email){
       const headers = {
         'Content-Type': 'application/json',
@@ -59,7 +73,7 @@ export class LoginService {
         'Access-Control-Allow-Credentials': 'true',
         'Access-Control-Max-Age': '86400'
       }
-    return this.http.post(`${API_Routes.URL}/api/auth/password/reset`, email,{ headers: headers })
+    return this.http.post(`${API_Routes.URL}/auth/password/reset`, email,{ headers: headers })
     .toPromise()
     .then((response: any)=>{
       return response
