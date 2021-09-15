@@ -12,8 +12,16 @@ export class DisciplineService {
     private http: HttpClient
   ) { }
 
-  getDisciplines(): Observable<any> {
-    // return this.http.get<any>(`${API_Routes.URL}/discplines`);
-    return this.http.get<any>(`http://localhost:3000/discplines`);
+  getDisciplines(types: any, query: any, modalities: any, months: any, years: any): Observable<any> {
+    return this.http.get<any>(`${API_Routes.URL}/disciplines/?types=${types}&q=${query}&modalities${modalities}&months=${months}&years=${years}`);
+    // return this.http.get<any>(`http://localhost:3000/discplines`);
   }
+
+  postDisciplines(params: any): Observable<any> {
+    return this.http.post(`${API_Routes.URL}/disciplines/`, params)
+  }  
+
+  updateDisciplines(id:number, params: any): Observable<any> {
+    return this.http.put(`${API_Routes.URL}/disciplines/${id}`, params);
+  }  
 }
