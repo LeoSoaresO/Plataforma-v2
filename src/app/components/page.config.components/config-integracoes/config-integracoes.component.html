@@ -28,6 +28,6 @@
         </div>
     </form>
     <div class="flex justify-end">
-        <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" style="color: #FFFFFF;background-color: #233674" (click)="saveIntegration()">salvar</button>
+        <button class="border rounded-md py-2 px-8 font-bold text-sm border-customGray-textGray" [ngClass]="{'disabled:opacity-20 cursor-not-allowed': !buttonActive}" style="color: #FFFFFF;background-color: #233674" (click)="saveIntegration()" [disabled]="!buttonActive">Salvar</button>
     </div>
 </section>

@@ -10,17 +10,18 @@ import { SettingsIntegrationsService } from 'src/app/services/settings-integrati
 })
 export class ConfigIntegracoesComponent implements OnInit {
   settingsIntegration: any = [];
-  settingsIntegrationForm: FormGroup;  
+  settingsIntegrationForm: FormGroup;
+  public buttonActive : boolean = false;
 
   constructor(private FormBuilder: FormBuilder, private settingsIntegrationsService: SettingsIntegrationsService) { }
 
   ngOnInit(): void {
+    this.buttonActive = false;
     this.getIntegrationSettings();
     this.createIntegrationForm();
   }
 
   setValueForm(settingsIntegration: any){
-    console.log(settingsIntegration);
     
     this.settingsIntegrationForm.controls['meet_external_validation_url'].setValue(settingsIntegration.meet_external_validation_url);
     this.settingsIntegrationForm.controls['meet_external_report_url'].setValue(settingsIntegration.meet_external_report_url);
@@ -65,7 +66,12 @@ export class ConfigIntegracoesComponent implements OnInit {
       meet_external_validation_url: ['', [Validators.required]],
       meet_external_report_enabled: ['', [Validators.required]],
       meet_external_report_url: ['', [Validators.required]],
-    })
+    });
+    setTimeout(() => {
+      this.settingsIntegrationForm.valueChanges.subscribe(val => {
+        this.buttonActive = true;
+      });
+    }, 100);
   }
 
   saveIntegration(){
@@ -84,7 +90,7 @@ export class ConfigIntegracoesComponent implements OnInit {
       "meet_external_report_url ": meet_external_report_url        
     }
     this.settingsIntegrationsService.postIntegrationSettings(params)
-    .subscribe(() => console.log(params));
+    .subscribe(() => this.buttonActive = false);
   }    
 
 }

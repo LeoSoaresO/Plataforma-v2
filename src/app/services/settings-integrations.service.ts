@@ -13,10 +13,10 @@ export class SettingsIntegrationsService {
   ) { }
 
   getIntegrationSettings(): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/settings/integration/`);
+    return this.http.get<any>(`${API_Routes.URL}/settings/integrations/`);
   }
 
   postIntegrationSettings(params: any): Observable<any> {
-    return this.http.patch(`${API_Routes.URL}/settings/integration/`, params)
+    return this.http.patch(`${API_Routes.URL}/settings/integrations/`, params)
   }
 }

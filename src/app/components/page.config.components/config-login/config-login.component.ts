@@ -9,13 +9,14 @@ import { SettingsLoginService } from 'src/app/services/settings-login.service';
   styleUrls: ['./config-login.component.scss']
 })
 export class ConfigLoginComponent implements OnInit {
-
   settingsLogin: any = [];
   settingsLoginForm: FormGroup;  
+  public buttonActive : boolean = false;
 
   constructor(private FormBuilder: FormBuilder, private settingsLoginService: SettingsLoginService) { }
 
   ngOnInit(): void {
+    this.buttonActive = false;
     this.getLoginSettings();
     this.createLoginForm();
   }
@@ -41,6 +42,11 @@ export class ConfigLoginComponent implements OnInit {
     this.settingsLoginForm = this.FormBuilder.group({
       redirectToDiscipline: ['', [Validators.required]],
     })
+    setTimeout(() => {
+      this.settingsLoginForm.valueChanges.subscribe(val => {
+        this.buttonActive = true;
+      });
+    }, 100);
   }
 
   saveLogin(){
