@@ -58,7 +58,7 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 export function MSALInstanceFactory(): IPublicClientApplication{
   return new PublicClientApplication({
     auth: {
-      clientId: '01e2af38-0675-478b-b255-eaa4a2704b97',
+      clientId: '3358de6b-4e5f-49bc-b02d-3c99bb0505cd',
       redirectUri: 'http://localhost:4200'
     }
   })
@@ -157,7 +157,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '358550703280-e4r4qc3r193f6ud4trihkvtcg6dli38l.apps.googleusercontent.com'
+              '927911156726-grkvus8d17384sukkn4h743ue1mcq94s.apps.googleusercontent.com'
             )
           }
         ]
