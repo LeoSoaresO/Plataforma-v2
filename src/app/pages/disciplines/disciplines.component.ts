@@ -70,7 +70,7 @@ export class DisciplinesComponent implements OnInit {
       
   }   
 
-  postOrgUnits(){
+  postDiscipline(){
         let codTurma = this.searchForm.controls.codTurma.value
         let nomeTurma = this.searchForm.controls.nomeTurma.value
         let nivelEnsino = this.searchForm.controls.nivelEnsino.value
@@ -81,7 +81,7 @@ export class DisciplinesComponent implements OnInit {
         if (this.editMode) {
 
             const params = {
-              "external_id": "super-administrator-test",
+              "external_id": codTurma,
               "title": nomeTurma,
               "nivel_external_id": nivelEnsino,
               "modalidade_external_id": modalidades,
