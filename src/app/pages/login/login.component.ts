@@ -105,7 +105,7 @@ apiResp
   //Other Functions
 
   setGoogleCredencials(){
-    this.cookieService.set('userGoogle', JSON.stringify(this.socialUser));
+    this.cookieService.set('userGoogle', JSON.stringify(this.socialUser.authToken));
       let data =  this.cookieService.get('userGoogle')
       this.gUser = JSON.parse(data)
       console.log(this.gUser)
@@ -114,6 +114,7 @@ apiResp
 
   checkGoogleUser(){
     if (this.gUser){
+      console.log('o google está1 no cookie');
       this.authGoogle();     
     } else {
       console.log('não tem nada no cookie'); 
@@ -165,9 +166,9 @@ apiResp
   }
 
   async authGoogle(){
-    console.log(this.gUser.authToken);
+    console.log(this.gUser);
     const params = {
-      "token": this.gUser.authToken
+      "token": this.gUser
     }
     const response = await this.loginservice.loginWithGoogle(params)
     console.log(response);
@@ -192,7 +193,7 @@ apiResp
 
   async firstLoad(){
     this.cookieService.set('logOut', 'true')
-    this.cookieService.delete('userGoogle', 'userNormal', 'userMicro')
+    this.cookieService.delete('userGoogle')
     if(!this.cookieService.check('logOut')){
       this.router.navigate(['dashboard']);
     }

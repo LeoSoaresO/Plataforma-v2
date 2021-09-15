@@ -52,7 +52,7 @@ logOutGoogle: boolean = false
       console.log('microsoft no cookie'); 
     }
     if(this.cookieService.check('logOut')){
-      this.router.navigate(['login'])
+      this.router.navigate([''])
     }
   }
 
