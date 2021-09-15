@@ -20,7 +20,7 @@ import { ConfigTermsComponent } from './components/page.config.components/config
 import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   {path:'reset', component: ResetComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent },
