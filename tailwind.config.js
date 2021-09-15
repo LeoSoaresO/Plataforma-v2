@@ -34,7 +34,8 @@ module.exports = {
         default: '#233674',
         light: '#EFF4FA',
         superLight: '#D7E1EC',
-        normal: '#004899'
+        normal: '#004899',
+        dark: '#222B45'
       },
       customWhite: {
         default: '#ffffff',

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { faImage, faUserHeadset } from '@fortawesome/pro-light-svg-icons';
 import { faQuestionCircle } from '@fortawesome/pro-solid-svg-icons';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClient } from '@angular/common/http';
+import { LoginService } from 'src/app/services/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset',
@@ -17,10 +22,16 @@ faUserHeadset = faUserHeadset
 //Variables
 dontMatch
 match
+options
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService,
+    private cookieService: CookieService,
+    private router: Router,    
+  ) { }
 
   ngOnInit(): void {
+    this.firstLoad();
   }
 
   pass() {
@@ -50,8 +61,36 @@ match
       this.dontMatch = true
     } else {
       confirm_password.setCustomValidity('');
-      console.log('foi'); 
+      console.log('foi');
+      this.cookieService.set('pass', JSON.stringify(confirm_password.value))
+      this.updatePassword()
     }
+  }
+
+  async updatePassword(){
+    let p =  this.cookieService.get('pass')
+    let e =  this.cookieService.get('email')
+    let t =  this.cookieService.get('token')
+    let pass = JSON.parse(p)
+    let email = JSON.parse(e)
+    let token = JSON.parse(t)
+    const params = {
+      "email": email,
+      "password": pass,
+      "token": token
+    }
+    const response = await this.loginService.updatePassword(params)
+    console.log(response);
+    if(response == null){
+      console.log('it works');      
+      this.router.navigate([''])
+    }
+  }
+
+  async firstLoad(){
+    const response = await this.loginService.firstLoad()
+    console.log(response); 
+    this.options = response   
   }
 
 }
