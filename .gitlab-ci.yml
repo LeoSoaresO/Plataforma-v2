@@ -4,15 +4,16 @@
   - gcloud auth activate-service-account --key-file /tmp/$CI_PIPELINE_ID.json
 
 stages:
-  - build-telescope
+  - build
 
-build-telescope:
-  stage: build-telescope
+build:
+  stage: build
   image: google/cloud-sdk:latest
   allow_failure: false
+  when: manual
   only:
     refs:
-      - tissot/cicd
+      - dev
   before_script:
     - *google
   script:
