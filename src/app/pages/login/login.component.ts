@@ -28,6 +28,7 @@ cont = false
 loginForm: FormGroup;
 userForm: FormGroup;
 reset: FormGroup
+token: FormGroup
 socialUser: SocialUser;
 isLoggedin: boolean = false; 
 title = 'msal-angular-tutorial';
@@ -52,6 +53,7 @@ apiResp
     this.form();
     this.firstLoad();
     this.resetForm();
+    this.validationForm()
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -102,6 +104,12 @@ apiResp
     })
   }
 
+  validationForm(){
+    this.token = this.formBuilder.group({
+      token: ['', Validators.required]
+    })
+  }
+
   //Other Functions
 
   setGoogleCredencials(){
@@ -130,10 +138,6 @@ apiResp
     this.show = false;
     this.cont = true
     this.resetPassword();
-  }
-  
-  validateCod(){
-    this.router.navigate(['reset'])
   }
 
   pass() {
@@ -205,12 +209,29 @@ apiResp
 
   async resetPassword(){
     let e = this.reset.controls.email.value
+    this.cookieService.set('email', JSON.stringify(e))
     const params = {
       "email" : e 
     }
     const response = await this.loginservice.resetPassword(params)
     console.log(response); 
     console.time('request')   
+  }
+
+  async validationToken(){
+    let t = this.token.controls.token.value
+    let data =  this.cookieService.get('email')
+    let e = JSON.parse(data)
+    const params = {
+      "token" : t,
+      "email": e
+    }
+    const response = await this.loginservice.resetToken(params)
+    console.log(response);
+    this.cookieService.set('token', JSON.stringify(t))
+    if(response) {
+      this.router.navigate(['reset'])
+    }  
   }
 
   callProfile(){

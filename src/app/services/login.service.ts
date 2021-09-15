@@ -82,4 +82,32 @@ export class LoginService {
       return response
     })
   }
+
+  resetToken(token){
+    const headers = {
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "{$_SERVER['HTTP_ORIGIN']}",
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Max-Age': '86400'
+    }
+    return this.http.post(`${API_Routes.URL}/auth/password/validationToken`, token,{ headers: headers })
+    .toPromise()
+    .then((response: any)=>{
+      return response
+    })
+  }
+
+  updatePassword(params){
+    const headers = {
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "{$_SERVER['HTTP_ORIGIN']}",
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Max-Age': '86400'
+    }
+    return this.http.post(`${API_Routes.URL}/auth/password/update`, params,{ headers: headers })
+    .toPromise()
+    .then((response: any)=>{
+      return response
+    })
+  }
 }

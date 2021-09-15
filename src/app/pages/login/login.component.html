@@ -4,9 +4,9 @@
 <div *ngIf="!options" class="opacity-10 fixed inset-0 z-20" style="background-color: #000;"></div>
 
 <section class="flex flex-col md:flex-row items-center bg-customWhite-default">
-    <div class="bg-customGray-light hidden h lg:block w-full md:w-1/2 xl:w-2/4 text-center">
+    <div class="bg-customGray-light hidden lg:block w-full md:w-1/2 xl:w-2/4 text-center">
         <div class="flex items-stretch justify-center h c">
-            <fa-icon [icon]="faImage" class="self-center text-customGray-iconGray h" *ngIf="!options"></fa-icon>
+            <fa-icon [icon]="faImage" class="self-center text-customGray-iconGray" *ngIf="!options"></fa-icon>
             <img src="{{options.authentication.customization.login_background}}" *ngIf="options" class="h" alt="">
         </div>
     </div>
@@ -123,23 +123,23 @@
             </div>
             <!--body-->
             <div class="relative p-6 flex-auto w-11/12 mx-auto">
-                <form>
+                <form [formGroup]="token">
                     <p class="text-center text-sm">Insira o código que enviamos para o seu e-mail.</p>
-                    <div class="mt-5">
-                        <div class="mt-2">
-                            <label for="" class="font-semibold text-customGray-dark">Código</label>
-                            <input type="text" class="w-full border border-customGray-light rounded-sm p-2 text-md mt-2" placeholder="Digite aqui" required>
-                            <div class="flex flex-col justify-end mt-2">
-                                <p class="text-right text-sm">O código expira em <app-countdown></app-countdown> minutos</p>
-                                <a class="font-bold text-customBlue-default text-right mt-1">Enviar novamente</a>
-                            </div>
-                        </div>
-                    </div>
+                      <div class="mt-5">
+                          <div class="mt-2">
+                              <label for="" class="font-semibold text-customGray-dark">Código</label>
+                              <input type="text" class="w-full border border-customGray-light rounded-sm p-2 text-md mt-2" placeholder="Digite aqui" required formControlName="token">
+                              <div class="flex flex-col justify-end mt-2">
+                                  <p class="text-right text-sm">O código expira em <app-countdown></app-countdown> minutos</p>
+                                  <a class="font-bold text-customBlue-default text-right mt-1" (click)="resetPassword()">Enviar novamente</a>
+                              </div>
+                          </div>
+                      </div>
                 </form>
             </div>
             <!--footer-->
             <div class="flex items-center justify-center p-6 rounded-b">
-              <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-7 py-2.5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" (click)="validateCod()" type="button">
+              <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-7 py-2.5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" (click)="validationToken()" type="button">
                 Continuar
               </button>
               <button class="text-customGray-textGray background-transparent font-semibold px-7 py-2.5 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="cont = !cont">
