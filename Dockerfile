@@ -11,4 +11,5 @@ RUN npm run build --prod
 # Stage 2
 FROM nginx:1.17.1-alpine
 COPY --from=build-step /app/dist/telescopeV2 /usr/share/nginx/html
+COPY .DOCKER_FILES/nginx/default.conf /etc/nginx/conf.d
 EXPOSE 80
