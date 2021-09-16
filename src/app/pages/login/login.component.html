@@ -109,7 +109,7 @@
     </div>
   </div>
   <div *ngIf="show" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>
-
+  
     <!-- Modal edit User -->
     <div *ngIf="cont" class="transition ease-out duration-700 animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
         <div class="relative w-4/12 my-6 mx-auto absolute bg-customWhite-default rounded-lg">
@@ -129,6 +129,7 @@
                           <div class="mt-2">
                               <label for="" class="font-semibold text-customGray-dark">Código</label>
                               <input type="text" class="w-full border border-customGray-light rounded-sm p-2 text-md mt-2" placeholder="Digite aqui" required formControlName="token">
+                              <p class="text-sm font-semibold text-customRed-default">{{error}}</p>
                               <div class="flex flex-col justify-end mt-2">
                                   <p class="text-right text-sm">O código expira em <app-countdown></app-countdown> minutos</p>
                                   <a class="font-bold text-customBlue-default text-right mt-1" (click)="resetPassword()">Enviar novamente</a>
