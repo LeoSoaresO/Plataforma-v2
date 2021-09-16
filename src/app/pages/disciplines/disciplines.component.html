@@ -1,0 +1,233 @@
+<app-header></app-header>
+<section class="pl-48 px-12 py-8">
+    <div>
+        <h1 class="text-customBlue-default font-bold text-3xl">Minhas turmas</h1>
+    </div>
+    <div class="grid grid-cols-6 gap-4 mt-8">
+        <div class="col-start-1 col-span-4 flex">
+            <button class="bg-disciplines rounded-l-md p-2 px-4" (click)="changeFilterDiscipline('item1')" [ngClass]="{' button-disciplines-selected ': selected === 'item1'}">Minhas turmas</button>
+            <button class="bg-disciplines p-2 px-4" (click)="changeFilterDiscipline('item2')" [ngClass]="{' button-disciplines-selected ': selected === 'item2'}">Turmas abertas</button>
+            <button class="bg-disciplines rounded-r-md p-2 px-4" (click)="changeFilterDiscipline('item3')" [ngClass]="{' button-disciplines-selected ': selected === 'item3'}">Minhas arquivadas</button>
+        </div>
+        <div class="col-span-1">
+            <form [formGroup]="searchForm" class="flex items-center mb-4 w-full  md:mb-0 ">
+                <label class="hidden" for="search-form">Search</label>
+                <svg (click)="searchDiscipline()" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="#8F9BB3">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>    
+                <input class="p-2 rounded-full w-full outline-none" placeholder="Procurar por turmas" type="text" required formControlName="text">
+                <button class="hidden" (click)="searchDiscipline()">Submit</button>
+            </form>            
+        </div>
+        <div class="col-span-1 flex gap-8 justify-end">
+            <button (click)="filterOpen = !filterOpen" class="rounded-md py-2 px-2"  style="background-color: #FFF;">
+                <svg *ngIf="!filterOpen" width="21" height="21" viewBox="0 0 21 21" fill="#FFF" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.25 21H8.75C8.28587 21 7.84075 20.8156 7.51256 20.4874C7.18437 20.1592 7 19.7141 7 19.25V12.6087L0.51625 6.125C0.187611 5.79832 0.00195369 5.35463 0 4.89125V1.75C0 1.28587 0.184374 0.840752 0.512563 0.512563C0.840752 0.184374 1.28587 0 1.75 0H19.25C19.7141 0 20.1592 0.184374 20.4874 0.512563C20.8156 0.840752 21 1.28587 21 1.75V4.89125C20.998 5.35463 20.8124 5.79832 20.4837 6.125L14 12.6087V19.25C14 19.7141 13.8156 20.1592 13.4874 20.4874C13.1592 20.8156 12.7141 21 12.25 21ZM1.75 1.75V4.89125L8.75 11.8913V19.25H12.25V11.8913L19.25 4.89125V1.75H1.75Z" fill="#484B4D"/>
+                </svg>
+                <svg *ngIf="filterOpen" width="21" height="21" viewBox="0 0 21 21" fill="#FFF" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.25 21H8.75C8.28587 21 7.84075 20.8156 7.51256 20.4874C7.18437 20.1592 7 19.7141 7 19.25V12.6087L0.51625 6.125C0.187611 5.79832 0.00195369 5.35463 0 4.89125V1.75C0 1.28587 0.184374 0.840752 0.512563 0.512563C0.840752 0.184374 1.28587 0 1.75 0H19.25C19.7141 0 20.1592 0.184374 20.4874 0.512563C20.8156 0.840752 21 1.28587 21 1.75V4.89125C20.998 5.35463 20.8124 5.79832 20.4837 6.125L14 12.6087V19.25C14 19.7141 13.8156 20.1592 13.4874 20.4874C13.1592 20.8156 12.7141 21 12.25 21ZM1.75 1.75V4.89125L8.75 11.8913V19.25H12.25V11.8913L19.25 4.89125V1.75H1.75Z" fill="#E8532C"/>
+                </svg>                
+            </button>
+            <button (click)='openModal()' class="py-2 px-3.5 right-16 rounded-full add shadow-lg" style="border-radius:50%;background-color: #E8532C;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.19727 4.61035H11.5586V6.49023H7.19727V11.4316H5.19922V6.49023H0.837891V4.61035H5.19922V0.0449219H7.19727V4.61035Z" fill="white"/>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+
+    <div *ngIf="filterOpen" [formGroup]="searchForm" class="grid grid-cols-5 gap-4 mt-8">
+        <div>
+            <label for="">Níveis</label>
+            <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" formControlName="nivelFilter"  >
+                <option disabled hidden [value]="selectUndefinedOptionValue">-- Níveis --</option>
+                <option *ngFor="let nivel of nivelEnsino" [ngValue]="nivel">
+                    {{nivel}}
+                </option>
+            </select>    
+        </div>
+        <div>
+            <label for="">Modalidades</label>
+            <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" formControlName="modalidadeFilter" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Modalidades --</option>
+                <option *ngFor="let modalidade of modalidades" [ngValue]="modalidade">
+                    {{modalidade}}
+                </option>
+            </select>    
+        </div>
+        <div>
+            <label for="">Anos</label>
+            <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" formControlName="anosFilter" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Anos --</option>
+                <option *ngFor="let ano of anos" [ngValue]="ano">
+                    {{ano}}
+                </option>
+            </select>   
+        </div>
+        <div>
+            <label for="">Meses</label>
+            <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" formControlName="mesesFilter" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Meses --</option>
+                <option *ngFor="let mes of meses" [ngValue]="mes">
+                    {{mes}}
+                </option>
+            </select>   
+        </div>
+        <div class="relative text-center">
+            <button class="border rounded-md py-2 px-6 " style="margin-top:20px; color: #FFFFFF;background-color: #233674; font-size: 0.8em;" (click)="filterDiscipline()">Filtrar</button>                                  
+        </div>
+
+    </div>
+
+    <div class="mt-8 flex grid grid-cols-4 gap-4">
+
+        <div class="relative grid grid-rows-2 shadow-card rounded-md h-full" *ngFor="let discipline of disciplines">
+            <div class="absolute right-0 m-4" (click)="op.toggle($event)">
+                <button>
+                    <svg width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.78571" cy="1.78571" r="1.78571" fill="#484B4D"/>
+                        <circle cx="1.78571" cy="13.2154" r="1.78571" fill="#484B4D"/>
+                        <circle cx="1.78571" cy="7.50056" r="1.78571" fill="#484B4D"/>
+                    </svg>
+                </button>
+
+                <p-overlayPanel #op [showCloseIcon]="false" [style]="{width: '200px'}">
+                    <ng-template pTemplate>
+                        <div class="grid grid-rows-1">
+                            <!-- <button>Importar</button>
+                            <button>Duplicar</button>
+                            <button>Editar</button>
+                            <button>Arquivar</button> -->
+                            <button (click)="remove(discipline.external_id)">Excluir</button>
+                        </div>
+                    </ng-template>
+                </p-overlayPanel>              
+            </div>
+
+
+            <div class="bg-card rounded-t-md" style="background-color:#D8E5F8 ;background-image: url('{{discipline.card_image}}'); background-size: contain; background: no-repeat;background-position: center;">
+                <h3 class="justify-center mt-12 mx-6" style="color:#484B4D; font-size: 18px; font-weight: bold;">{{discipline.name}}</h3>
+            </div>
+            <div class="p-4">
+                <div class="flex mb-4">
+                    <span class="flex items-center">
+                        <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.82504 11.6875C6.74661 11.6875 6.66819 11.6991 6.59338 11.7237C6.16813 11.8635 5.7209 11.9531 5.25004 11.9531C4.77918 11.9531 4.33195 11.8635 3.90637 11.7237C3.83156 11.6991 3.75347 11.6875 3.67504 11.6875C1.63871 11.6875 -0.0107751 13.3636 5.30078e-05 15.4268C0.00464675 16.2987 0.713067 17 1.57505 17H8.92503C9.78701 17 10.4954 16.2987 10.5 15.4268C10.5109 13.3636 8.86138 11.6875 6.82504 11.6875ZM5.25004 10.625C6.98976 10.625 8.40003 9.19793 8.40003 7.4375C8.40003 5.67707 6.98976 4.25 5.25004 4.25C3.51033 4.25 2.10005 5.67707 2.10005 7.4375C2.10005 9.19793 3.51033 10.625 5.25004 10.625ZM19.425 0H6.82504C5.95649 0 5.25004 0.73877 5.25004 1.64654V3.1875C6.01851 3.1875 6.72988 3.41262 7.35004 3.77852V2.125H18.9V11.6875H16.8V9.5625H12.6V11.6875H10.0984C10.7251 12.2417 11.1852 12.9735 11.4007 13.8125H19.425C20.2936 13.8125 21 13.0737 21 12.166V1.64654C21 0.73877 20.2936 0 19.425 0Z" fill="#E8532C"/>
+                        </svg>
+                    </span>
+                    <p class="ml-2">{{discipline.participants?.users?.teacher[0].name}}</p>
+                </div>
+                <div class="flex">
+                    <span *ngFor="let student of discipline.participants?.users?.students; let i = index" >
+                        <div *ngIf="i<3">
+                            <img src="{{student.image}}" alt="" style="width: 22px; height: 22px;">
+                        </div>
+                    </span>                    
+                    <p class="ml-2" >+{{discipline.participants?.count?.students}} alunos</p>
+                </div>
+                <div class="grid grid-cols-2 mt-4">
+                    <div>
+                        <div class="text-center">
+                            <span style="font-size: 0.8rem">{{discipline.progress * 100}}% concluído</span>
+                        </div>
+                        <div class="h-2 relative max-w-xl rounded-full overflow-hidden">
+                            <div class="w-full h-full absolute" style="background-color: #D8E5F8"></div>
+                            <div class="h-full absolute" [style.width.%]="discipline.progress * 100" style="background-color: #233674;"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div *ngIf="discipline?.type == 'open'" >
+                            <button style="font-size: 0.8rem">Inscreva-se</button>
+                        </div>                        
+                        <button class="border rounded-md py-2 px-6 " style="color: #FFFFFF;background-color: #E8532C; font-size: 0.8em;">Visualizar turma</button>
+                    </div>                  
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal add custom schema -->
+    <div *ngIf="showModal" class="transition ease-out duration-700 animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
+        <div class="my-6 ml-36 mx-auto absolute bg-customWhite-default rounded-lg" style="width: 35%;">
+        <!--content-->
+        <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <!--header-->
+            <div class="text-center p-5 border-b border-solid border-customBlue-light rounded-t">
+            <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="closeModal()">
+                <span class="bg-transparent h-6 w-6 text-2xl block outline-none focus:outline-none">
+                <fa-icon [icon]="faTimes"></fa-icon>
+                </span>
+            </button>
+            <h3 class="text-xl font-bold text-customBlue-default">
+                Criar nova turma
+            </h3>
+            </div>
+            <!--body-->
+            <div class="relative p-6">
+                <form [formGroup]="searchForm">
+                    <div>
+                        <div class="mt-2" *ngIf="!editMode">
+                            <label class="my-1">Cod da turma</label>
+                            <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="codTurma">
+                        </div>
+                        <div class="mt-2">
+                            <label class="my-1">Nome da turma</label>
+                            <input type="text" class="w-full border border-customGray-default rounded-md p-1 text-md mr-4" required formControlName="nomeTurma">
+                        </div>                    
+                        <div class="mt-2">
+                            <label class="w-full my-1">Nível da unidade organizacional</label>
+                            <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" required formControlName="nivelEnsino">
+                                <option *ngFor="let nivel of nivelEnsino" [ngValue]="nivel">
+                                    {{nivel}}
+                                </option>
+                            </select> 
+                        </div>
+                        <div class="mt-2">
+                            <label class="w-full my-1">Modalidade</label>
+                            <select class="w-full border border-customGray-default p-1 rounded-md" style="background-color: transparent;" required formControlName="modalidades">
+                                <option *ngFor="let modalidade of modalidades" [ngValue]="modalidade">
+                                    {{modalidade}}
+                                </option>
+                            </select> 
+                        </div> 
+
+
+                    </div>
+
+                </form>
+                <div class="mt-2 ">
+                    <p-treeSelect [(ngModel)]="selectedNodes1" [options]="data1" (onNodeSelect)="nodeSelect($event)" [metaKeySelection]="false" selectionMode="multiple" placeholder="Unidade"></p-treeSelect>    
+                </div>                         
+            </div>
+            <!--footer-->
+            <div class="flex items-center justify-end p-6 rounded-b">
+            <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postDiscipline()" (click)="showModal = !showModal">
+                Salvar
+            </button>
+            <button class="text-customGray-textGray background-transparent font-semibold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="closeModal()">
+                Fechar
+            </button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>        
+
+      
+</section>
+<p-confirmDialog #cd [style]="{width: '25vw'}" [transitionOptions]="'100ms'" acceptLabel="Sim" rejectLabel="Não">
+    <!-- <ng-template class="text-center">
+        <button type="button" label="Não" (click)="cd.reject()">Não</button>
+        <button type="button" label="Sim" (click)="cd.accept()">Sim</button>
+    </ng-template> -->
+</p-confirmDialog>
+<p-dialog header="Erro" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{textError}}</p>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
+           
+
