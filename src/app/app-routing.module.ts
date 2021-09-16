@@ -18,6 +18,7 @@ import { ConfigDisciplinesurmasComponent } from './components/page.config.compon
 import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
 import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
+import { DisciplinesComponent } from './pages/disciplines/disciplines.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'permissions', component: PermissionsComponent },
   { path: 'import', component: ImportComponent },
   { path: 'orgunits', component: OrgUnitsComponent },
+  { path: 'disciplines', component: DisciplinesComponent },
   { path: 'config', component: ConfigComponent ,
     children: [
       {path:'gerais', component: ConfigGeraisComponent },

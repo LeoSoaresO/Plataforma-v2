@@ -91,7 +91,7 @@ export class OrgUnitsComponent implements OnInit {
                         "expanded": true,
                         "types": obj?.types,
                         "data": {
-                            "name": obj?.types[0].name,
+                            "name": obj?.types[0]?.name,
                             "avatar": "walter.jpg"
                         },
                         "children":obj?.children                    
@@ -101,7 +101,7 @@ export class OrgUnitsComponent implements OnInit {
         }else{
             ou['external_id'] = ou.external_id;
             ou['children'] = ou.children != null ? ou.children : [];
-            ou['data'] = {"name": ou.types[0].name};
+            ou['data'] = {"name": ou?.types[0]?.name};
             ou['expanded'] = true;
             ou['label'] = ou?.name;
             ou['styleClass'] = "p-person";

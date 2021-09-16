@@ -29,6 +29,7 @@ import {ToastModule} from 'primeng/toast';
 import {PanelModule} from 'primeng/panel';
 import { TooltipModule } from 'primeng/tooltip';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TreeSelectModule } from 'primeng/treeselect';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -43,6 +44,7 @@ import { ConfigCamposCustomizadosComponent } from './components/page.config.comp
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
 import { OrgUnitsComponent } from './pages/org-units/org-units.component';
+import { DisciplinesComponent } from './pages/disciplines/disciplines.component';
 
 // Components
 import { LoginComponent } from './pages/login/login.component';
@@ -103,6 +105,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ConfigLtiComponent,
     ConfigTermsComponent,
     ConfigTimetablesComponent,
+    DisciplinesComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,6 +132,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     NgxEditorModule,
     TooltipModule,
     OverlayPanelModule,
+    TreeSelectModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),

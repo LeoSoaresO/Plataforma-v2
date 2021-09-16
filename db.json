@@ -474,5 +474,141 @@
   },
   "settingsAuth": {
     "redirectToDiscipline": 0
-  }
+  },
+  "discplines":[
+    {
+      "title": "Laravel aplicado",
+      "external_id": "abcxyz",
+      "start_date": "2021-12-01 00:00:00",
+      "end_date": "2021-12-31 00:00:00",
+      "card_image": "",
+      "modality": {
+          "name": "EAD"
+      },
+      "level": {
+          "name": "Curso Superior"
+      },
+      "participants": {
+          "count": {
+              "teachers": 5,
+              "students": 248
+          },
+          "users": {
+              "teachers": [ 
+                    {
+                        "name": "Flávio Silva",
+                        "image": "../../../assets/png/aluno1.png"
+                    },
+                    {
+                        "name": "Ze da Silva 1",
+                        "image": "../../../assets/png/aluno2.png"
+                    },
+                    {
+                        "name": "Ze da Silva 2",
+                        "image": "../../../assets/png/aluno3.png"
+                    },
+                    {
+                        "name": "Ze da Silva 3",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Ze da Silva 4",
+                        "image": "https://google.com.br/image.png"
+                    }
+                ],
+              "students": [ 
+                    {
+                        "name": "Wagner Silveira",
+                        "image": "../../../assets/png/aluno3.png"
+                    },
+                    {
+                        "name": "Luís Tussô 1",
+                        "image": "../../../assets/png/aluno2.png"
+                    },
+                    {
+                        "name": "Luís Tussô 2",
+                        "image": "../../../assets/png/aluno1.png"
+                    },
+                    {
+                        "name": "Luís Tussô 3",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Luís Tussô 4",
+                        "image": "https://google.com.br/image.png"
+                    }
+                ]
+          }
+      },
+      "progress": 0.75
+    },
+   {
+      "title": "Laravel aplicado",
+      "external_id": "abcxyz",
+      "start_date": "2021-12-01 00:00:00",
+      "end_date": "2021-12-31 00:00:00",
+      "card_image": "https://p3cdn2static.sharpschool.com/Common/resources/designportfolio/SiteThemes/Classroom/V2/header-bg.jpg",
+      "modality": {
+          "name": "EAD"
+      },
+      "level": {
+          "name": "Curso Superior"
+      },
+      "participants": {
+          "count": {
+              "teachers": 5,
+              "students": 248
+          },
+          "users": {
+              "teachers": [ 
+                    {
+                        "name": "Flávio Silva",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Ze da Silva 1",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Ze da Silva 2",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Ze da Silva 3",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Ze da Silva 4",
+                        "image": "https://google.com.br/image.png"
+                    }
+                ],
+              "students": [ 
+                    {
+                        "name": "Wagner Silveira",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Luís Tussô 1",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Luís Tussô 2",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Luís Tussô 3",
+                        "image": "https://google.com.br/image.png"
+                    },
+                    {
+                        "name": "Luís Tussô 4",
+                        "image": "https://google.com.br/image.png"
+                    }
+                ]
+          }
+      },
+      "progress": 1
+    }    
+    
+  ]
 }
+

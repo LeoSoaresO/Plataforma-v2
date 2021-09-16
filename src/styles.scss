@@ -58,10 +58,15 @@ input:focus, textarea:focus, select:focus{
     }
 }
 .p-button{
-    background: #fff !important;
+    background: #233674 !important;
     border: unset !important;
+    color: #FFFFFF;
+    padding: 0.5em;
+    padding-left: 0.9em;
+    padding-right: 0.9em;
 }
 
 .p-button:hover{
     border: unset !important;
+    color: #FFFFFF;
 }
