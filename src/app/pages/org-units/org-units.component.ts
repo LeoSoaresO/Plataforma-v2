@@ -101,7 +101,7 @@ export class OrgUnitsComponent implements OnInit {
         }else{
             ou['external_id'] = ou.external_id;
             ou['children'] = ou.children != null ? ou.children : [];
-            ou['data'] = {"name": ou.types[0].name};
+            ou['data'] = {"name": ou?.types[0]?.name};
             ou['expanded'] = true;
             ou['label'] = ou?.name;
             ou['styleClass'] = "p-person";

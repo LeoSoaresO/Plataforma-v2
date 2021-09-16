@@ -24,6 +24,7 @@ import {ToastModule} from 'primeng/toast';
 import {PanelModule} from 'primeng/panel';
 import { TooltipModule } from 'primeng/tooltip';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TreeSelectModule } from 'primeng/treeselect';
 
 // Pages
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -96,6 +97,7 @@ import { ConfigTimetablesComponent } from './components/page.config.components/c
     NgxEditorModule,
     TooltipModule,
     OverlayPanelModule,
+    TreeSelectModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     })

@@ -190,10 +190,15 @@
                                     {{modalidade}}
                                 </option>
                             </select> 
-                        </div>                        
+                        </div> 
+
+
                     </div>
 
                 </form>
+                <div class="mt-2 ">
+                    <p-treeSelect [(ngModel)]="selectedNodes1" [options]="data1" (onNodeSelect)="nodeSelect($event)" [metaKeySelection]="false" selectionMode="multiple" placeholder="Unidade"></p-treeSelect>    
+                </div>                         
             </div>
             <!--footer-->
             <div class="flex items-center justify-end p-6 rounded-b">
