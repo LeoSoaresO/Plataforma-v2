@@ -12,8 +12,8 @@ export class DisciplineService {
     private http: HttpClient
   ) { }
 
-  getDisciplines(types: any, query: any, modalities: any, months: any, years: any): Observable<any> {
-    return this.http.get<any>(`${API_Routes.URL}/disciplines/?types=${types}&q=${query}&modalities${modalities}&months=${months}&years=${years}`);
+  getDisciplines(types: any, query: any, level: any, modalities: any, months: any, years: any): Observable<any> {
+    return this.http.get<any>(`${API_Routes.URL}/disciplines/?type=${types}&q=${query}&levels=${level}&modalities=${modalities}&months=${months}&years=${years}`);
     // return this.http.get<any>(`http://localhost:3000/discplines`);
   }
 
@@ -21,7 +21,8 @@ export class DisciplineService {
     return this.http.post(`${API_Routes.URL}/disciplines/`, params)
   }  
 
-  updateDisciplines(id:number, params: any): Observable<any> {
-    return this.http.put(`${API_Routes.URL}/disciplines/${id}`, params);
-  }  
+
+  deleteDisciplines(id:number){
+    return this.http.delete(`${API_Routes.URL}/disciplines/${id}`);
+  }
 }

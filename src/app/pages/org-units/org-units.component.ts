@@ -91,7 +91,7 @@ export class OrgUnitsComponent implements OnInit {
                         "expanded": true,
                         "types": obj?.types,
                         "data": {
-                            "name": obj?.types[0].name,
+                            "name": obj?.types[0]?.name,
                             "avatar": "walter.jpg"
                         },
                         "children":obj?.children                    
