@@ -43,6 +43,10 @@ import { ConfigCamposCustomizadosComponent } from './components/page.config.comp
 import { ConfigIntegracoesComponent } from './components/page.config.components/config-integracoes/config-integracoes.component';
 import { ConfigLoginComponent } from './components/page.config.components/config-login/config-login.component';
 import { OrgUnitsComponent } from './pages/org-units/org-units.component';
+import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
+import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
+import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
+import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 
 // Components
 import { LoginComponent } from './pages/login/login.component';
@@ -52,8 +56,12 @@ import { RolesComponent } from './components/page.permissions.components/roles/r
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
 import { ResetComponent } from './components/reset/reset.component';
+import { UploadComponent } from './components/upload/upload.component';
 import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { StudentComponent } from './pages/dashboard/student/student.component';
+import { TeacherComponent } from './pages/dashboard/teacher/teacher.component';
+import { NormalComponent } from './pages/dashboard/normal/normal.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication{
   return new PublicClientApplication({
@@ -63,10 +71,6 @@ export function MSALInstanceFactory(): IPublicClientApplication{
     }
   })
 }
-import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
-import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
-import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
-import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
@@ -103,6 +107,10 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ConfigLtiComponent,
     ConfigTermsComponent,
     ConfigTimetablesComponent,
+    UploadComponent,
+    StudentComponent,
+    TeacherComponent,
+    NormalComponent
   ],
   imports: [
     BrowserModule,
