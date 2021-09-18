@@ -69,6 +69,10 @@ import { ConfigDisciplinesurmasComponent } from './components/page.config.compon
 import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
 import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
+import { DisciplineDetailComponent } from './pages/discipline-detail/discipline-detail.component';
+import { OverviewComponent } from './components/page.discipline.components/overview/overview.component';
+import { NotesComponent } from './components/page.discipline.components/notes/notes.component';
+import { ContentComponent } from './components/page.discipline.components/content/content.component';
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
@@ -106,6 +110,10 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ConfigTermsComponent,
     ConfigTimetablesComponent,
     DisciplinesComponent,
+    DisciplineDetailComponent,
+    OverviewComponent,
+    NotesComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,
