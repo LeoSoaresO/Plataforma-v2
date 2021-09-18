@@ -11,7 +11,7 @@ export class PermissionsService {
     private http: HttpClient
   ) { }
 
-  getMenus(){
+  getGroups(){
     const headers = {
       'Content-Type': 'application/json'
     }
@@ -22,27 +22,30 @@ export class PermissionsService {
     })
   }
 
-  getRoles(){
-    return this.http.get(`${API_Routes.URL}/permission_roles`)
+  getActions(role: any){
+    return this.http.get(`${API_Routes.URL}/permissioning/group/?q=${role}`)
     .toPromise()
     .then((response: any) =>{
       return response
     })
   }
 
-  getActions(){
-    return this.http.get(`${API_Routes.URL}/actions`)
-    .toPromise()
-    .then((response: any) =>{
-      return response
-    })
-  }
-
-  postRoles(params: any){
+  postRole(params: any){
     const headers = {
       'Content-Type': 'application/json'
     }
-    return this.http.post(`${API_Routes.URL}/permission_roles`,params , { headers: headers })
+    return this.http.post(`${API_Routes.URL}/permissioning/role`,params , { headers: headers })
+    .toPromise()
+    .then((response: any) =>{
+      return response
+    })
+  }
+  
+  putPermissions(role: any, params: any){
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    return this.http.put(`${API_Routes.URL}/permissioning/group/?q=${role}`,params , { headers: headers })
     .toPromise()
     .then((response: any) =>{
       return response
