@@ -20,8 +20,7 @@ export class PermissionsComponent implements OnInit {
   name: any;
   showModal: boolean;
   roleForm: FormGroup;
-  show: boolean;
-  roleActive: any;
+  groupActive: any;
   buttonEnabled: boolean;
 
   //Icons
@@ -30,17 +29,19 @@ export class PermissionsComponent implements OnInit {
 
   constructor(
       private router: Router,
+      private FormBuilder: FormBuilder, 
       private permissionsService: PermissionsService,
     ) { }
 
   ngOnInit(): void {
     this.getGroups();
+    this.createRoleForm();
   }
 
   //functions
-  selectGroup(role: any) {
+  selectGroup(group: any) {
     this.buttonEnabled = false;
-    this.roleActive = role;
+    this.groupActive = group;
     this.getActions();
   }
 
@@ -59,11 +60,15 @@ export class PermissionsComponent implements OnInit {
       groupName: 'Conteúdos',
     }];
     this.roles = response.roles;
-    this.selectGroup(this.groups[0])
+    if(this.groupActive){
+      this.selectGroup(this.groupActive);
+    }else{
+      this.selectGroup(this.groups[0]);
+    }
   }
 
   async getActions(){
-    const response = await this.permissionsService.getActions(this.roleActive.id);
+    const response = await this.permissionsService.getActions(this.groupActive.id);
     // this.actions = response.actions;
     // HARDCODED
     this.actions = [{
@@ -72,6 +77,15 @@ export class PermissionsComponent implements OnInit {
     }, {
       external_id: 'edit',
       name: 'Editar',
+    }, {
+      external_id: 'delete',
+      name: 'Remover',
+    }, {
+      external_id: 'delete',
+      name: 'Remover',
+    }, {
+      external_id: 'delete',
+      name: 'Remover',
     }, {
       external_id: 'delete',
       name: 'Remover',
@@ -92,6 +106,7 @@ export class PermissionsComponent implements OnInit {
           role: role.external_id,
           action: action.external_id,
           value: permissionRole.permissions[action.external_id],
+          changed: false,
         });
       });
       this.formFields.push(line);
@@ -99,28 +114,42 @@ export class PermissionsComponent implements OnInit {
   }
 
   changeValue(item){
-    item.changed = true;
-    this.buttonEnabled = true;
+    item.changed = !item.changed;
+    this.buttonEnabled = false;
+    this.formFields.forEach(row => {
+      row.forEach(column => {
+        if(this.buttonEnabled || column.changed){
+          this.buttonEnabled = true;
+          return;
+        }
+      });
+    });
   }
 
-  async postRoles(){
-    let rN = this.roleForm.controls.roleName.value
-    let rT = this.roleForm.controls.roleType.value
+  cancelChanges(){
+    this.buttonEnabled = false;
+    this.formFields.forEach(row => {
+      row.forEach(column => {
+        if(column.changed){
+          column.changed = false;
+          column.value = !column.value;
+        }
+      });
+    });
+  }
+
+  async postRole(){
+    let role = this.roleForm.controls.roleName.value
+    let externalId = this.roleForm.controls.externalId.value
 
     const params = {
-      "id": '',
-      "role": rN,
-      "permissions": {
-          "create": true,
-          "delete": false
-      }
+      "name": role,
+      "guard_name": 'web',
+      "external_id": externalId,
     }
-    console.log(JSON.stringify(params));  
-    const response = await this.permissionsService.postRoles(JSON.stringify(params))
-    console.log(response)
-      if(response){      
-        this.showModal = false
-      }
+    await this.permissionsService.postRole(JSON.stringify(params))
+    this.getGroups();
+    this.showModal = false
   }
 
   async savePermissions(){
@@ -139,11 +168,14 @@ export class PermissionsComponent implements OnInit {
     const params = {
       'permission_roles': permissionRoles,
     }
-    console.log(JSON.stringify(params));  
-    const response = await this.permissionsService.putPermissions(this.roleActive.id, JSON.stringify(params))
-    console.log(response)
-      if(response){      
-        this.showModal = false
-      }
+    await this.permissionsService.putPermissions(this.groupActive.id, JSON.stringify(params))
+    this.selectGroup(this.groupActive);
+  }
+
+  createRoleForm(){
+    this.roleForm = this.FormBuilder.group({
+      roleName: ['', [Validators.required]],
+      externalId: ['', [Validators.required]],
+    });
   }
 }

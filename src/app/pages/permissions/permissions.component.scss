@@ -5,6 +5,10 @@
     overflow: auto;
 }
 
+.color-blue {
+  color: $blue;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
   }
