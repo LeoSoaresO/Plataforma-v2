@@ -8,17 +8,20 @@
                 </h3>
             </div>
             <!--body-->
-            <div>
-                <div class="flex items-center justify-start m-6 p-2 rounded" style="border: 1px solid #A9AEB3">
-                    <div *ngFor="let feed of disicplineDetail?.feed" class="flex">
+            <div class="p-6">
+                <div *ngFor="let feed of disicplineDetail?.feed"  class="flex items-center justify-start m-2 p-2 rounded bg-feed">
+                    <div class="flex">
                         <!-- <div [ngSwitch]="true">
                             <svg *ngSwitchCase="feed?.icon == 'class'" width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M3.514 18.6667H21V2.33333C21 1.71449 20.7542 1.121 20.3166 0.683417C19.879 0.245833 19.2855 0 18.6667 0H3.5C2.093 0 0 0.932167 0 3.5V19.8333C0 22.4012 2.093 23.3333 3.5 23.3333H21V21H3.514C2.975 20.986 2.33333 20.7725 2.33333 19.8333C2.33333 18.8942 2.975 18.6807 3.514 18.6667ZM5.83333 4.66667H16.3333V7H5.83333V4.66667Z" fill="#233674"/>
                             </svg>                            
                         </div> -->
-                        <svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.514 18.6667H21V2.33333C21 1.71449 20.7542 1.121 20.3166 0.683417C19.879 0.245833 19.2855 0 18.6667 0H3.5C2.093 0 0 0.932167 0 3.5V19.8333C0 22.4012 2.093 23.3333 3.5 23.3333H21V21H3.514C2.975 20.986 2.33333 20.7725 2.33333 19.8333C2.33333 18.8942 2.975 18.6807 3.514 18.6667ZM5.83333 4.66667H16.3333V7H5.83333V4.66667Z" fill="#233674"/>
-                        </svg>
+                        <div>
+                            <svg class="icon-lib" width="21" height="24" viewBox="0 0 21 24" fill="#233674" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.514 18.6667H21V2.33333C21 1.71449 20.7542 1.121 20.3166 0.683417C19.879 0.245833 19.2855 0 18.6667 0H3.5C2.093 0 0 0.932167 0 3.5V19.8333C0 22.4012 2.093 23.3333 3.5 23.3333H21V21H3.514C2.975 20.986 2.33333 20.7725 2.33333 19.8333C2.33333 18.8942 2.975 18.6807 3.514 18.6667ZM5.83333 4.66667H16.3333V7H5.83333V4.66667Z"/>
+                            </svg>
+                        </div>
+
                         <span class="ml-2">{{feed?.title}}</span>
                     </div>
                 </div>
@@ -32,16 +35,26 @@
             <!--header-->
             <div class="text-start p-5 border-b border-solid border-customBlue-light rounded-t">
                 <h3 class="text-xl font-bold " style="color:#3656BF;">
-                    Educadores
+                    Ementa do curso
                 </h3>
             </div>
             <!--body-->
-            <div class="relative p-6">
-
-            </div>
-            <!--footer-->
-            <div class="flex items-center justify-end p-6 rounded-b">
-
+            <div class="p-6">
+                <div *ngFor="let ementa of disicplineDetail?.syllabus"  class="flex items-center justify-start m-2 p-2 rounded bg-feed">
+                    <div class="flex">
+                        <!-- <div [ngSwitch]="true">
+                            <svg *ngSwitchCase="feed?.icon == 'class'" width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.514 18.6667H21V2.33333C21 1.71449 20.7542 1.121 20.3166 0.683417C19.879 0.245833 19.2855 0 18.6667 0H3.5C2.093 0 0 0.932167 0 3.5V19.8333C0 22.4012 2.093 23.3333 3.5 23.3333H21V21H3.514C2.975 20.986 2.33333 20.7725 2.33333 19.8333C2.33333 18.8942 2.975 18.6807 3.514 18.6667ZM5.83333 4.66667H16.3333V7H5.83333V4.66667Z" fill="#233674"/>
+                            </svg>                            
+                        </div> -->
+                        <div>
+                            <svg class="icon-lib" width="21" height="24" viewBox="0 0 21 24" fill="#233674" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.514 18.6667H21V2.33333C21 1.71449 20.7542 1.121 20.3166 0.683417C19.879 0.245833 19.2855 0 18.6667 0H3.5C2.093 0 0 0.932167 0 3.5V19.8333C0 22.4012 2.093 23.3333 3.5 23.3333H21V21H3.514C2.975 20.986 2.33333 20.7725 2.33333 19.8333C2.33333 18.8942 2.975 18.6807 3.514 18.6667ZM5.83333 4.66667H16.3333V7H5.83333V4.66667Z"/>
+                            </svg>
+                        </div>
+                        <span class="ml-2">{{ementa?.title}}</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -50,17 +63,45 @@
             <!--header-->
             <div class="text-start p-5 border-b border-solid border-customBlue-light rounded-t">
                 <h3 class="text-xl font-bold " style="color:#3656BF;">
-                    Educadores
+                    Participantes
                 </h3>
             </div>
             <!--body-->
-            <div class="relative p-6">
-
+            <div class="p-6">
+                <div *ngFor="let teacher of disicplineDetail?.participants?.users?.teachers" class="w-full items-center justify-start m-2 mb-2 p-2 px-6 rounded " style="box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);">
+                    <div class="grid grid-cols-2" >
+                        <div class="flex">
+                            <div class="w-10">
+                                <!-- <img src="{{teacher?.image}}" alt=""> -->
+                                <img src="../../../../assets/png/aluno1.png" class="rounded-full" alt="">
+                            </div>
+                            <span class="flex ml-2 font-bold items-center" style='color: #233674'>{{teacher?.name}}</span>
+                        </div>
+                        <div class="flex justify-end items-center">
+                            <span class="flex items-center text-bold rounded-full pl-6 pr-6 h-8" style="background-color: #3656BF;color: #FFF">
+                                Professor
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let student of disicplineDetail?.participants?.users?.students" class="w-full items-center justify-start m-2 mb-2 p-2 px-6 rounded " style="box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);">
+                    <div class="grid grid-cols-2" >
+                        <div class="flex">
+                            <div class="w-10">
+                                <!-- <img src="{{student?.image}}" alt=""> -->
+                                <img src="../../../../assets/png/aluno2.png" class="rounded-full" alt="">
+                            </div>
+                            <span class="flex ml-2 font-bold items-center" style='color: #233674'>{{student?.name}}</span>
+                        </div>
+                        <div class="flex justify-end items-center">
+                            <span class="flex items-center text-bold rounded-full pl-6 pr-6 h-8" style="background-color: #233674;color: #FFF">
+                                Aluno
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--footer-->
-            <div class="flex items-center justify-end p-6 rounded-b">
 
-            </div>
         </div>        
     </div>      
 
@@ -74,12 +115,19 @@
                 </h3>
             </div>
             <!--body-->
-            <div class="relative p-6">
-
-            </div>
-            <!--footer-->
-            <div class="flex items-center justify-end p-6 rounded-b">
-
+            <div class="grid grid-cols-3 items-center justify-start m-2 mb-2 p-2 px-6 ">
+                <div *ngFor="let teacher of disicplineDetail?.participants?.users?.teachers">
+                    <div class="flex">
+                        <div class="w-10">
+                            <!-- <img src="{{teacher?.image}}" alt=""> -->
+                            <img src="../../../../assets/png/aluno2.png" class="rounded-full" alt="">
+                        </div>
+                        <div class="grid-rows-2">
+                            <span class="flex ml-2 font-bold items-center" style='color: #233674'>{{teacher?.name}}</span>
+                            <!-- <span class="flex ml-2 font-bold items-center" style='color: #233674'>{{teacher?.name}}</span> -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>   

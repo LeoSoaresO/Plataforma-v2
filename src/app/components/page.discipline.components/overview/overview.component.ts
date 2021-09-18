@@ -27,7 +27,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-    getDisciplineDetail(){
+  getDisciplineDetail(){
      this.sharedService.getDiscipleObservable().pipe(takeUntil(this.unsubscribe$))
       .subscribe(discipline => {
         this.disicplineDetail = discipline;
@@ -35,6 +35,5 @@ export class OverviewComponent implements OnInit, OnDestroy {
         
       });
   }
-
 
 }

@@ -646,13 +646,29 @@
             ]
         }
     },
-    "syllabus": [], 
+    "syllabus": [
+       {
+           "external_id": "farrapos-a",
+           "title": "Aula Guerra dos Farrapos",
+           "type": "Video" 
+       }
+   ], 
    "feed": [
        {
            "external_id": "farrapos-a",
            "title": "Aula Guerra dos Farrapos",
            "type": "Video"
-       }
+       },
+       {
+           "external_id": "revfrancesa-a",
+           "title": "Aula Revolução Francesa",
+           "type": "Video"
+       },
+       {
+           "external_id": "seguerramundial-a",
+           "title": "Aula Segunda Guerra Mundial",
+           "type": "Video"
+       }              
    ]
   }]
 
