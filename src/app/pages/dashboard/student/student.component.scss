@@ -1,0 +1,21 @@
+@import '../../../../styles.scss';
+
+.card {
+    width: 400px;
+    .img-card{
+        height: 90px;
+        width: 100%;
+    }
+    .user-info{
+        margin-top: -30px;
+        #name {
+            width: 80px;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            line-height: 80px;
+            height: 80px;
+            margin: 0 auto;
+        }
+    }
+}
