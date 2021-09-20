@@ -163,7 +163,7 @@ apiResp
     const response = await this.loginservice.login(params)
     console.log(response);
     if (response) {
-      this.cookieService.set('userNormal', JSON.stringify(response.token));
+      this.cookieService.set('userNormal', response.token);
       this.cookieService.delete('logOut')
       this.router.navigate(['dashboard'])
     }
@@ -189,7 +189,7 @@ apiResp
     const response = await this.loginservice.loginWithMicrosoft(params)
     console.log(response);
     if (response) {
-      this.cookieService.set('userMicro', JSON.stringify(response.token));
+      this.cookieService.set('userMicro', response.token);
       this.cookieService.delete('logOut')
       this.router.navigate(['dashboard'])
     }
