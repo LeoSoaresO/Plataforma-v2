@@ -1,26 +1,35 @@
 <section class="flex p-10 py-10 ml-24">
-    <div class="bg-customWhite-default rounded-lg card mr-6">
+    <div class="bg-customWhite-default rounded-lg card mr-6 shadow-lg">
         <div class="text-center">
             <img src="../../../../assets/png/teste.png" class="rounded-t-lg img-card">
             <div>
                 <div class="flex flex-col justify-center user-info">
-                    <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
+                    <div *ngIf="!user.image" id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
                         {{name}}
                     </div>
+                    <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
+                        <img src="{{user.image}}">
+                    </div>
                     <div class="text-center tracking-wide">
-                        <h2 class="font-bold">Diego</h2>
-                        <h3 class="font-semibold text-customBlue-default">Super Administrador</h3>
-                        <span class="font-light">diego@inicie.digital</span>
+                        <h2 class="font-bold">{{user.name}}</h2>
+                        <h3 class="font-semibold text-customBlue-default">{{user.role.name}}</h3>
+                        <span class="font-light">{{user.email}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bg-customWhite-default col-span-2 mr-6">
-        <h1>Vamos começar a aprender, Estudante</h1>
-        <div class="flex">
-            <img src="../../../../assets/png/teste.png" alt="">
-            <p>Vamos começar a aprender, Estudante</p>
+    <div class="bg-customWhite-default col-span-2 mr-6 main rounded-lg shadow-lg">
+        <div class="p-5">
+            <h1 class="text-xl font-bold mb-3">Vamos começar a aprender, Estudante</h1>
+            <div class="flex">
+                <img src="../../../../assets/png/teste.png" class="rounded-lg img-main">
+                <p class="font-light">Lorem ipsum dolor sit amet, consectetur 
+                    adipiscing elit. Nam quis efficitur dolor. 
+                    Nulla facilisi. Maecenas ultricies pellentesque varius. 
+                </p>
+            </div> 
+            <button class="bg-customBlue-default ml-96 py-2 px-6 rounded-md font-semibold text-customWhite-default bt">Continuar</button> 
         </div>
     </div>
     <div class="bg-customWhite-default">

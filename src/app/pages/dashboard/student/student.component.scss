@@ -1,13 +1,13 @@
 @import '../../../../styles.scss';
 
 .card {
-    width: 400px;
+    width: 25%;
     .img-card{
         height: 90px;
         width: 100%;
     }
     .user-info{
-        margin-top: -30px;
+        margin-top: -20px;
         #name {
             width: 80px;
             text-align: center;
@@ -17,5 +17,16 @@
             height: 80px;
             margin: 0 auto;
         }
+    }
+}
+
+.main{
+    width: 50%;
+    .img-main{
+        width: 35%;
+        margin-right: 20px;
+    }
+    .bt{
+        margin-left: 80%;
     }
 }
