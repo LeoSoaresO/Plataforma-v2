@@ -12,13 +12,10 @@ export class TokenInterceptor implements HttpInterceptor {
 
     constructor(cookieService: CookieService) {
         this.token = cookieService.get("userNormal")
-        console.log(this.token);
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(this.token);
         if (this.token) {
-            console.log("Token aa " + this.token);
             const modReq = req.clone({
                 setHeaders: {
                     'Authorization': "Bearer " + this.token
