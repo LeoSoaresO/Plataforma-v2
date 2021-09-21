@@ -37,4 +37,20 @@ export class UsersService {
       return response
     })
   }
+
+  addEnrollment(params: any){
+    return this.http.post(`${API_Routes.URL}/enrollments`, params)
+    .toPromise()
+    .then((response:any)=>{
+      return response
+    })
+  }
+
+  removeEnrollment(params: any){
+    return this.http.delete(`${API_Routes.URL}/enrollments`, params)
+    .toPromise()
+    .then((response:any)=>{
+      return response
+    })
+  }
 }

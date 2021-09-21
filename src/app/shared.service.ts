@@ -1,20 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  private subject = new Subject<any>();
+  discipline$: Subject<any[]> = new Subject();
 
-  isSideBarOpen: boolean = false;
-  
-  sendClickEvent() {
-    this.subject.next();
-  }
-
-   getClickEvent(): Observable<any>{ 
-    return this.subject.asObservable();
+ 
+  getDiscipleObservable(): Observable<any[]> {
+    return this.discipline$.asObservable();
   }
 
 }

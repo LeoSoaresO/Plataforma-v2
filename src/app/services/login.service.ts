@@ -24,6 +24,8 @@ export class LoginService {
     .then((response: any )=>{
       console.timeEnd('request');
       return response
+    }).catch(() => {
+      
     })
   }
 

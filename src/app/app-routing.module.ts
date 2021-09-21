@@ -19,6 +19,10 @@ import { ConfigLtiComponent } from './components/page.config.components/config-l
 import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 import { DisciplinesComponent } from './pages/disciplines/disciplines.component';
+import { DisciplineDetailComponent } from './pages/discipline-detail/discipline-detail.component';
+import { OverviewComponent } from './components/page.discipline.components/overview/overview.component';
+import { ContentComponent } from './components/page.discipline.components/content/content.component';
+import { NotesComponent } from './components/page.discipline.components/notes/notes.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -30,6 +34,13 @@ const routes: Routes = [
   { path: 'import', component: ImportComponent },
   { path: 'orgunits', component: OrgUnitsComponent },
   { path: 'disciplines', component: DisciplinesComponent },
+  { path: 'discipline/:id', component: DisciplineDetailComponent ,
+    children: [
+      {path: 'overview', component: OverviewComponent},
+      {path: 'notes', component: NotesComponent},
+      {path: 'content', component: ContentComponent},
+    ]
+  },
   { path: 'config', component: ConfigComponent ,
     children: [
       {path:'gerais', component: ConfigGeraisComponent },
@@ -41,7 +52,7 @@ const routes: Routes = [
       {path:'integracoes', component: ConfigIntegracoesComponent },
       {path:'login', component: ConfigLoginComponent },
       {path:'disciplines', component: ConfigDisciplinesurmasComponent },
-      ]
+    ]
   }
 ];
 

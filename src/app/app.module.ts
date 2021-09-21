@@ -50,7 +50,6 @@ import { DisciplinesComponent } from './pages/disciplines/disciplines.component'
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { RolesComponent } from './components/page.permissions.components/roles/roles.component';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
 import { ResetComponent } from './components/reset/reset.component';
@@ -65,6 +64,12 @@ import { ConfigLtiComponent } from './components/page.config.components/config-l
 import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+
+import { TokenInterceptor } from './services/http.interceptor';
+import { DisciplineDetailComponent } from './pages/discipline-detail/discipline-detail.component';
+import { OverviewComponent } from './components/page.discipline.components/overview/overview.component';
+import { NotesComponent } from './components/page.discipline.components/notes/notes.component';
+import { ContentComponent } from './components/page.discipline.components/content/content.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication{
   return new PublicClientApplication({
@@ -102,7 +107,6 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ConfigCamposCustomizadosComponent,
     ConfigIntegracoesComponent,
     ConfigLoginComponent,
-    RolesComponent,
     CountdownComponent,
     ResetComponent,
     OrgUnitsComponent,
@@ -115,7 +119,11 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     StudentComponent,
     TeacherComponent,
     NormalComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    DisciplineDetailComponent,
+    OverviewComponent,
+    NotesComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -181,6 +189,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
       provide: MSAL_INSTANCE,
       useFactory: MSALInstanceFactory
     },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
