@@ -3,6 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import jwt_decode from "jwt-decode";
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { Router } from '@angular/router';
+import { faBookOpen } from '@fortawesome/pro-light-svg-icons';
 
 @Component({
   selector: 'app-student',
@@ -14,6 +15,10 @@ export class StudentComponent implements OnInit {
 //Variables
 name
 user
+dash
+
+//Icons
+faBookOpen = faBookOpen
 
   constructor(
     private cookieService: CookieService,
@@ -47,7 +52,14 @@ user
 
   async getDashInfo(){
     const response = await this.dashboardService.getDash()
-    console.log(response);    
+    console.log(response);  
+    this.dash = response
+    for (const iterator of this.dash.disciplines) {
+      console.log(iterator.progress);
+      // for (const i of iterator.events) {
+      //   console.log(i);        
+      // }    
+    }
   }
 
 }
