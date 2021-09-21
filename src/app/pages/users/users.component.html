@@ -71,17 +71,17 @@
                         </li>
                         <li class="w-5/12 text-center text-sm">{{user.last_activity | date: 'dd/MM/yyyy' }}</li>
                         <li class="w-1/12 text-center">
-                            <button (click)="show(user.id)" class="relative z-10 block p-2 transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
+                            <button (click)="show(user)" class="relative z-10 block p-2 transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
                                 <fa-icon [icon]="faEllipisisV" class="text-customBlue-default icon pl-6"></fa-icon>
                             </button>
                         </li>
-                        <li class="absolute hidden z-20 w-48 right-36 rounded-md shadow-xl bg-customWhite-default">
-							<div class="py-1" role="none">
-								<a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-0">Editar</a>
-								<a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-1">Excluir</a>
-								<a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-2">Excluir todos</a>
-							</div>
-						</li>
+                        <li class="absolute show z-20 w-48 right-36 rounded-md shadow-xl bg-customWhite-default" *ngIf="user.show" style="margin-top: 100px;">
+                            <div class="py-1" role="none">
+                              <a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-0" (click)="editUser(user)">Editar</a>
+                              <a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-1">Excluir</a>
+                              <!--a class="text-gray-700 block px-4 py-2 text-sm hover" role="menuitem" tabindex="-1" id="menu-item-2">Excluir todos</a-->
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="mt-8 flex justify-center">
@@ -115,14 +115,35 @@
                 <h1 class="text-lg font-semibold text-customBlue-dark w-1/2">Dados do usuário</h1> 
                 <h1 class="text-lg font-semibold text-customBlue-dark w-1/2">Perfis do usuário</h1>
               </div>
-                <div class="flex flex-col mt-2">
-                    <input type="text" class="w-1/2 border border-customBlue-light rounded-md p-1 text-md mt-2" placeholder="Nome" required formControlName="name">
-                    <input type="text" class="w-1/2 border border-customBlue-light rounded-md p-1 text-md mt-2" placeholder="Código de usuário" required formControlName="userCode">
-                    <input type="text" class="w-1/2 border border-customBlue-light rounded-md p-1 text-md mt-2" placeholder="Email" required formControlName="email">
-                    <input type="text" class="w-1/2 border border-customBlue-light rounded-md p-1 text-md mt-2" placeholder="Telefone" required formControlName="phone">
+                <div class="flex mt-2">
+                  <div class="w-1/2">
+                    <input type="text" class="w-11/12 border border-customBlue-light rounded-md p-1 text-md mt-2" placeholder="Nome" required formControlName="name">
+                    <input type="text" class="w-11/12 border border-customBlue-light rounded-md p-1 text-md mt-2" placeholder="Código de usuário" required formControlName="userCode">
+                    <input type="text" class="w-11/12 border border-customBlue-light rounded-md p-1 text-md mt-2" placeholder="Email" required formControlName="email">
+                  </div>
+                  <div class="w-1/2">
+                    <div *ngFor="let enrollment of enrollments;let i = index">
+                      <h5>Perfil {{i + 1}}</h5>
+                      <select class="w-5/12 border border-customBlue-light rounded-md p-1 text-md mt-2" [(ngModel)]="enrollment.role_external_id" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let role of roles" [value]="role.external_id" [selected]="role.external_id == enrollment.role_external_id">{{role.name}}</option>
+                      </select>
+                      <select class="w-5/12 border border-customBlue-light rounded-md p-1 text-md mt-2" [(ngModel)]="enrollment.enrollable_external_id" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let orgunit of orgunits" [value]="orgunit.external_id" [selected]="orgunit.external_id == enrollment.enrollable_external_id">{{orgunit.name}}</option>
+                      </select>
+                    </div>
+                    <div>
+                      <h5>Perfil {{enrollments.length + 1}}</h5>
+                      <select class="w-5/12 border border-customBlue-light rounded-md p-1 text-md mt-2" [(ngModel)]="newEnrollment.role_external_id" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let role of roles" [value]="role.external_id" [selected]="role.external_id == newEnrollment.role_external_id">{{role.name}}</option>
+                      </select>
+                      <select class="w-5/12 border border-customBlue-light rounded-md p-1 text-md mt-2" [(ngModel)]="newEnrollment.enrollable_external_id" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let orgunit of orgunits" [value]="orgunit.external_id" [selected]="orgunit.external_id == newEnrollment.enrollable_external_id">{{orgunit.name}}</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
                 <div class="flex justify-between mt-5">
-                    
+                  
                 </div>
                 <div>
                     <div class="flex w-full h-20 mt-5">
@@ -140,11 +161,11 @@
         </div>
         <!--footer-->
         <div class="flex items-center justify-end p-6 rounded-b">
-          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postUsers()" (click)="showModal = !showModal">
-            Salvar Usuário
-          </button>
           <button class="text-customGray-textGray background-transparent font-semibold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="showModal = !showModal">
-            Fechar
+            Cancelar
+          </button>
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="postUser()">
+            Salvar Usuário
           </button>
         </div>
       </div>
@@ -162,7 +183,7 @@
         </div>
         <!--footer-->
         <div class="flex items-center justify-center p-6 rounded-b">
-          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="reload()">
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="success = false">
             Voltar
           </button>
         </div>
