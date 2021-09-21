@@ -66,6 +66,7 @@ import { ConfigTermsComponent } from './components/page.config.components/config
 import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProgressBarModule } from 'angular-progress-bar';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication{
   return new PublicClientApplication({
@@ -115,7 +116,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     UploadComponent,
     StudentComponent,
     TeacherComponent,
-    NormalComponent
+    NormalComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@
                         {{name}}
                     </div>
                     <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
-                        <img src="{{user.image}}">
+                        <img *ngIf="user.image" src="{{user.image}}">
                     </div>
                     <div class="text-center tracking-wide">
                         <h2 class="font-bold">{{user.name}}</h2>
@@ -31,22 +31,26 @@
                         <div class="flex">
                             <img src="{{t.image}}">
                             <h1 class="font-semibold">{{t.title}}</h1>
-                            <!-- <progress-bar [progress]="t.progress" [color]="'#488aff'">
-                            </progress-bar> -->
+                            <app-progress-bar [value]="t.progress"></app-progress-bar>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bg-customWhite-default col-span-2 mr-6 main rounded-lg shadow-lg">
-        <div class="p-5">
-            <h1 class="text-xl font-bold mb-3 text-customGray-dark">{{dash.announcement.title}}</h1>
-            <div class="flex">
-                <img src="{{dash.announcement.image}}" class="rounded-lg img-main">
-                <p class="font-light">{{dash.announcement.text}}</p>
-            </div> 
-            <button class="bg-customBlue-default ml-96 py-2 px-6 rounded-md font-semibold text-customWhite-default bt">Continuar</button> 
+    <div class="flex flex-col main">
+        <div class="bg-customWhite-default mr-6 rounded-lg shadow-lg">
+            <div class="p-5">
+                <h1 class="text-xl font-bold mb-3 text-customGray-dark">{{dash.announcement.title}}</h1>
+                <div class="flex">
+                    <img src="{{dash.announcement.image}}" class="rounded-lg img-main">
+                    <p class="font-light">{{dash.announcement.text}}</p>
+                </div> 
+                <button class="bg-customBlue-default ml-96 py-2 px-6 rounded-md font-semibold text-customWhite-default bt">Continuar</button> 
+            </div>
+        </div>
+        <div class="my-5 bg-customWhite-default mr-6 rounded-lg shadow-lg">
+            
         </div>
     </div>
     <div class="schedule">
