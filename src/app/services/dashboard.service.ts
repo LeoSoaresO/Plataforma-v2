@@ -21,7 +21,6 @@ export class DashboardService {
     return this.http.get(`${API_Routes.URL}/dashboard` ,{ headers: headers })
     .toPromise()
     .then((response: any )=>{
-      console.timeEnd('request');
       return response
     })
   }

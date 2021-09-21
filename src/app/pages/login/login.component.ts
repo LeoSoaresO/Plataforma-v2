@@ -85,7 +85,6 @@ error
   loginWithMicrosoft(){
     this.msalservice.loginPopup().subscribe((response: AuthenticationResult)=> {
       this.msalservice.instance.setActiveAccount(response.account)
-      console.log(this.msalservice.instance.getActiveAccount());
       if (this.msalservice.instance.getActiveAccount()){
         this.callProfile();
       }
@@ -114,19 +113,16 @@ error
   //Other Functions
 
   setGoogleCredencials(){
-    this.cookieService.set('userGoogle', JSON.stringify(this.socialUser.authToken));
-      let data =  this.cookieService.get('userGoogle')
+    this.cookieService.set('googleAuthToken', JSON.stringify(this.socialUser.authToken));
+        let data =  this.cookieService.get('googleAuthToken')
       this.gUser = JSON.parse(data)
-      console.log(this.gUser)
       this.checkGoogleUser();
   }
 
   checkGoogleUser(){
     if (this.gUser){
-      console.log('o google está1 no cookie');
       this.authGoogle();     
     } else {
-      console.log('não tem nada no cookie'); 
       this.cookieService.set('logOut', 'true')
     }
   }
@@ -157,11 +153,9 @@ error
     const params = {
       "user": e,
       "password": p,
-    }
-      console.log(params);   
+    } 
       
     const response = await this.loginservice.login(params)
-    console.log(response);
     if (response) {
       this.cookieService.set('userNormal', response.token);
       this.cookieService.delete('logOut')
@@ -170,13 +164,12 @@ error
   }
 
   async authGoogle(){
-    console.log(this.gUser);
     const params = {
       "token": this.gUser
     }
     const response = await this.loginservice.loginWithGoogle(params)
-    console.log(response);
     if (response) {
+      this.cookieService.set('userGoogle', JSON.stringify(response))
       this.cookieService.delete('logOut')
       this.router.navigate(['dashboard'])
     }
@@ -187,7 +180,6 @@ error
       "token": this.mUser.accessToken
     }
     const response = await this.loginservice.loginWithMicrosoft(params)
-    console.log(response);
     if (response) {
       this.cookieService.set('userMicro', response.token);
       this.cookieService.delete('logOut')
@@ -203,7 +195,6 @@ error
     }
 
     const response = await this.loginservice.firstLoad()
-    console.log(response); 
     this.options = response   
   }
 
@@ -214,7 +205,6 @@ error
       "email" : e 
     }
     const response = await this.loginservice.resetPassword(params)
-    console.log(response);
     if(response == null){
       this.cont = true
     }
@@ -229,7 +219,6 @@ error
       "email": e
     }
     const response = await this.loginservice.resetToken(params)
-    console.log(response);
     this.cookieService.set('token', JSON.stringify(t))
     if(response) {
       this.router.navigate(['reset'])
@@ -245,10 +234,8 @@ error
   .toPromise()
   .then( (tokenResponse) => {
     this.mUser = tokenResponse
-    console.log(this.mUser.accessToken);
       this.authMicro();
   }).catch(function (error) {
-      console.log(error);
   });  
   }
 

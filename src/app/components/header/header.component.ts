@@ -36,20 +36,17 @@ logOutGoogle: boolean = false
     if(this.cookieService.check('userNormal')){
       this.logOutNormal = true
       this.logOutGoogle = false
-      this.logOutMicro = false
-      console.log('normal no cookie');      
+      this.logOutMicro = false  
     }
     if(this.cookieService.check('userGoogle')){
       this.logOutNormal = false
       this.logOutGoogle = true
       this.logOutMicro = false
-      console.log('google no cookie'); 
     }
     if(this.cookieService.check('userMicro')){
       this.logOutNormal = false
       this.logOutGoogle = false
       this.logOutMicro = true
-      console.log('microsoft no cookie'); 
     }
     if(this.cookieService.check('logOut')){
       this.router.navigate([''])
@@ -60,7 +57,6 @@ logOutGoogle: boolean = false
     this.cookieService.delete('userGoogle');
     this.cookieService.set('logOut', 'true') 
     this.socialAuthService.signOut();
-    console.log('google deletado, logOut concluído');
     this.checkUser();
   }
 
@@ -68,14 +64,12 @@ logOutGoogle: boolean = false
     this.cookieService.delete('userMicro');
     this.cookieService.set('logOut', 'true')
     this.msalservice.logout();
-    console.log('microsoft deletado, logOut concluído'); 
     this.checkUser();
   }
 
   logOutN(): void {
     this.cookieService.delete('userNormal');
     this.cookieService.set('logOut', 'true')
-    console.log('normal deletado, logOut concluído');    
     this.checkUser();
   }
 

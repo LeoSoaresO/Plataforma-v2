@@ -35,10 +35,16 @@ faBookOpen = faBookOpen
   //Funtions
 
   getUser(){
-    let data = this.cookieService.get('userNormal')
-    this.user = jwt_decode(data);
-    console.log(this.user);
-    this.letter()
+    if(this.cookieService.check('userNormal') && !this.cookieService.check('userGoogle')){
+      let data = this.cookieService.get('userNormal')
+      this.user = jwt_decode(data);
+      this.letter()
+    }
+    if(!this.cookieService.check('userNormal') && this.cookieService.check('userGoogle')){
+      let data = this.cookieService.get('userGoogle')
+      this.user = jwt_decode(data);
+      this.letter()
+    }
   }
 
   letter() {
@@ -51,14 +57,11 @@ faBookOpen = faBookOpen
 
   async getDashInfo(){
     const response = await this.dashboardService.getDash()
-    console.log(response);  
     this.dash = response
-    for (const iterator of this.dash.feed) {
-      console.log(iterator);      
+    for (const iterator of this.dash.feed) {     
       let n = iterator.user.name;
         let initials = n.charAt(0);
-        this.feedName = initials; 
-        console.log(this.feedName);   
+        this.feedName = initials;    
     }
   }
 
