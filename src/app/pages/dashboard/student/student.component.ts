@@ -16,6 +16,7 @@ export class StudentComponent implements OnInit {
 name
 user
 dash
+feedName
 
 //Icons
 faBookOpen = faBookOpen
@@ -27,7 +28,6 @@ faBookOpen = faBookOpen
   ) { }
 
   ngOnInit(): void {
-    this.letter()
     this.getUser()
     this.getDashInfo()
   }
@@ -39,11 +39,11 @@ faBookOpen = faBookOpen
     let decoded = JSON.parse(data)
     this.user = jwt_decode(decoded);
     console.log(this.user);
-    
+    this.letter()
   }
 
   letter() {
-    let name = "Diego";
+    let name = this.user.name;
     let initials = name.charAt(0);
     this.name = initials;
   }
@@ -54,11 +54,12 @@ faBookOpen = faBookOpen
     const response = await this.dashboardService.getDash()
     console.log(response);  
     this.dash = response
-    for (const iterator of this.dash.disciplines) {
-      console.log(iterator.progress);
-      // for (const i of iterator.events) {
-      //   console.log(i);        
-      // }    
+    for (const iterator of this.dash.feed) {
+      console.log(iterator);      
+      let n = iterator.user.name;
+        let initials = n.charAt(0);
+        this.feedName = initials; 
+        console.log(this.feedName);   
     }
   }
 

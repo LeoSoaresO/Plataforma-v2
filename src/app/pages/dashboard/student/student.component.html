@@ -4,15 +4,15 @@
             <img src="../../../../assets/png/teste.png" class="rounded-t-lg img-card">
             <div>
                 <div class="flex flex-col justify-center user-info">
-                    <div *ngIf="!user.image" id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
-                        {{name}}
+                    <div *ngIf="!user.image" id="name" class="rounded-full bg-inicieColors-orange mr-12">
+                        <p class="font-bold capitalize">{{name}}</p>
                     </div>
                     <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
                         <img *ngIf="user.image" src="{{user.image}}">
                     </div>
                     <div class="text-center tracking-wide">
-                        <h2 class="font-bold">{{user.name}}</h2>
-                        <h3 class="font-semibold text-customBlue-default">{{user.role.name}}</h3>
+                        <h2 class="font-bold capitalize">{{user.name}}</h2>
+                        <h3 class="font-semibold text-customBlue-default capitalize">{{user.role.name}}</h3>
                         <span class="font-light">{{user.email}}</span>
                     </div>
                 </div>
@@ -49,8 +49,21 @@
                 <button class="bg-customBlue-default ml-96 py-2 px-6 rounded-md font-semibold text-customWhite-default bt">Continuar</button> 
             </div>
         </div>
-        <div class="my-5 bg-customWhite-default mr-6 rounded-lg shadow-lg">
-            
+        <div class="my-5 bg-customWhite-default mr-6 rounded-lg shadow-lg overflow-y-auto feed">
+            <div class="flex p-5" *ngFor="let f of dash.feed">
+                <div *ngIf="!f.user.image" id="n" class="rounded-full bg-inicieColors-orange mr-12 font-bold feed-user">
+                    {{feedName}}
+                </div>
+                <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold feed-user-image">
+                    <img *ngIf="f.user.image" src="{{f.user.image}}">
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-customGray-dark">{{f.user.name}}</h1>
+                    <h2 class="font-semibold text-lg text-customBlue-default">{{f.title}}</h2>
+                    <p class="font-light">{{f.text}}</p>
+                    <a>Mostrar Tudo</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="schedule">
