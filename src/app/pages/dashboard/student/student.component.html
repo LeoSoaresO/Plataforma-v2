@@ -1,4 +1,9 @@
-<section class="flex p-10 py-10 ml-24">
+<div class="load z-20" *ngIf="!dash">
+	<img src="../../../assets/svg/loading.svg" alt="" srcset="">
+</div>
+<div *ngIf="!dash" class="opacity-10 fixed inset-0 z-20" style="background-color: #000;"></div>
+
+<section class="flex p-10 py-10 ml-24"  *ngIf="dash">
     <div class="bg-customWhite-default rounded-lg card mr-6 shadow-lg">
         <div class="text-center">
             <img src="../../../../assets/png/teste.png" class="rounded-t-lg img-card">
@@ -7,8 +12,8 @@
                     <div *ngIf="!user.image" id="name" class="rounded-full bg-inicieColors-orange mr-12">
                         <p class="font-bold capitalize">{{name}}</p>
                     </div>
-                    <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
-                        <img *ngIf="user.image" src="{{user.image}}">
+                    <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold capitalize text-center">
+                        <img src="{{user.image}}" *ngIf="user.image">
                     </div>
                     <div class="text-center tracking-wide">
                         <h2 class="font-bold capitalize">{{user.name}}</h2>
@@ -27,10 +32,10 @@
                         <h1 class="font-bold text-lg text-customGray-dark">Turmas</h1>
                         <a>Mostrar Tudo</a>
                     </div>
-                    <div *ngFor="let t of dash.disciplines" class="p-3 py-2 mt-4 px-5 border border-solid border-customGray-light rounded-lg">
-                        <div class="flex justify-between">
-                            <img src="{{t.image}}">
-                            <h1 class="font-semibold leading-10">{{t.title}}</h1>
+                    <div *ngFor="let t of dash.disciplines" class="py-1 mt-4 px-2 border border-solid border-customGray-light rounded-lg">
+                        <div class="flex justify-between discipline">
+                            <img src="{{t.image}}" class="discipline-progress">
+                            <h1 class="font-semibold discipline-title">{{t.title}}</h1>
                             <app-progress-bar [value]="t.progress"></app-progress-bar>
                         </div>
                     </div>

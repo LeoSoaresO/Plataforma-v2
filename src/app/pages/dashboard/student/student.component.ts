@@ -36,8 +36,7 @@ faBookOpen = faBookOpen
 
   getUser(){
     let data = this.cookieService.get('userNormal')
-    let decoded = JSON.parse(data)
-    this.user = jwt_decode(decoded);
+    this.user = jwt_decode(data);
     console.log(this.user);
     this.letter()
   }
