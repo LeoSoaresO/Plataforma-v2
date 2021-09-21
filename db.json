@@ -477,6 +477,7 @@
   },
   "discplines":[
     {
+      "id": 1,
       "title": "Laravel aplicado",
       "external_id": "abcxyz",
       "start_date": "2021-12-01 00:00:00",
@@ -609,6 +610,67 @@
       "progress": 1
     }    
     
-  ]
+  ],
+  "disciplineDetail":[{
+    "id": 1,
+    "title": "Laravel aplicado",
+    "external_id": "abcxyz",
+    "cover_image": "https://google.com/urldaimagem.png",
+    "view_count": 127248136,
+    "description": "Essa disciplina bla bla bla",
+    "participants": {
+        "count": {
+            "teachers": 5,
+            "students": 248
+        },
+        "users": {
+            "teachers": [ 
+                {
+                    "name": "Flávio Silva",
+                    "image": "https://google.com.br/image.png"
+                },
+                {
+                    "name": "Tiago Pimenta",
+                    "image": "https://google.com.br/image.png"
+                }
+            ],
+            "students": [ 
+                {
+                    "name": "Wagner Silveira",
+                    "image": "https://google.com.br/image.png"
+                },
+                {
+                    "name": "Luís Tussô",
+                    "image": "https://google.com.br/image.png"
+                }
+            ]
+        }
+    },
+    "syllabus": [
+       {
+           "external_id": "farrapos-a",
+           "title": "Aula Guerra dos Farrapos",
+           "type": "Video" 
+       }
+   ], 
+   "feed": [
+       {
+           "external_id": "farrapos-a",
+           "title": "Aula Guerra dos Farrapos",
+           "type": "Video"
+       },
+       {
+           "external_id": "revfrancesa-a",
+           "title": "Aula Revolução Francesa",
+           "type": "Video"
+       },
+       {
+           "external_id": "seguerramundial-a",
+           "title": "Aula Segunda Guerra Mundial",
+           "type": "Video"
+       }              
+   ]
+  }]
+
 }
 

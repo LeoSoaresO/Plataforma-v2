@@ -1,0 +1,37 @@
+<app-header></app-header>
+<section class="pl-48 px-12 py-8">
+    <div class="grid grid-cols-3 p-6" style="background-color: #F4F4F4;border-radius: 20px;">
+        <div class="grid col-span-1 grid-rows-3">
+            <span class="text-customBlue-default font-bold text-2xl flex items-center">{{disicplineDetail?.title}}</span>
+            <span class="text-customBlue-default font-bold text-1xl flex items-center">{{disicplineDetail?.participants?.users?.teachers[0]?.name}}</span>
+            <!-- <span class="flex items-center">
+                <svg class="mr-1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.19971 8.35L7.29971 10.45L10.7997 6.25" stroke="#80CC28" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z" stroke="#80CC28" stroke-width="1.45"/>
+                </svg>
+                <span class="" style="color: #80CC28">Inscrito</span>
+            </span> -->
+            <div>
+                <button class="border rounded-md py-2 px-6 " style="color: #FFFFFF;background-color: #E8532C; font-size: 0.8em;">Continuar</button>
+            </div>
+        </div>
+        <div class="grid col-span-2 grid-rows-4">
+
+        </div>        
+    </div>
+
+    <div class="col-start-1 col-span-4 flex justify-center mt-8">
+        <button class="bg-disciplines rounded-l-md p-2 px-4" (click)="changeOverview()" [ngClass]="{' button-disciplines-selected ': selected === 'overview'}">Visão geral</button>
+        <button class="bg-disciplines p-2 px-4" (click)="changeNotes()" [ngClass]="{' button-disciplines-selected ': selected === 'notes'}">Notas</button>
+        <button class="bg-disciplines rounded-r-md p-2 px-4" (click)="changeContent()" [ngClass]="{' button-disciplines-selected ': selected === 'content'}">Conteúdo</button>
+    </div>
+
+    <router-outlet></router-outlet>
+
+    <div class='w-full text-center p-10' style="color: #233674">
+        Mais dúvidas? Visite o <b>Centar de Ajuda ao Estudante</b>
+    </div>
+ 
+</section>
+
+

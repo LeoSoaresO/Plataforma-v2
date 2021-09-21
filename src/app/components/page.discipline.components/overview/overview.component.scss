@@ -1,0 +1,14 @@
+@import '../../../../styles.scss';
+
+.bg-feed{
+    border: 1px solid #A9AEB3;
+}
+
+.bg-feed:hover {
+    background-color: #3656BF;
+    color: #FFFFFF;
+}
+
+.bg-feed:hover > div> div>.icon-lib{
+    fill: #FFFFFF;
+}
