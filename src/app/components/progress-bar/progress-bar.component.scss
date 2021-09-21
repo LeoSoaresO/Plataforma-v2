@@ -16,12 +16,12 @@ $circle-width: 0.08em;
 $circle-width-hover: 0.04em;
 
 // colors default
-$primary-color: #307bbb;
-$secondary-color: #ccc;
-$bg-color: #f5f5f5;
+$primary-color: $blue;
+$secondary-color: $blue-light;
+$bg-color: $bg-white;
 
-$primary-color-green: #4db53c;
-$primary-color-orange: #dd9d22;
+$primary-color-green: $blue;
+$primary-color-orange: $blue;
 
 
 // colors dark skin
@@ -98,7 +98,7 @@ $primary-color-orange-dark: #e08833;
         width: 5em;
         line-height: 5em;
         font-size: 0.2em;
-        color: $secondary-color;
+        color: $primary-color;
         display: block;
         text-align: center;
         white-space: nowrap;

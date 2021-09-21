@@ -64,8 +64,6 @@ import { ConfigDisciplinesurmasComponent } from './components/page.config.compon
 import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
 import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
 import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
-import { NgCircleProgressModule } from 'ng-circle-progress';
-import { ProgressBarModule } from 'angular-progress-bar';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication{
@@ -145,8 +143,6 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     TooltipModule,
     OverlayPanelModule,
     TreeSelectModule,
-    ProgressBarModule,
-    NgCircleProgressModule.forRoot({}),
     StoreModule.forRoot(reducers, {
       metaReducers
     }),

@@ -28,9 +28,9 @@
                         <a>Mostrar Tudo</a>
                     </div>
                     <div *ngFor="let t of dash.disciplines" class="p-3 py-2 mt-4 px-5 border border-solid border-customGray-light rounded-lg">
-                        <div class="flex">
+                        <div class="flex justify-between">
                             <img src="{{t.image}}">
-                            <h1 class="font-semibold">{{t.title}}</h1>
+                            <h1 class="font-semibold leading-10">{{t.title}}</h1>
                             <app-progress-bar [value]="t.progress"></app-progress-bar>
                         </div>
                     </div>
