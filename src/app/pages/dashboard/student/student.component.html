@@ -1,0 +1,83 @@
+<section class="flex p-10 py-10 ml-24">
+    <div class="bg-customWhite-default rounded-lg card mr-6 shadow-lg">
+        <div class="text-center">
+            <img src="../../../../assets/png/teste.png" class="rounded-t-lg img-card">
+            <div>
+                <div class="flex flex-col justify-center user-info">
+                    <div *ngIf="!user.image" id="name" class="rounded-full bg-inicieColors-orange mr-12">
+                        <p class="font-bold capitalize">{{name}}</p>
+                    </div>
+                    <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold">
+                        <img *ngIf="user.image" src="{{user.image}}">
+                    </div>
+                    <div class="text-center tracking-wide">
+                        <h2 class="font-bold capitalize">{{user.name}}</h2>
+                        <h3 class="font-semibold text-customBlue-default capitalize">{{user.role.name}}</h3>
+                        <span class="font-light">{{user.email}}</span>
+                    </div>
+                </div>
+                <!-- <div class="mt-4 px-7">
+                    <div class="flex justify-between">
+                        <h1 class="font-bold text-lg text-customGray-dark">Competências</h1>
+                        <a>Mostrar Tudo</a>
+                    </div>
+                </div> -->
+                <div class="mt-4 px-7 mb-4">
+                    <div class="flex justify-between">
+                        <h1 class="font-bold text-lg text-customGray-dark">Turmas</h1>
+                        <a>Mostrar Tudo</a>
+                    </div>
+                    <div *ngFor="let t of dash.disciplines" class="p-3 py-2 mt-4 px-5 border border-solid border-customGray-light rounded-lg">
+                        <div class="flex justify-between">
+                            <img src="{{t.image}}">
+                            <h1 class="font-semibold leading-10">{{t.title}}</h1>
+                            <app-progress-bar [value]="t.progress"></app-progress-bar>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col main">
+        <div class="bg-customWhite-default mr-6 rounded-lg shadow-lg">
+            <div class="p-5">
+                <h1 class="text-xl font-bold mb-3 text-customGray-dark">{{dash.announcement.title}}</h1>
+                <div class="flex">
+                    <img src="{{dash.announcement.image}}" class="rounded-lg img-main">
+                    <p class="font-light">{{dash.announcement.text}}</p>
+                </div> 
+                <button class="bg-customBlue-default ml-96 py-2 px-6 rounded-md font-semibold text-customWhite-default bt">Continuar</button> 
+            </div>
+        </div>
+        <div class="my-5 bg-customWhite-default mr-6 rounded-lg shadow-lg overflow-y-auto feed">
+            <div class="flex p-5" *ngFor="let f of dash.feed">
+                <div *ngIf="!f.user.image" id="n" class="rounded-full bg-inicieColors-orange mr-12 font-bold feed-user">
+                    {{feedName}}
+                </div>
+                <div id="name" class="rounded-full bg-inicieColors-orange mr-12 font-bold feed-user-image">
+                    <img *ngIf="f.user.image" src="{{f.user.image}}">
+                </div>
+                <div class="w-full">
+                    <h1 class="font-bold text-lg text-customGray-dark">{{f.user.name}}</h1>
+                    <h2 class="font-semibold text-lg text-customBlue-default">{{f.title}}</h2>
+                    <p class="font-light">{{f.text}}</p>
+                    <a class="feed-link">Mostrar Tudo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="schedule">
+        <div class="text-center mb-10" *ngFor="let d of dash.schedule">   
+            <h1 class="font-semibold text-title text-customGray-dark">{{d.title}}</h1>
+            <div *ngFor="let i of d.events">
+                <div class="bg-customWhite-default mt-2 rounded-lg shadow-lg">
+                    <div class="p-3 px-5 flex justify-between">
+                        <p class="circle font-semibold text-customWhite-default">{{i.label}}</p>
+                        <label class="title font-semibold text-customGray-dark">{{i.title}}</label>
+                        <button class="text-xl"><fa-icon [icon]="faBookOpen"></fa-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

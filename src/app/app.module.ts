@@ -53,8 +53,23 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
 import { ResetComponent } from './components/reset/reset.component';
+import { UploadComponent } from './components/upload/upload.component';
 import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { StudentComponent } from './pages/dashboard/student/student.component';
+import { TeacherComponent } from './pages/dashboard/teacher/teacher.component';
+import { NormalComponent } from './pages/dashboard/normal/normal.component';
+import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
+import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
+import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
+import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+
+import { TokenInterceptor } from './services/http.interceptor';
+import { DisciplineDetailComponent } from './pages/discipline-detail/discipline-detail.component';
+import { OverviewComponent } from './components/page.discipline.components/overview/overview.component';
+import { NotesComponent } from './components/page.discipline.components/notes/notes.component';
+import { ContentComponent } from './components/page.discipline.components/content/content.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication{
   return new PublicClientApplication({
@@ -64,15 +79,6 @@ export function MSALInstanceFactory(): IPublicClientApplication{
     }
   })
 }
-import { ConfigDisciplinesurmasComponent } from './components/page.config.components/config-disciplines/config-disciplines.component';
-import { ConfigLtiComponent } from './components/page.config.components/config-lti/config-lti.component';
-import { ConfigTermsComponent } from './components/page.config.components/config-terms/config-terms.component';
-import { ConfigTimetablesComponent } from './components/page.config.components/config-timetables/config-timetables.component';
-import { TokenInterceptor } from './services/http.interceptor';
-import { DisciplineDetailComponent } from './pages/discipline-detail/discipline-detail.component';
-import { OverviewComponent } from './components/page.discipline.components/overview/overview.component';
-import { NotesComponent } from './components/page.discipline.components/notes/notes.component';
-import { ContentComponent } from './components/page.discipline.components/content/content.component';
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
@@ -109,6 +115,11 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ConfigTermsComponent,
     ConfigTimetablesComponent,
     DisciplinesComponent,
+    UploadComponent,
+    StudentComponent,
+    TeacherComponent,
+    NormalComponent,
+    ProgressBarComponent,
     DisciplineDetailComponent,
     OverviewComponent,
     NotesComponent,

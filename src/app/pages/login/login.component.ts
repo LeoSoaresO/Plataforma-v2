@@ -38,6 +38,7 @@ options
 gUser
 mUser
 apiResp
+error
 
   constructor(
     private router: Router,
@@ -136,7 +137,6 @@ apiResp
 
   next() {
     this.show = false;
-    this.cont = true
     this.resetPassword();
   }
 
@@ -214,8 +214,10 @@ apiResp
       "email" : e 
     }
     const response = await this.loginservice.resetPassword(params)
-    console.log(response); 
-    console.time('request')   
+    console.log(response);
+    if(response == null){
+      this.cont = true
+    }
   }
 
   async validationToken(){
