@@ -4,6 +4,8 @@ import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-soc
 import { MsalService } from '@azure/msal-angular';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import jwt_decode from "jwt-decode";
+import { faDoorOpen } from '@fortawesome/pro-light-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +18,11 @@ export class HeaderComponent implements OnInit{
 logOutNormal: boolean = false
 logOutMicro: boolean = false
 logOutGoogle: boolean = false
+user
+name
 
+//Icons
+faDoorOpen = faDoorOpen
 
   constructor(
     private router: Router,
@@ -30,6 +36,7 @@ logOutGoogle: boolean = false
 
   ngOnInit(): void {
     this.checkUser()
+    this.getUser()
   }
 
   checkUser(){
@@ -71,6 +78,27 @@ logOutGoogle: boolean = false
     this.cookieService.delete('userNormal');
     this.cookieService.set('logOut', 'true')
     this.checkUser();
+  }
+
+  getUser(){
+    if(this.cookieService.check('userNormal') && !this.cookieService.check('userGoogle')){
+      let data = this.cookieService.get('userNormal')
+      this.user = jwt_decode(data);
+      console.log(this.user);      
+      this.letter()
+    }
+    if(!this.cookieService.check('userNormal') && this.cookieService.check('userGoogle')){
+      let data = this.cookieService.get('userGoogle')
+      this.user = jwt_decode(data);
+      console.log(this.user);
+      this.letter()
+    }
+  }
+
+  letter() {
+    let name = this.user.name;
+    let initials = name.charAt(0);
+    this.name = initials;
   }
 
 }

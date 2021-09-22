@@ -58,6 +58,7 @@ faBookOpen = faBookOpen
   async getDashInfo(){
     const response = await this.dashboardService.getDash()
     this.dash = response
+    console.log(this.dash);    
     for (const iterator of this.dash.feed) {     
       let n = iterator.user.name;
         let initials = n.charAt(0);

@@ -51,7 +51,7 @@
                     <img src="{{dash.announcement.image}}" class="rounded-lg img-main">
                     <p class="font-light">{{dash.announcement.text}}</p>
                 </div> 
-                <button class="bg-customBlue-default ml-96 py-2 px-6 rounded-md font-semibold text-customWhite-default bt">Continuar</button> 
+                <button class="bg-customBlue-default ml-96 py-2 px-6 rounded-md font-semibold text-customWhite-default bt"[routerLink]="dash.announcement.goToLink">Continuar</button> 
             </div>
         </div>
         <div class="my-5 bg-customWhite-default mr-6 rounded-lg shadow-lg overflow-y-auto feed">
@@ -66,7 +66,7 @@
                     <h1 class="font-bold text-lg text-customGray-dark">{{f.user.name}}</h1>
                     <h2 class="font-semibold text-lg text-customBlue-default">{{f.title}}</h2>
                     <p class="font-light">{{f.text}}</p>
-                    <a class="feed-link">Mostrar Tudo</a>
+                    <a class="feed-link" [routerLink]="f.goToLink">Mostrar Tudo</a>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                     <div class="p-3 px-5 flex justify-between">
                         <p class="circle font-semibold text-customWhite-default">{{i.label}}</p>
                         <label class="title font-semibold text-customGray-dark">{{i.title}}</label>
-                        <button class="text-xl"><fa-icon [icon]="faBookOpen"></fa-icon></button>
+                        <button class="text-xl" [routerLink]="i.link"><fa-icon [icon]="faBookOpen"></fa-icon></button>
                     </div>
                 </div>
             </div>
