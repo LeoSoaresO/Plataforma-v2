@@ -1,1 +1,45 @@
-<button><fa-icon [icon]="faCloudUpload"></fa-icon></button>
+<button class="upload" (click)="show = !show">
+    <fa-icon [icon]="faCloudUpload"></fa-icon>
+</button>
+
+<div *ngIf="show" class="transition ease-out duration-700 animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
+    <div class="relative w-5/12 my-6 mx-auto absolute bg-customWhite-default rounded-xl">
+      <!--content-->
+      <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <!--header-->
+        <div class="text-center p-5 border-b border-solid border-customBlue-light rounded-t">
+          <h3 class="text-xl font-bold text-customBlue-default">
+            Upload de arquivo
+          </h3>
+          <p class="text-center text-sm text-customBlue-default w-2/3 mx-auto mt-3">Faça o upload de um novo arquivo pelo seu computador ou Google Drive</p>
+        </div>
+        <!--body-->
+        <div class="relative p-6 flex-auto w-11/12 mx-auto">
+            <form>
+                <div class="mt-5">
+                    <div class="mt-2 flex justify-between gap-12">
+                        <button class="upload-local flex-col">
+                            <fa-icon [icon]="faCloudUploadAlt"></fa-icon>
+                            <p class="text-sm font-semibold text-customBlue-default">Upload</p>
+                        </button>
+                        <button class="upload-drive">
+                          <img src="../../../assets/svg/drive.svg">
+                          <p class="text-sm font-semibold text-customBlue-default">Upload do Google Drive</p>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--footer-->
+        <div class="flex items-center justify-center p-6 rounded-b">
+          <button class="bg-customBlue-default text-customWhite-default active:bg-emerald-600 font-bold text-sm px-7 py-2.5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            Continuar
+          </button>
+        <button class="text-customGray-textGray background-transparent font-semibold px-7 py-2.5 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="show = !show">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="show" class="opacity-25 fixed inset-0 z-40" style="background-color: #000;"></div>

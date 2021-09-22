@@ -1,0 +1,40 @@
+@import '../../styles/mixins.scss';
+
+.upload{
+    position: fixed;
+    right: 100px;
+    top: 600px;
+    background-color: $blue;
+    padding: 10px 14px;
+    font-size: 30px;
+    border-radius: 50%;
+    color: #ffffff;
+}
+
+.upload-local {
+    border: 1px solid $blue-light;
+    width: 50%;
+    font-size: 50px;
+    border-radius: 15px;
+    color: $blue;
+    padding: 8% 20%;
+    p{
+        text-align: center;
+    }
+}
+
+.upload-drive {
+    border: 1px solid $blue-light;
+    width: 50%;
+    border-radius: 15px;
+    color: $blue;
+    padding: 20px 0px;
+    img {
+        width: 70px;
+        height: 80px;
+        margin: 0 auto;
+    }
+    p {
+        text-align: center;
+    }
+}
