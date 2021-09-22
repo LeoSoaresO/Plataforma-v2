@@ -83,14 +83,12 @@ faDoorOpen = faDoorOpen
   getUser(){
     if(this.cookieService.check('userNormal') && !this.cookieService.check('userGoogle')){
       let data = this.cookieService.get('userNormal')
-      this.user = jwt_decode(data);
-      console.log(this.user);      
+      this.user = jwt_decode(data);   
       this.letter()
     }
     if(!this.cookieService.check('userNormal') && this.cookieService.check('userGoogle')){
       let data = this.cookieService.get('userGoogle')
       this.user = jwt_decode(data);
-      console.log(this.user);
       this.letter()
     }
   }
