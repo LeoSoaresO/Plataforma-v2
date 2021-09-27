@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faCloudUpload } from '@fortawesome/pro-light-svg-icons'
-import { faCloudUploadAlt } from '@fortawesome/pro-solid-svg-icons';
+import { faTimes } from '@fortawesome/pro-light-svg-icons'
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -8,12 +8,11 @@ import { faCloudUploadAlt } from '@fortawesome/pro-solid-svg-icons';
 })
 export class UploadComponent implements OnInit {
 
+//Icons
+faTimes = faTimes
+
 //Variables
 show = false
-
-//Icons
-faCloudUpload = faCloudUpload
-faCloudUploadAlt = faCloudUploadAlt
 
   constructor() { }
 
