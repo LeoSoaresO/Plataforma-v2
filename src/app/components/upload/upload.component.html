@@ -6,6 +6,7 @@
       </svg>
       
 </button>
+<script type="text/javascript" src="https://apis.google.com/js/api.js?onload=loadPicker"></script>
 
 <div *ngIf="show" class="transition ease-out duration-700 animate-fade-in-down overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex transition duration-1000 ease-in-out">
     <div class="relative w-5/12 my-6 mx-auto absolute bg-customWhite-default rounded-xl">
@@ -30,7 +31,7 @@
                             </svg>                            
                             <p class="text-sm font-semibold text-customBlue-default">Upload</p>
                         </button>
-                        <button class="upload-drive">
+                        <button class="upload-drive" (click)="openGoogleDrivePicker()">
                           	<img src="../../../assets/svg/drive.svg">
                           	<p class="text-sm font-semibold text-customBlue-default">Upload do Google Drive</p>
                         </button>
