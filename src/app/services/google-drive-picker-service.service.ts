@@ -8,9 +8,9 @@ declare const google: any;
 })
 export class GoogleDrivePickerService {
 
-  private clientId = '358550703280-e4r4qc3r193f6ud4trihkvtcg6dli38l.apps.googleusercontent.com';
-  private apiKey = 'AIzaSyB5zYFThHdNVqXSTXnhnNEDm2SuC2WH48A';
-  private appId = '358550703280';
+  private clientId = '927911156726-grkvus8d17384sukkn4h743ue1mcq94s.apps.googleusercontent.com';
+  private apiKey = 'AIzaSyAOaa8jLCmwdnyeXY9Iib3PJRdFPnL7Dps';
+  private appId = '927911156726';
   private scope = 'https://www.googleapis.com/auth/drive.file';
 
   private oauthAccessToken = null;
