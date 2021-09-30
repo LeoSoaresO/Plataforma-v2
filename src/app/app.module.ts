@@ -70,6 +70,7 @@ import { DisciplineDetailComponent } from './pages/discipline-detail/discipline-
 import { OverviewComponent } from './components/page.discipline.components/overview/overview.component';
 import { NotesComponent } from './components/page.discipline.components/notes/notes.component';
 import { ContentComponent } from './components/page.discipline.components/content/content.component';
+import { NgxFileHelpersModule } from 'ngx-file-helpers';
 
 export function MSALInstanceFactory(): IPublicClientApplication{
   return new PublicClientApplication({
@@ -149,6 +150,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ConfirmDialogModule,
     NgxEditorModule,
     TooltipModule,
+    NgxFileHelpersModule,
     OverlayPanelModule,
     TreeSelectModule,
     StoreModule.forRoot(reducers, {
